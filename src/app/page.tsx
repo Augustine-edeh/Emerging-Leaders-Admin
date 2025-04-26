@@ -1,5 +1,7 @@
+import AdminComingSoon from "@/components/AdminComingSoon";
+
 const Home = () => {
-  return <div>Hello World</div>;
+  return <AdminComingSoon />;
 };
 
 export default Home;
