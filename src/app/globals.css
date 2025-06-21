@@ -1,4 +1,5 @@
 @import "tailwindcss";
 @theme {
   --color-cream: #fff7e8;
+  --color-wine-primary: #a2185a;
 }

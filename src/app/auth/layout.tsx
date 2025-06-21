@@ -3,24 +3,35 @@ import type { ReactNode } from "react";
 
 const AuthLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="min-h-screen flex">
+    <div className="h-screen flex">
       {/* Left side (graphic section) */}
-      <div className="hidden lg:flex flex-col justify-center items-center w-1/2 bg-cream p-8">
-        {/* You can replace this with your SignupGraphicSection component */}
-        <h1 className="text-4xl font-bold text-blue-600 mb-4">
-          Emerging Leaders
-        </h1>
-        <p className="text-gray-600 text-center max-w-sm">
-          Empowering leadership through intuitive design and seamless access.
-        </p>
+      <div className="hidden lg:flex flex-col justify- center items- center w-1/2 bg-cream p-9">
+        <div className="bg-red-500 flex-1 grid place-items-center relative">
+          <Image
+            src="/logo.png"
+            width={100}
+            height={100}
+            alt="Illustration"
+            className="object-cover absolute top-0 left-0 z-10"
+          />
+          <div className="bg-blue-500 w-full h-full flex flex-col items-center justify-center relative">
+            <Image
+              src="/auth-grapgics-1.png"
+              width={100}
+              height={100}
+              alt="Illustration"
+              className="object-cover mt-8 w-3/4 z-10"
+            />
 
-        <Image
-          src="/auth-grapgics-1.png"
-          width={100}
-          height={100}
-          alt="Illustration"
-          className="mt-8 w-3/4"
-        />
+            <Image
+              src="/Vector.png"
+              width={100}
+              height={100}
+              alt="Illustration"
+              className="object-cover size-98 absolute bottom-0 left-1/2 -translate-x-1/2"
+            />
+          </div>
+        </div>
       </div>
 
       {/* Right side (auth form section) */}
