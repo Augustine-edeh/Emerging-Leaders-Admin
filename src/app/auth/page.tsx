@@ -17,6 +17,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
 
 const formSchema = z.object({
   fullName: z.string().min(2, {
@@ -54,6 +55,8 @@ const formSchema = z.object({
 });
 
 const ProfileForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -114,19 +117,20 @@ const ProfileForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Password</FormLabel>
-              <div className="flex justify-center items-center relative bg-yellow-500 text-blue-600">
-                <FormControl>
-                  <>
-                    <Input
-                      type="password"
-                      placeholder="••••••••"
-                      {...field}
-                      className="relative"
-                    />
-                    <EyeOff className="absolute right-4 cursor-pointer bg-blue-500" />
-                  </>
-                </FormControl>
-              </div>
+              <FormControl>
+                <div className="flex justify-center items-center relative bg-yellow-500 text-blue-600">
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="••••••••"
+                    {...field}
+                    className="relative"
+                  />
+                  <EyeOff
+                    className="absolute right-4 cursor-pointer bg-blue-500"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                  />
+                </div>
+              </FormControl>
 
               <FormMessage />
             </FormItem>
