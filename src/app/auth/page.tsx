@@ -1,6 +1,6 @@
 "use client";
 
-import { EyeOff } from "lucide-react";
+import { EyeOff, Eye } from "lucide-react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import { Sign } from "crypto";
 
 const formSchema = z.object({
   fullName: z.string().min(2, {
@@ -54,7 +55,7 @@ const formSchema = z.object({
   // }),
 });
 
-const ProfileForm = () => {
+const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   // 1. Define your form.
@@ -125,10 +126,17 @@ const ProfileForm = () => {
                     {...field}
                     className="relative"
                   />
-                  <EyeOff
-                    className="absolute right-4 cursor-pointer bg-blue-500"
-                    onClick={() => setShowPassword((prev) => !prev)}
-                  />
+                  {showPassword ? (
+                    <EyeOff
+                      className="absolute right-4 cursor-pointer bg-blue-500"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                    />
+                  ) : (
+                    <Eye
+                      className="absolute right-4 cursor-pointer bg-blue-500"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                    />
+                  )}
                 </div>
               </FormControl>
 
@@ -167,4 +175,4 @@ const ProfileForm = () => {
   );
 };
 
-export default ProfileForm;
+export default SignupForm;
