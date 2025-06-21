@@ -1,27 +1,153 @@
-const LoginPage = () => {
+"use client";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+
+const formSchema = z.object({
+  fullName: z.string().min(2, {
+    message: "Full name must be at least 2 characters.",
+  }),
+  email: z.string().email({
+    message: "Please enter a valid email address.",
+  }),
+  password: z
+    .string()
+    .min(8, {
+      message: "Password must be at least 8 characters.",
+    })
+    .max(32, {
+      message: "Password must be at most 32 characters.",
+    }),
+  confirmPassword: z
+    .string()
+    .min(8, {
+      message: "Confirm password must be at least 8 characters.",
+    })
+    .max(32, {
+      message: "Confirm password must be at most 32 characters.",
+    }),
+  // .refine((val, ctx) => {
+  //   if (val !== ctx.parent.password) {
+  //     ctx.addIssue({
+  //       code: z.ZodIssueCode.custom,
+  //       message: "Passwords must match.",
+  //     });
+  //     return false;
+  //   }
+  //   return true;
+  // }),
+});
+
+const ProfileForm = () => {
+  // 1. Define your form.
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      fullName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
+
+  // 2. Define a submit handler.
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values);
+  }
+
   return (
-    <div className="w-full max-w-md">
-      <h2 className="text-2xl font-bold mb-6">Admin Login</h2>
-      <form className="space-y-4">
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full p-2 border rounded"
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-6 bg-red-500 w-full h-full"
+      >
+        <h1>Create an Account</h1>
+
+        <FormField
+          control={form.control}
+          name="fullName"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Full Name</FormLabel>
+              <FormControl>
+                <Input placeholder="e.g. Augustine Edeh" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full p-2 border rounded"
+
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input type="email" placeholder="you@example.com" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-        <button
+
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input type="password" placeholder="••••••••" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="confirmPassword"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Confirm Password</FormLabel>
+              <FormControl>
+                <Input
+                  type="password"
+                  placeholder="Repeat password"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <Button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded"
+          className="w-full bg-wine-primary"
+          disabled={!form.formState.isValid}
         >
-          Login
-        </button>
+          Create Account
+        </Button>
       </form>
-    </div>
+    </Form>
   );
 };
 
-export default LoginPage;
+export default ProfileForm;
