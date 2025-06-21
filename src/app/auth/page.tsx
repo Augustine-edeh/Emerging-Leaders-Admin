@@ -1,5 +1,7 @@
 "use client";
 
+import { EyeOff } from "lucide-react";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -112,9 +114,20 @@ const ProfileForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input type="password" placeholder="••••••••" {...field} />
-              </FormControl>
+              <div className="flex justify-center items-center relative bg-yellow-500 text-blue-600">
+                <FormControl>
+                  <>
+                    <Input
+                      type="password"
+                      placeholder="••••••••"
+                      {...field}
+                      className="relative"
+                    />
+                    <EyeOff className="absolute right-4 cursor-pointer bg-blue-500" />
+                  </>
+                </FormControl>
+              </div>
+
               <FormMessage />
             </FormItem>
           )}
