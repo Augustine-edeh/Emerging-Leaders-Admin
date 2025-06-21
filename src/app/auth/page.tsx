@@ -19,40 +19,66 @@ import {
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
-const formSchema = z.object({
-  fullName: z.string().min(2, {
-    message: "Full name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  password: z
-    .string()
-    .min(8, {
-      message: "Password must be at least 8 characters.",
-    })
-    .max(32, {
-      message: "Password must be at most 32 characters.",
+// const formSchema = z.object({
+//   fullName: z.string().min(2, {
+//     message: "Full name must be at least 2 characters.",
+//   }),
+//   email: z.string().email({
+//     message: "Please enter a valid email address.",
+//   }),
+//   password: z
+//     .string()
+//     .min(8, {
+//       message: "Password must be at least 8 characters.",
+//     })
+//     .max(32, {
+//       message: "Password must be at most 32 characters.",
+//     }),
+//   confirmPassword: z
+//     .string()
+//     .min(8, {
+//       message: "Confirm password must be at least 8 characters.",
+//     })
+//     .max(32, {
+//       message: "Confirm password must be at most 32 characters.",
+//     })
+//      .refine((data) => data.password === data.confirmPassword, {
+//     message: "Passwords must match.",
+//     path: ["confirmPassword"],
+//   })
+//   // .refine((val, ctx) => {
+//   //   if (val !== ctx.parent.password) {
+//   //     ctx.addIssue({
+//   //       code: z.ZodIssueCode.custom,
+//   //       message: "Passwords must match.",
+//   //     });
+//   //     return false;
+//   //   }
+//   //   return true;
+//   // }),
+// });
+
+const formSchema = z
+  .object({
+    fullName: z.string().min(2, {
+      message: "Full name must be at least 2 characters.",
     }),
-  confirmPassword: z
-    .string()
-    .min(8, {
-      message: "Confirm password must be at least 8 characters.",
-    })
-    .max(32, {
-      message: "Confirm password must be at most 32 characters.",
+    email: z.string().email({
+      message: "Please enter a valid email address.",
     }),
-  // .refine((val, ctx) => {
-  //   if (val !== ctx.parent.password) {
-  //     ctx.addIssue({
-  //       code: z.ZodIssueCode.custom,
-  //       message: "Passwords must match.",
-  //     });
-  //     return false;
-  //   }
-  //   return true;
-  // }),
-});
+    password: z
+      .string()
+      .min(8, { message: "Password must be at least 8 characters." })
+      .max(32, { message: "Password must be at most 32 characters." }),
+    confirmPassword: z
+      .string()
+      .min(8, { message: "Confirm password must be at least 8 characters." })
+      .max(32, { message: "Confirm password must be at most 32 characters." }),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "The confirmation password must match the password above.",
+    path: ["confirmPassword"],
+  });
 
 const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -118,8 +144,8 @@ const SignupForm = () => {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
+              <FormLabel htmlFor="password">Password</FormLabel>
+              {/* <FormControl>
                 <div className="flex justify-center items-center relative bg-yellow-500 text-blue-600">
                   <Input
                     type={showPassword ? "text" : "password"}
@@ -138,6 +164,24 @@ const SignupForm = () => {
                       onClick={() => setShowPassword((prev) => !prev)}
                     />
                   )}
+                </div>
+              </FormControl> */}
+
+              <FormControl>
+                <div className="relative">
+                  <Input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="••••••••"
+                    {...field}
+                    className="pr-10" // add padding to avoid icon overlap
+                  />
+                  <span
+                    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                  >
+                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </span>
                 </div>
               </FormControl>
 
