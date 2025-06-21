@@ -18,7 +18,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { Sign } from "crypto";
 
 const formSchema = z.object({
   fullName: z.string().min(2, {
@@ -82,7 +81,9 @@ const SignupForm = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6 bg-red-500 w-full h-full"
       >
-        <h1>Create an Account</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">
+          Create an Account
+        </h1>
 
         <FormField
           control={form.control}
