@@ -16,6 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
 
 // Schema
 const formSchema = z
@@ -50,6 +51,8 @@ function getPasswordStrength(password: string): 1 | 2 | 3 {
 }
 
 const SignupForm = () => {
+  const router = useRouter();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -70,6 +73,8 @@ const SignupForm = () => {
 
     // I think I could also typically clear the form  here & redirect the user.
     console.log(values);
+
+    router.push("/auth/verify-email");
   }
 
   const passwordValue = form.watch("password");
@@ -207,7 +212,7 @@ const SignupForm = () => {
 
         <Button
           type="submit"
-          className="w-full bg-wine-primary"
+          className="w-full bg-primary"
           disabled={!form.formState.isValid}
         >
           Create Account

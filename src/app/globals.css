@@ -4,7 +4,17 @@
 @custom-variant dark (&:is(.dark *));
 @theme {
   --color-cream: #fff7e8;
-  --color-wine-primary: #a2185a;
+  --color-primary: #a2185a;
+  --primary-50: #fdf0f5;
+  --primary-100: #fbe0eb;
+  --primary-200: #f6bcd0;
+  --primary-300: #f093b2;
+  --primary-400: #e45b88;
+  --primary-500: #a2185a;
+  --primary_600: #89144c;
+  --primary-700: #6e103e;
+  --primary-800: #540c30;
+  --primary-900: #3a0922;
 }
 
 @theme inline {
@@ -18,7 +28,20 @@
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+
+  /* syncing suctom colours with scale  */
   --color-primary: var(--primary);
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -51,7 +74,18 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  /* --primary: oklch(0.205 0 0); */
+  --primary: #a2185a;
+  --primary-50: #fdf0f5;
+  --primary--100: #fbe0eb;
+  --primary-200: #f6bcd0;
+  --primary-300: #f093b2;
+  --primary-400: #e45b88;
+  --primary-500: #a2185a;
+  --primary-600: #89144c;
+  --primary-700: #6e103e;
+  --primary-800: #540c30;
+  --primary-900: #3a0922;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
