@@ -82,6 +82,7 @@ const formSchema = z
 
 const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   // 1. Defining the form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -118,7 +119,7 @@ const SignupForm = () => {
             <FormItem>
               <FormLabel>Full Name</FormLabel>
               <FormControl>
-                <Input placeholder="e.g. Augustine Edeh" {...field} />
+                <Input placeholder="Enter your full name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -132,7 +133,11 @@ const SignupForm = () => {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input type="email" placeholder="you@example.com" {...field} />
+                <Input
+                  type="email"
+                  placeholder="Enter your official email address"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -172,7 +177,7 @@ const SignupForm = () => {
                   <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
-                    placeholder="••••••••"
+                    placeholder="Minimum 8 characters"
                     {...field}
                     className="pr-10" // add padding to avoid icon overlap
                   />
@@ -197,11 +202,31 @@ const SignupForm = () => {
             <FormItem>
               <FormLabel>Confirm Password</FormLabel>
               <FormControl>
-                <Input
+                {/* <Input
                   type="password"
                   placeholder="Repeat password"
                   {...field}
-                />
+                /> */}
+
+                <div className="relative">
+                  <Input
+                    id="password"
+                    type={showConfirmPassword ? "text" : "password"}
+                    placeholder="Rewrite your password"
+                    {...field}
+                    className="pr-10" // add padding to avoid icon overlap
+                  />
+                  <span
+                    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground"
+                    onClick={() => setShowConfirmPassword((prev) => !prev)}
+                  >
+                    {showConfirmPassword ? (
+                      <EyeOff size={18} />
+                    ) : (
+                      <Eye size={18} />
+                    )}
+                  </span>
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>
