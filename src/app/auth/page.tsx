@@ -67,6 +67,8 @@ const SignupForm = () => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
+
+    // I think I could also typically clear the form  here & redirect the user.
     console.log(values);
   }
 
