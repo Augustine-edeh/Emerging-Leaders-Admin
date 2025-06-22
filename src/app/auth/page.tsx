@@ -1,7 +1,7 @@
 "use client";
 
 import { EyeOff, Eye } from "lucide-react";
-
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -10,54 +10,14 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
 
-// const formSchema = z.object({
-//   fullName: z.string().min(2, {
-//     message: "Full name must be at least 2 characters.",
-//   }),
-//   email: z.string().email({
-//     message: "Please enter a valid email address.",
-//   }),
-//   password: z
-//     .string()
-//     .min(8, {
-//       message: "Password must be at least 8 characters.",
-//     })
-//     .max(32, {
-//       message: "Password must be at most 32 characters.",
-//     }),
-//   confirmPassword: z
-//     .string()
-//     .min(8, {
-//       message: "Confirm password must be at least 8 characters.",
-//     })
-//     .max(32, {
-//       message: "Confirm password must be at most 32 characters.",
-//     })
-//      .refine((data) => data.password === data.confirmPassword, {
-//     message: "Passwords must match.",
-//     path: ["confirmPassword"],
-//   })
-//   // .refine((val, ctx) => {
-//   //   if (val !== ctx.parent.password) {
-//   //     ctx.addIssue({
-//   //       code: z.ZodIssueCode.custom,
-//   //       message: "Passwords must match.",
-//   //     });
-//   //     return false;
-//   //   }
-//   //   return true;
-//   // }),
-// });
-
+// Schema
 const formSchema = z
   .object({
     fullName: z.string().min(2, {
@@ -80,11 +40,19 @@ const formSchema = z
     path: ["confirmPassword"],
   });
 
+// Strength checker
+function getPasswordStrength(password: string): 1 | 2 | 3 {
+  let score = 0;
+  if (password.length >= 8) score++;
+  if (/[A-Z]/.test(password) && /[0-9]/.test(password)) score++;
+  if (/[^A-Za-z0-9]/.test(password)) score++;
+  return (score || 1) as 1 | 2 | 3;
+}
+
 const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  // 1. Defining the form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -102,16 +70,29 @@ const SignupForm = () => {
     console.log(values);
   }
 
+  const passwordValue = form.watch("password");
+  const strengthLevel = getPasswordStrength(passwordValue);
+
+  const getBarColor = (level: number) => {
+    if (strengthLevel >= level) {
+      if (strengthLevel === 1) return "bg-red-500";
+      if (strengthLevel === 2) return "bg-amber-500";
+      return "bg-green-500";
+    }
+    return "bg-muted";
+  };
+
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-6 bg-red-500 w-full h-full"
+        className="space-y-6 bg-red- 500 w-full h-full"
       >
         <h1 className="text-2xl font-semibold tracking-tight">
           Create an Account
         </h1>
 
+        {/* Full Name */}
         <FormField
           control={form.control}
           name="fullName"
@@ -126,6 +107,7 @@ const SignupForm = () => {
           )}
         />
 
+        {/* Email */}
         <FormField
           control={form.control}
           name="email"
@@ -144,34 +126,13 @@ const SignupForm = () => {
           )}
         />
 
+        {/* Password Field + Strength Meter */}
         <FormField
           control={form.control}
           name="password"
           render={({ field }) => (
             <FormItem>
               <FormLabel htmlFor="password">Password</FormLabel>
-              {/* <FormControl>
-                <div className="flex justify-center items-center relative bg-yellow-500 text-blue-600">
-                  <Input
-                    type={showPassword ? "text" : "password"}
-                    placeholder="••••••••"
-                    {...field}
-                    className="relative"
-                  />
-                  {showPassword ? (
-                    <EyeOff
-                      className="absolute right-4 cursor-pointer bg-blue-500"
-                      onClick={() => setShowPassword((prev) => !prev)}
-                    />
-                  ) : (
-                    <Eye
-                      className="absolute right-4 cursor-pointer bg-blue-500"
-                      onClick={() => setShowPassword((prev) => !prev)}
-                    />
-                  )}
-                </div>
-              </FormControl> */}
-
               <FormControl>
                 <div className="relative">
                   <Input
@@ -190,31 +151,40 @@ const SignupForm = () => {
                 </div>
               </FormControl>
 
+              {/* Password Strength Indicator */}
+              {passwordValue && (
+                <div className="mt-2 flex gap-2">
+                  {[1, 2, 3].map((level) => (
+                    <div
+                      key={level}
+                      className={`h-2 flex-1 rounded-sm transition-colors duration-300 ${getBarColor(
+                        level
+                      )}`}
+                    />
+                  ))}
+                </div>
+              )}
+
               <FormMessage />
             </FormItem>
           )}
         />
 
+        {/* Confirm Passowrd */}
         <FormField
           control={form.control}
           name="confirmPassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Confirm Password</FormLabel>
+              <FormLabel htmlFor="confirmPassword">Confirm Password</FormLabel>
               <FormControl>
-                {/* <Input
-                  type="password"
-                  placeholder="Repeat password"
-                  {...field}
-                /> */}
-
                 <div className="relative">
                   <Input
-                    id="password"
+                    id="confirmPassword"
                     type={showConfirmPassword ? "text" : "password"}
                     placeholder="Rewrite your password"
                     {...field}
-                    className="pr-10" // add padding to avoid icon overlap
+                    className="pr-10"
                   />
                   <span
                     className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground"
