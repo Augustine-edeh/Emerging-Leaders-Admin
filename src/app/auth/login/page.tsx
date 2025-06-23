@@ -48,15 +48,16 @@ const LoginPage = () => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
 
-    // post form values to the backend.
+    // NOTE: post form values to the backend.
 
-    // if response.data. (i.e, wrong credentials); show toast
-    setfakebackendResponse(true);
-    // toast({type: error, message: {heading: 'Invalid email or password}', subText: 'Please try again.' })
+    // NOTE: if response.data.error (i.e, wrong credentials); show toast
+    setfakebackendResponse(true); // 1.
+    // 2. show toast({type: error, message: {heading: 'Invalid email or password}', subText: 'Please try again.' })
 
-    // if response.data.success; redirect to admin page
-    // clear the form & redirect to /admin.
-    // router.push("/admin");
+    // NOTE: if response.data.success; redirect to admin page
+    // 1. show toast({type: success, message: {heading: 'Login successfully}', subText: 'You are logged in.' })
+    // 2. clear the form & redirect to /admin.
+    // 3. router.push("/admin");
   }
 
   return (
