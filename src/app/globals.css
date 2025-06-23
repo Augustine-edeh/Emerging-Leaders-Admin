@@ -42,6 +42,9 @@
   --color-primary-800: var(--primary-800);
   --color-primary-900: var(--primary-900);
 
+  --color-error: var(--error);
+  --color-error-300: var(--error-300);
+
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -86,6 +89,10 @@
   --primary-700: #6e103e;
   --primary-800: #540c30;
   --primary-900: #3a0922;
+
+  --error: #e81313;
+  --error-300: #ff9594;
+
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);

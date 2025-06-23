@@ -18,13 +18,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import clsx from "clsx";
 
 // Schema
 const formSchema = z.object({
   email: z.string().email({
     // message: "Please enter a valid email address.",
   }),
-  password: z.string(),
+  password: z.string({}),
 });
 
 const LoginPage = () => {
@@ -40,15 +41,22 @@ const LoginPage = () => {
     },
   });
 
+  const [fakebackendResponse, setfakebackendResponse] =
+    useState<boolean>(false);
+
   // 2. Submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // post form values to the backend.
-
-    // I think I could also typically clear the form  here & redirect the user.
     console.log(values);
 
-    // if response.data.success, redirect to admin page
-    router.push("/admin");
+    // post form values to the backend.
+
+    // if response.data. (i.e, wrong credentials); show toast
+    setfakebackendResponse(true);
+    // toast({type: error, message: {heading: 'Invalid email or password}', subText: 'Please try again.' })
+
+    // if response.data.success; redirect to admin page
+    // clear the form & redirect to /admin.
+    // router.push("/admin");
   }
 
   return (
@@ -75,6 +83,9 @@ const LoginPage = () => {
                     <Input
                       type="email"
                       placeholder="Enter your official email address"
+                      className={clsx(
+                        fakebackendResponse ? "border-error-300" : ""
+                      )}
                       {...field}
                     />
                   </FormControl>
@@ -97,7 +108,10 @@ const LoginPage = () => {
                         type={showPassword ? "text" : "password"}
                         placeholder="Enter your password"
                         {...field}
-                        className="pr-10 bo rder border-b lue-500 outline outline-blue-500" // add padding to avoid eye-icon overlap
+                        className={clsx(
+                          "pr-10 bo rder border-b lue-500 outline outline-blue-500", // add padding to avoid eye-icon overlap
+                          fakebackendResponse ? "border-error-300" : ""
+                        )}
                       />
                       <span
                         className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground"
