@@ -1,6 +1,5 @@
 "use client";
 
-import { EyeOff, Eye } from "lucide-react";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -17,27 +16,31 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import clsx from "clsx";
+
+// Strength checker
+function getPasswordStrength(password: string): 1 | 2 | 3 {
+  let score = 0;
+  if (password.length >= 8) score++;
+  if (/[A-Z]/.test(password) && /[0-9]/.test(password)) score++;
+  if (/[^A-Za-z0-9]/.test(password)) score++;
+  return (score || 1) as 1 | 2 | 3;
+}
 
 // Schema
 const formSchema = z.object({
   email: z.string().email({
     // message: "Please enter a valid email address.",
   }),
-  password: z.string({}),
 });
 
-const LoginPage = () => {
+const ResetPasswordPage = () => {
   const router = useRouter();
-
-  const [showPassword, setShowPassword] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-      password: "",
     },
   });
 
@@ -57,15 +60,27 @@ const LoginPage = () => {
     // NOTE: if response.data.success; redirect to admin page
     // 1. show toast({type: success, message: {heading: 'Login successfully}', subText: 'You are logged in.' })
     // 2. clear the form & redirect to /admin.
-    router.push("/admin"); //3.
+    router.push("/reset-password/new-password"); //3.
   }
+
+  const passwordValue = form.watch("password");
+  const strengthLevel = getPasswordStrength(passwordValue);
+
+  const getBarColor = (level: number) => {
+    if (strengthLevel >= level) {
+      if (strengthLevel === 1) return "bg-red-500";
+      if (strengthLevel === 2) return "bg-amber-500";
+      return "bg-green-500";
+    }
+    return "bg-muted";
+  };
 
   return (
     <div className="w-full">
       <h1 className="text-2xl font-semibold tracking-tight mb-2">
-        Welcome Back
+        Reset Admin Password
       </h1>
-      <p>Enter your details to login as an admin</p>
+      <p>Enter the official email address linked to your admin account.</p>
 
       <Form {...form}>
         <form
@@ -94,49 +109,6 @@ const LoginPage = () => {
                 </FormItem>
               )}
             />
-
-            {/* Password Field */}
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel htmlFor="password">Password</FormLabel>
-                  <FormControl>
-                    <div className="relative">
-                      <Input
-                        id="password"
-                        type={showPassword ? "text" : "password"}
-                        placeholder="Enter your password"
-                        {...field}
-                        className={clsx(
-                          "pr-10 bo rder border-b lue-500 outline outline-blue-500", // add padding to avoid eye-icon overlap
-                          fakebackendResponse ? "border-error-300" : ""
-                        )}
-                      />
-                      <span
-                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground"
-                        onClick={() => setShowPassword((prev) => !prev)}
-                      >
-                        {showPassword ? (
-                          <EyeOff size={18} />
-                        ) : (
-                          <Eye size={18} />
-                        )}
-                      </span>
-                    </div>
-                  </FormControl>
-
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-
-          <div className="w-fit ml-auto mt-4">
-            <Link href="/reset-password" className="text-primary">
-              Forgort password?
-            </Link>
           </div>
 
           <Button
@@ -144,7 +116,7 @@ const LoginPage = () => {
             className="w-full bg-primary mt-16"
             disabled={!form.formState.isValid}
           >
-            Log In
+            Send Reset Link
           </Button>
         </form>
       </Form>
@@ -152,4 +124,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ResetPasswordPage;
