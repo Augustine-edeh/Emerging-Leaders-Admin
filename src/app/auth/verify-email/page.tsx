@@ -8,7 +8,7 @@ import {
 
 const VerifyEmailCode = () => {
   return (
-    <div className="w-full p-6 bg-amber-50">
+    <div className="w-full p-6">
       <h1 className="mb-2 text-3xl font-semibold">Verify Email</h1>
       <p className="text-muted-foreground">
         Enter the 6-digit code sent to your email.
@@ -35,7 +35,7 @@ const VerifyEmailCode = () => {
         </span>
       </div>
 
-      <Button className="w-full rounded-lg px-6 py-4 mt-12" disabled={}>
+      <Button className="w-full rounded-lg px-6 py-4 mt-12" disabled={false}>
         Verify Email
       </Button>
     </div>
