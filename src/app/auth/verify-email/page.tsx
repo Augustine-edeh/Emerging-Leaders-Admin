@@ -3,44 +3,43 @@ import { Button } from "@/components/ui/button";
 import {
   InputOTP,
   InputOTPGroup,
-  InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 
-const verifyEmail = () => {
+const VerifyEmailCode = () => {
   return (
-    <div>
+    <div className="w-full p-6 bg-amber-50">
       <h1 className="mb-2 text-3xl font-semibold">Verify Email</h1>
-      <p>Enter the 4-digit code sent to your email</p>
+      <p className="text-muted-foreground">
+        Enter the 6-digit code sent to your email.
+      </p>
 
-      <div className="mt-16 bg-red-500">
-        <InputOTP maxLength={6}>
-          <InputOTPGroup className="bg-blue-600 h-16">
-            <InputOTPSlot index={0} className="h-full" />
-            <InputOTPSlot index={1} className="h-full" />
-            <InputOTPSlot index={2} className="h-full" />
-          </InputOTPGroup>
-          {/* <InputOTPSeparator /> */}
-          <InputOTPGroup className="bg-purple-600 h-16">
-            <InputOTPSlot index={3} className="h-full" />
-            <InputOTPSlot index={4} className="h-full" />
-            <InputOTPSlot index={5} className="h-full" />
+      <div className="mt-12">
+        <InputOTP maxLength={4}>
+          <InputOTPGroup className="flex justify-center gap-3">
+            {[0, 1, 2, 3].map((index) => (
+              <InputOTPSlot
+                key={index}
+                index={index}
+                className="w-14 h-16 rounded-md border border-input bg-background text-center text-lg font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-colors"
+              />
+            ))}
           </InputOTPGroup>
         </InputOTP>
       </div>
 
-      <div className="flex gap-3 mt-4">
-        <p>Didn’t receive a code? </p>
-        <span className="bg-primary-100 rounded-2xl px-4 py-0.5">
-          Resend in {"8:59"}
+      <div className="flex gap-2 mt-6 text-sm">
+        <p className="text-muted-foreground">Didn’t receive a code?</p>
+        <span className="bg-primary/10 font-medium rounded-full px-3 py-0.5">
+          Resend in 8:59
         </span>
       </div>
 
-      <Button className="w-full rounded-lg px-6 py-4 mt-16">
+      <Button className="w-full rounded-lg px-6 py-4 mt-12" disabled={}>
         Verify Email
       </Button>
     </div>
   );
 };
 
-export default verifyEmail;
+export default VerifyEmailCode;
