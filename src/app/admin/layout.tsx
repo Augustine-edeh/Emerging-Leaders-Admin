@@ -36,18 +36,19 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
       </div>
 
       {/* Right side (auth form section) */}
-      <div className="flex flex-col justify-center items-center w-full lg:w-4/5 bg-red-500">
-        <header className="bg-yellow-500 w-full py-6 text- center">
+      <div className="flex flex-col justify-center items-center w-full lg:w-4/5 bg-pink-500">
+        <header className="bg-yellow-500 w-full py-6 text-center">
           This is the Header Section
         </header>
 
-        {/* <section className="bg-purple-500 p-2 w-full h-full"> */}
-        <main className="bg-blue-500 flex-1 w-full h-full p-8">{children}</main>
+        <section className="flex flex-col gap-2 bg-red-500 p-8 w-full h-full">
+          <main className="bg-blue-500 flex-1 p-2">{children}</main>
 
-        <footer className="bg-yellow-500 w-full py-6">
-          This is the Footer section
-        </footer>
-        {/* </section> */}
+          <footer className="bg-yellow-500 flex justify-between py-6">
+            <div className="bg-fuchsia-500">Left side</div>
+            <div className="bg-fuchsia-500">Right side</div>
+          </footer>
+        </section>
       </div>
     </div>
   );
