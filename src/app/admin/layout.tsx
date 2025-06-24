@@ -1,4 +1,4 @@
-import AuthGraphicSection from "@/components/AuthGraphicSection";
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import type { ReactNode } from "react";
 
@@ -60,12 +60,21 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
           This is the Header Section
         </header>
 
-        <section className="flex flex-col gap-2 bg-red-500 p-8 w-full h-full">
+        <section className="flex flex-col gap-2 bg-red-500 p-8 pb-16 w-full h-full">
           <main className="bg-blue-500 flex-1 p-2">{children}</main>
 
           <footer className="bg-yellow-500 flex justify-between py-6">
-            <div className="bg-fuchsia-500">Left side</div>
-            <div className="bg-fuchsia-500">Right side</div>
+            <div className="flex bg-fuchsia-500">
+              <span>
+                show {} of {8}
+              </span>
+              <ChevronDown />
+            </div>
+
+            <div className="flex gap-6 bg-fuchsia-500">
+              <p>1-Page</p>
+              <div>pagination Element</div>
+            </div>
           </footer>
         </section>
       </div>
