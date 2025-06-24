@@ -8,7 +8,7 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
       <AuthGraphicSection />
 
       {/* Right side (auth form section) */}
-      <div className="flex flex-col justify-center items-center w-full lg:w-1/2 p-8">
+      <div className="flex flex-col justify-center items-center w-full lg:w-1/2 p-8 lg:px-24">
         {children}
       </div>
     </div>
