@@ -3,36 +3,55 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 
 const AuthLayout = ({ children }: { children: ReactNode }) => {
+  const dashNav = [
+    {
+      icon: "/icons/analytics.png",
+      label: "Analytics",
+    },
+    {
+      icon: "/icons/analytics.png",
+      label: "User Management",
+    },
+    {
+      icon: "/icons/analytics.png",
+      label: "Content Management",
+    },
+    {
+      icon: "/icons/analytics.png",
+      label: "Support",
+    },
+  ];
+
   return (
     <div className="h-screen flex">
       {/* Left side (graphic section) */}
-      <div className="hidden lg:flex flex-col justify- center items- center w-1/5 bg-cream p-9">
-        <div className="bg-red-500 flex-1 grid place-items-center relative">
-          <Image
-            src="/logo.png"
-            width={100}
-            height={100}
-            alt="Illustration"
-            className="object-cover absolute top-0 left-0 z-10"
-          />
-          <div className="bg-blue-500 w-full h-full flex flex-col items-center justify-center relative">
-            <Image
-              src="/auth-grapgics-1.png"
-              width={100}
-              height={100}
-              alt="Illustration"
-              className="object-cover mt-8 w-3/4 z-10"
-            />
+      <div className="hidden lg:flex flex-col items- center gap-10 w-1/5 bg-cream p-8">
+        <Image
+          src="/logo.png"
+          width={100}
+          height={100}
+          alt="Illustration"
+          className="object-cover mx-auto bg-yellow-400"
+        />
 
-            <Image
-              src="/Vector.png"
-              width={100}
-              height={100}
-              alt="Illustration"
-              className="object-cover size-98 absolute bottom-0 left-1/2 -translate-x-1/2"
-            />
-          </div>
-        </div>
+        <ul className="bg-red-500 space-y-5">
+          {dashNav.map((item, index) => (
+            <li
+              key={index}
+              className="flex items-center gap-3 px-2 py-3 text-gray-800 bg-blue-500"
+            >
+              <span>
+                <Image
+                  src={item.icon}
+                  width={30}
+                  height={30}
+                  alt={item.label}
+                />
+              </span>
+              <span className="font-semibold">{item.label}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
       {/* Right side (auth form section) */}
