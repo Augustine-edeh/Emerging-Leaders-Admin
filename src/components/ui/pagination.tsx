@@ -45,7 +45,7 @@ type PaginationLinkProps = {
 function PaginationLink({
   className,
   isActive,
-  size = "icon",
+  size = "paginationSize", // add custom size here
   ...props
 }: PaginationLinkProps) {
   return (
@@ -72,12 +72,12 @@ function PaginationPrevious({
   return (
     <PaginationLink
       aria-label="Go to previous page"
-      size="default"
-      className={cn("gap-1 px-2.5 sm:pl-2.5", className)}
+      size="paginationSize"
+      className={cn("", className)}
       {...props}
     >
       <ChevronLeftIcon />
-      <span className="hidden sm:block">Previous</span>
+      <span className="sr-only">Previous</span>
     </PaginationLink>
   );
 }
@@ -89,11 +89,11 @@ function PaginationNext({
   return (
     <PaginationLink
       aria-label="Go to next page"
-      size="default"
-      className={cn("gap-1 px-2.5 sm:pr-2.5", className)}
+      size="paginationSize"
+      className={cn("", className)}
       {...props}
     >
-      <span className="hidden sm:block">Next</span>
+      <span className="sr-only">Next</span>
       <ChevronRightIcon />
     </PaginationLink>
   );

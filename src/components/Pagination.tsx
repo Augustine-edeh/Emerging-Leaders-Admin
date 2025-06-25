@@ -1,43 +1,33 @@
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const PaginationUI = () => {
   return (
-    <Pagination>
-      <PaginationContent>
-        {/* <PaginationItem>
+    <Pagination className="bg-blue-400">
+      <PaginationContent className="gap-0 bg-orange-300">
+        <PaginationItem className="bg-red-500 flex items-center">
           <PaginationPrevious href="#" />
-        </PaginationItem> */}
-
-        <PaginationItem>
-          <ChevronLeft />
         </PaginationItem>
 
-        <PaginationItem>
+        <PaginationItem className="bg-red-500">
           <PaginationLink href="#" isActive>
             1
           </PaginationLink>
         </PaginationItem>
 
-        <PaginationItem>
+        <PaginationItem className="bg-red-500">
           <PaginationLink href="#">2</PaginationLink>
         </PaginationItem>
 
-        <PaginationItem>
-          <ChevronRight />
-        </PaginationItem>
-
-        {/* <PaginationItem>
+        <PaginationItem className="bg-red-500 flex items-center">
           <PaginationNext href="#" />
-        </PaginationItem> */}
+        </PaginationItem>
       </PaginationContent>
     </Pagination>
   );
