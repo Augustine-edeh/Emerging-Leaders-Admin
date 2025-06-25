@@ -6,18 +6,22 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
   const dashNav = [
     {
       icon: "/icons/analytics.png",
+      iconActive: "/icons/analytics-active.png",
       label: "Analytics",
     },
     {
-      icon: "/icons/analytics.png",
+      icon: "/icons/user-management.png",
+      iconActive: "/icons/analytics-active.png",
       label: "User Management",
     },
     {
-      icon: "/icons/analytics.png",
+      icon: "/icons/content-management.png",
+      iconActive: "/icons/analytics-active.png",
       label: "Content Management",
     },
     {
-      icon: "/icons/analytics.png",
+      icon: "/icons/support.png",
+      iconActive: "/icons/analytics-active.png",
       label: "Support",
     },
   ];
