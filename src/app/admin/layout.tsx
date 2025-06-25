@@ -1,3 +1,4 @@
+import Pagination from "@/components/Pagination";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import type { ReactNode } from "react";
@@ -73,7 +74,8 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
 
             <div className="flex gap-6 bg-fuchsia-500">
               <p>1-Page</p>
-              <div>pagination Element</div>
+
+              <Pagination />
             </div>
           </footer>
         </section>
