@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 
 const page = () => {
   return (
-    <div className="flex flex-col gap-8 p-2 bg-gray-500 h-full">
+    <div className="flex-1 flex flex-col min-h-0 p-2 bg-gray-500">
       <section className="flex justify-between items-center bg-pink-400">
         <div>
           <h1 className="text-2xl font-bold">Content Management</h1>
@@ -13,7 +13,7 @@ const page = () => {
         <Button>Add New Content</Button>
       </section>
 
-      <div className="flex-1 flex flex-col bg-emerald-600 p-1 rounded-xl">
+      <div className="flex-1 min-h-0 flex flex-col gap-2 bg-emerald-600 p-1 rounded-xl">
         <div className="flex justify-between bg-zinc-400">
           <h4 className="">Content List</h4>
 
@@ -23,30 +23,10 @@ const page = () => {
           </div>
         </div>
 
-        <div className="flex-1 overflow-auto rounded-t-xl ">
-          <table className="w-full bg-white h-full">
-            <thead>
-              <tr>
-                <th className="p-2">ID</th>
-                <th className="p-2">Title</th>
-                <th className="p-2">Status</th>
-                <th className="p-2">Actions</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {/* Example row */}
-              {/* <tr>
-                <td className="p-2">1</td>
-                <td className="p-2">Sample Content</td>
-                <td className="p-2">Published</td>
-                <td className="p-2">
-                  <Button variant="outline">Edit</Button>
-                  <Button variant="destructive">Delete</Button>
-                </td>
-              </tr> */}
-            </tbody>
-          </table>
+        <div className="flex-1 min-h-0 rounded-t-xl bg-yellow-300 overflow-auto">
+          {Array.from({ length: 50 }, (_, index) => (
+            <p key={index}>This is paragraph {index + 1}</p>
+          ))}
         </div>
       </div>
     </div>

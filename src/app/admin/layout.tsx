@@ -64,8 +64,11 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
           This is the Header Section
         </header>
 
-        <section className="flex flex-col gap-2 bg-red-500 p-8 pb-16 w-full h-full">
-          <main className="bg-blue-600 flex-1 p-2">{children}</main>
+        {/* NOTE: pb should be 16 tw units on prod mode */}
+        <section className="flex flex-col gap-2 bg-red-500 p-8 pb-2 w-full h-full flex-1 min-h-0">
+          <main className="bg-blue-600 flex-1 flex flex-col min-h-0 p-2">
+            {children}
+          </main>
 
           <FooterBar />
         </section>
