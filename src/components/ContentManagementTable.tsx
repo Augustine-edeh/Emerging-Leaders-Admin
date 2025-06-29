@@ -1419,6 +1419,7 @@ function TableDemo() {
             {paginatedInvoices.map((invoice, index) => (
               <TableRow
                 key={`${invoice.invoice}-${index}`}
+                // TODO: align row bg-colors to match design
                 // className={getRowBgColor(invoice.paymentStatus)}
               >
                 <TableCell>{invoice.invoice}</TableCell>

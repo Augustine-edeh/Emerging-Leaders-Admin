@@ -1,10 +1,11 @@
 import React from "react";
-import { Pagination } from "../ui/pagination";
+// import { Pagination } from "../ui/pagination";
+import Pagination from "@/components/Pagination";
 import { ChevronDown } from "lucide-react";
 
 const FooterBar = () => {
   return (
-    <footer className="bg-yellow-500 flex justify-between py-6">
+    <footer className="bg-yellow-500 flex justify-between ">
       <div className="flex bg-fuchsia-500">
         <span>
           show {} of {8}

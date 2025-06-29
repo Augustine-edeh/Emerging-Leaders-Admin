@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import ContentManagementTable from "@/components/ContentManagementTable";
 
-const page = () => {
+const ContentManagementPage = () => {
   return (
-    <div className="flex-1 flex flex-col min-h-0 p-2 bg-gray-500">
+    <div className="flex-1 flex flex-col gap-8 min-h-0 bg-gray-500">
       <section className="flex justify-between items-center bg-pink-400">
         <div>
           <h1 className="text-2xl font-bold">Content Management</h1>
@@ -14,7 +14,7 @@ const page = () => {
         <Button>Add New Content</Button>
       </section>
 
-      <div className="flex-1 min-h-0 flex flex-col gap-2 bg-emerald-600 p-1 rounded-xl">
+      <section className="flex-1 min-h-0 flex flex-col gap-2 bg-emerald-600 p-1 rounded-xl">
         <div className="flex justify-between bg-zinc-400">
           <h4 className="">Content List</h4>
 
@@ -31,9 +31,9 @@ const page = () => {
 
           <ContentManagementTable />
         </div>
-      </div>
+      </section>
     </div>
   );
 };
 
-export default page;
+export default ContentManagementPage;
