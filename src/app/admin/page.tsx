@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import ContentManagementTable from "@/components/ContentManagementTable";
 
 const page = () => {
   return (
@@ -23,10 +24,12 @@ const page = () => {
           </div>
         </div>
 
-        <div className="flex-1 min-h-0 rounded-t-xl bg-yellow-300 overflow-auto">
-          {Array.from({ length: 50 }, (_, index) => (
+        <div className="flex-1 min-h-0 rounded-t-xl bg-yellow-300 overflow- auto">
+          {/* {Array.from({ length: 50 }, (_, index) => (
             <p key={index}>This is paragraph {index + 1}</p>
-          ))}
+          ))} */}
+
+          <ContentManagementTable />
         </div>
       </div>
     </div>
