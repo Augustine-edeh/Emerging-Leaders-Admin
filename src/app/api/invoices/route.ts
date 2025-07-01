@@ -1,16 +1,5 @@
 import { NextResponse } from "next/server";
 
-// const invoices = Array.from({ length: 50 }, (_, index) => {
-//   const id = index + 1;
-//   return {
-//     id,
-//     invoice: `INV${id.toString().padStart(3, "0")}`,
-//     paymentStatus: ["Paid", "Pending", "Unpaid"][index % 3],
-//     totalAmount: `$${(150 + index * 10).toFixed(2)}`,
-//     paymentMethod: ["Credit Card", "PayPal", "Bank Transfer"][index % 3],
-//   };
-// });
-
 const invoices = [
   // {
   //   title: "INV001",

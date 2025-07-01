@@ -1,5 +1,8 @@
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ContentManagementTable from "@/components/ContentManagementTable";
+import { ListFilter, Search } from "lucide-react";
+import { Label } from "@/components/ui/label";
 
 const ContentManagementPage = () => {
   return (
@@ -14,21 +17,35 @@ const ContentManagementPage = () => {
         <Button>Add New Content</Button>
       </section>
 
-      <section className="flex-1 min-h-0 flex flex-col gap-2 pb-2 bg-lime-600 rounded-xl border border-border-secondary">
-        <div className="flex justify-between px-6 py-2.5">
+      <section className="flex-1 min-h-0 flex flex-col gap- 2 pb-2 bg-lime-600 rounded-xl border border-border-secondary">
+        <div className="flex justify-between items-center px-0 lg:px-6 py-3 bg-yellow-300">
           <h4 className="">Content List</h4>
 
-          <div className="flex gap-2">
-            <input type="text" placeholder="...Search" />
-            <p>Filter</p>
+          <div className="flex items-center gap-4 bg-red-500">
+            <div className="relative flex bg-blue-500">
+              <Label
+                htmlFor="search"
+                className="absolute bg-green-400 left-2 top-1/2 -translate-y-1/2"
+              >
+                <Search className="size-6" />
+              </Label>
+
+              <Input
+                id="search"
+                type="search"
+                placeholder="Search by title, category..."
+                className="lg:w-2xs pl-10"
+              />
+            </div>
+
+            <div className="flex gap-3 bg-blue-500 h-full">
+              <ListFilter />
+              <p>Filter</p>
+            </div>
           </div>
         </div>
 
         <div className="flex-1 min-h-0 rounded-xl bg-white border border-border-secondary p-5">
-          {/* {Array.from({ length: 50 }, (_, index) => (
-            <p key={index}>This is paragraph {index + 1}</p>
-          ))} */}
-
           <ContentManagementTable />
         </div>
       </section>

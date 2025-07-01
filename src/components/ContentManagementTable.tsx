@@ -137,7 +137,6 @@ function ContentManagementTable() {
           Next
         </button>
       </div> */}
-      {/* </div> */}
     </>
   );
 }
