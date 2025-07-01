@@ -1,4 +1,7 @@
 import FooterBar from "@/components/admin/FooterBar";
+import AvatarDemo from "@/components/Avatar";
+import { Separator } from "@/components/ui/separator";
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import type { ReactNode } from "react";
 
@@ -59,13 +62,22 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
       </div>
 
       {/* Right side (auth form section) */}
-      <div className="flex flex-col justify-center items-center w-full lg:w-4/5 bg-pink-500 p-1">
-        <header className="bg-yellow-500 w-full py-6 text-center">
-          This is the Header Section
+      <div className="flex flex-col justify-center items-center w-full lg:w-4/5">
+        <header className="flex justify-end gap-2 px-8 py-6 w-full bg-white left-auto">
+          <div className="size-12 relative">
+            <Image src="/icons/notification-bing.png" alt="notification" fill />
+          </div>
+
+          <Separator orientation="vertical" />
+
+          <div className="flex items-center gap-2">
+            <AvatarDemo />
+            <ChevronDown />
+          </div>
         </header>
 
         {/* NOTE: pb should be 16 tw units on prod mode */}
-        <section className="flex flex-col gap-8 bg-red-500 p-8 pb-12 w-full h-full flex-1 min-h-0">
+        <section className="flex flex-col gap-8 bg-secondary-50 p-8 pb-12 w-full h-full flex-1 min-h-0">
           <main className="flex-1 flex flex-col min-h-0">{children}</main>
 
           <FooterBar />

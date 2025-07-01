@@ -6,8 +6,8 @@ import { Label } from "@/components/ui/label";
 
 const ContentManagementPage = () => {
   return (
-    <div className="flex-1 flex flex-col gap-8 min-h-0 bg-gray-500 pb-2">
-      <section className="flex justify-between items-center bg-pink-400">
+    <div className="flex-1 flex flex-col gap-8 min-h-0">
+      <section className="flex justify-between items-center">
         <div>
           <h1 className="text-2xl font-bold">Content Management</h1>
           <p className="text-foreground">
@@ -17,8 +17,8 @@ const ContentManagementPage = () => {
         <Button>Add New Content</Button>
       </section>
 
-      <section className="flex-1 min-h-0 flex flex-col gap- 2 pb-2 bg-lime-600 rounded-xl border border-border-secondary">
-        <div className="flex justify-between items-center px-0 lg:px-6 py-3 bg-yellow-300">
+      <section className="flex-1 min-h-0 flex flex-col rounded-xl border border-border-secondary bg-white shadow-2xs">
+        <div className="flex justify-between items-center px-0 lg:px-6 py-3">
           <h4 className="">Content List</h4>
 
           <div className="flex items-center gap-4 bg-red-500">
@@ -38,7 +38,7 @@ const ContentManagementPage = () => {
               />
             </div>
 
-            <div className="flex gap-3 bg-blue-500 h-full">
+            <div className="flex gap-3 bg-blue-500">
               <ListFilter />
               <p>Filter</p>
             </div>

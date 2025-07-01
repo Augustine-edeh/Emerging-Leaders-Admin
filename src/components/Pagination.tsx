@@ -9,23 +9,23 @@ import {
 
 const PaginationUI = () => {
   return (
-    <Pagination className="bg-blue-400">
-      <PaginationContent className="gap-0 bg-orange-300">
-        <PaginationItem className="bg-red-500 flex items-center">
+    <Pagination className="">
+      <PaginationContent className="gap-0">
+        <PaginationItem className="flex items-center">
           <PaginationPrevious href="#" />
         </PaginationItem>
 
-        <PaginationItem className="bg-red-500">
+        <PaginationItem className="">
           <PaginationLink href="#" isActive>
             1
           </PaginationLink>
         </PaginationItem>
 
-        <PaginationItem className="bg-red-500">
+        <PaginationItem className="">
           <PaginationLink href="#">2</PaginationLink>
         </PaginationItem>
 
-        <PaginationItem className="bg-red-500 flex items-center">
+        <PaginationItem className="flex items-center">
           <PaginationNext href="#" />
         </PaginationItem>
       </PaginationContent>
