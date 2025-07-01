@@ -13,8 +13,8 @@ import {
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useState, useEffect } from "react";
-
 import axios from "axios";
+import NoContentData from "./admin/NoContentData";
 
 interface Invoice {
   id: number;
@@ -32,9 +32,14 @@ function ContentManagementTable() {
 
   useEffect(() => {
     const fetchInvoices = async () => {
-      const res = await axios.get("/api/invoices");
-      setInvoices(res.data);
+      try {
+        const res = await axios.get("/api/invoices");
+        setInvoices(res.data);
+      } catch (error) {
+        console.error("Failed to fetch invoices data:", error);
+      }
     };
+
     fetchInvoices();
   }, []);
 
@@ -70,53 +75,57 @@ function ContentManagementTable() {
   };
 
   return (
-    // <div className="flex flex-col rounded-lg h-full">
     <>
-      <ScrollArea className="h-full bg- red-300 rounded-md pr-2">
-        <Table>
-          <TableCaption className="sr-only">
-            A list of all contents
-          </TableCaption>
+      {invoices.length > 0 ? (
+        <ScrollArea className="h-full rounded-md pr-2 w-full">
+          <Table>
+            <TableCaption className="sr-only">
+              A list of all contents
+            </TableCaption>
 
-          <TableHeader className="bg-secondary-50 text-black">
-            <TableRow>
-              <TableHead className="">Invoice</TableHead>
-              <TableHead className="">Status</TableHead>
-              <TableHead className="">Method</TableHead>
-              <TableHead className="text-right">Amount</TableHead>
-            </TableRow>
-          </TableHeader>
+            <TableHeader className="bg-secondary-50 text-black">
+              <TableRow>
+                <TableHead>Invoice</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead>Method</TableHead>
+                <TableHead className="text-right">Amount</TableHead>
+              </TableRow>
+            </TableHeader>
 
-          <TableBody>
-            {paginatedInvoices.map((invoice, index) => (
-              <TableRow
-                key={`${invoice.invoice}-${index}`}
-                // TODO: align row bg-colors to match design
-                // className={getRowBgColor(invoice.paymentStatus)}
-              >
-                <TableCell>{invoice.invoice}</TableCell>
-                <TableCell>{invoice.paymentStatus}</TableCell>
-                <TableCell>{invoice.paymentMethod}</TableCell>
+            <TableBody>
+              {paginatedInvoices.map((invoice, index) => (
+                <TableRow
+                  key={`${invoice.invoice}-${index}`}
+                  // TODO: align row bg-colors to match design
+                  // className={getRowBgColor(invoice.paymentStatus)}
+                >
+                  <TableCell>{invoice.invoice}</TableCell>
+                  <TableCell>{invoice.paymentStatus}</TableCell>
+                  <TableCell>{invoice.paymentMethod}</TableCell>
+                  <TableCell className="text-right">
+                    {invoice.totalAmount}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+
+            <TableFooter>
+              <TableRow>
+                <TableCell colSpan={3}>Total</TableCell>
                 <TableCell className="text-right">
-                  {invoice.totalAmount}
+                  ${totalAmount.toFixed(2)}
                 </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
+            </TableFooter>
+          </Table>
+        </ScrollArea>
+      ) : (
+        <NoContentData />
+      )}
 
-          <TableFooter>
-            <TableRow>
-              <TableCell colSpan={3}>Total</TableCell>
-              <TableCell className="text-right">
-                ${totalAmount.toFixed(2)}
-              </TableCell>
-            </TableRow>
-          </TableFooter>
-        </Table>
-      </ScrollArea>
-
-      {/* Pagination Controls */}
-      {/* <div className="flex justify-between items-center pt-2">
+      {/* Pagination Controls - Left commented intentionally */}
+      {/* 
+      <div className="flex justify-between items-center pt-2">
         <button
           onClick={handlePrev}
           disabled={currentPage === 1}
@@ -136,7 +145,8 @@ function ContentManagementTable() {
         >
           Next
         </button>
-      </div> */}
+      </div> 
+      */}
     </>
   );
 }
