@@ -3,60 +3,59 @@ import AvatarDemo from "@/components/Avatar";
 import { Separator } from "@/components/ui/separator";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import type { ReactNode } from "react";
 
-const AuthLayout = ({ children }: { children: ReactNode }) => {
+const AdminLayout = ({ children }: { children: ReactNode }) => {
   const dashNav = [
     {
       icon: "/icons/analytics.png",
       iconActive: "/icons/analytics-active.png",
       label: "Analytics",
+      link: "/analytics",
     },
     {
       icon: "/icons/user-management.png",
       iconActive: "/icons/analytics-active.png",
       label: "User Management",
+      link: "/user-management",
     },
     {
       icon: "/icons/content-management.png",
       iconActive: "/icons/analytics-active.png",
       label: "Content Management",
+      link: "/content-management",
     },
     {
       icon: "/icons/support.png",
       iconActive: "/icons/analytics-active.png",
       label: "Support",
+      link: "/support",
     },
   ];
 
   return (
     <div className="h-screen flex">
       {/* Left side (graphic section) */}
-      <div className="hidden lg:flex flex-col items- center gap-10 w-1/5 bg-cream p-8">
+      <div className="hidden lg:flex flex-col items- center gap-6 w-1/5 bg-white py-1.5">
         <Image
           src="/logo.png"
-          width={100}
-          height={100}
+          width={129}
+          height={152}
           alt="Illustration"
-          className="object-cover mx-auto bg-yellow-400"
+          className="object-cover mx-11"
         />
 
-        <ul className="bg-red-500 space-y-5">
+        <ul className="mx-4">
           {dashNav.map((item, index) => (
-            <li
+            <Link
               key={index}
-              className="flex items-center gap-3 px-2 py-3 text-gray-800 bg-blue-500"
+              href={item.link}
+              className="flex items-center gap-2 px-6 py-4 text-gray-800 bg-white hover:bg-primary focus:bg-primary focus-visible:bg-primary rounded-xl transition-colors duration-200 outline-none"
             >
-              <span>
-                <Image
-                  src={item.icon}
-                  width={30}
-                  height={30}
-                  alt={item.label}
-                />
-              </span>
+              <Image src={item.icon} width={24} height={24} alt={item.label} />
               <span className="font-semibold">{item.label}</span>
-            </li>
+            </Link>
           ))}
         </ul>
       </div>
@@ -87,4 +86,4 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default AuthLayout;
+export default AdminLayout;

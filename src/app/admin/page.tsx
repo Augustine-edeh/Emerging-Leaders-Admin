@@ -25,7 +25,7 @@ const ContentManagementPage = () => {
             <div className="relative flex bg-blue-500">
               <Label
                 htmlFor="search"
-                className="absolute bg-green-400 left-2 top-1/2 -translate-y-1/2"
+                className="absolute left-2 top-1/2 -translate-y-1/2"
               >
                 <Search className="size-6" />
               </Label>
