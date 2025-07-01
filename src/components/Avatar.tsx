@@ -1,8 +1,8 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-function AvatarDemo() {
+function UserAvatar() {
   return (
-    <Avatar className="size-12">
+    <Avatar>
       <AvatarImage
         src="/icons/profile.jpg"
         alt="profile"
@@ -12,4 +12,4 @@ function AvatarDemo() {
     </Avatar>
   );
 }
-export default AvatarDemo;
+export default UserAvatar;
