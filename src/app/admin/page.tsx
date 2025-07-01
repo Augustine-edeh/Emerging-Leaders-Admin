@@ -21,11 +21,11 @@ const ContentManagementPage = () => {
         <div className="flex justify-between items-center px-0 lg:px-6 py-3">
           <h4 className="">Content List</h4>
 
-          <div className="flex items-center gap-4 bg-red-500">
-            <div className="relative flex bg-blue-500">
+          <div className="flex items-stretch gap-4 px-0 lg:px-6 py-3">
+            <div className="relative flex bg-secondary-50 group rounded-md border border-transparent focus-within:border-black hover:border-black transition-colors">
               <Label
                 htmlFor="search"
-                className="absolute left-2 top-1/2 -translate-y-1/2"
+                className="absolute left-2 top-1/2 -translate-y-1/2 text-text-secondary group-hover:text-black group-focus-within:text-black"
               >
                 <Search className="size-6" />
               </Label>
@@ -34,13 +34,13 @@ const ContentManagementPage = () => {
                 id="search"
                 type="search"
                 placeholder="Search by title, category..."
-                className="lg:w-2xs pl-10"
+                className="lg:w-2xs pl-10 border-none focus:outline-none bg-transparent"
               />
             </div>
 
-            <div className="flex gap-3 bg-blue-500">
-              <ListFilter />
-              <p>Filter</p>
+            <div className="flex gap-3 px-4 bg-secondary-50 cursor-pointer rounded-md text-text-secondary hover:text-black">
+              <ListFilter className="h-full" />
+              <p className="h-full flex items-center">Filter</p>
             </div>
           </div>
         </div>
