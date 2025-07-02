@@ -5,13 +5,14 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Badge } from "@/components/ui/badge";
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import NoContentData from "./admin/NoContentData";
@@ -44,28 +45,11 @@ function ContentManagementTable() {
     fetchInvoices();
   }, []);
 
-  const totalAmount = invoices.reduce((sum, item) => {
-    return sum + parseFloat(item.totalAmount.replace("$", ""));
-  }, 0);
-
   const totalPages = Math.ceil(invoices.length / pageSize);
   const paginatedInvoices = invoices.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
   );
-
-  const getRowBgColor = (status: string) => {
-    switch (status.toLowerCase()) {
-      case "paid":
-        return "bg-green-50";
-      case "pending":
-        return "bg-yellow-50";
-      case "unpaid":
-        return "bg-red-50";
-      default:
-        return "";
-    }
-  };
 
   const handlePrev = () => {
     setCurrentPage((prev) => Math.max(prev - 1, 1));
@@ -191,17 +175,16 @@ function ContentManagementTable() {
                   <TableCell>{content.title}</TableCell>
                   <TableCell>{content.category}</TableCell>
                   <TableCell>{content.author}</TableCell>
-                  {/* <TableCell>{content.status}</TableCell> */}
                   <TableCell>
-                    <span
-                      className="text-sm font-medium px-2 py-1 rounded-md"
+                    <Badge
                       style={{
                         backgroundColor: getStatusStyle(content.status).bg,
                         color: getStatusStyle(content.status).txt,
                       }}
+                      className="text-sm font-medium px-2 py-1"
                     >
                       {content.status}
-                    </span>
+                    </Badge>
                   </TableCell>
 
                   <TableCell className=" space-y-[4px]">
