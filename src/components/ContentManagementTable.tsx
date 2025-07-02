@@ -15,6 +15,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import NoContentData from "./admin/NoContentData";
+import TableActions from "./admin/TableActions";
 
 interface Invoice {
   id: number;
@@ -173,7 +174,9 @@ function ContentManagementTable() {
                   <TableCell>{content.author}</TableCell>
                   <TableCell>{content.status}</TableCell>
                   <TableCell>{content.fileUpdate.date}</TableCell>
-                  <TableCell></TableCell>
+                  <TableCell>
+                    <TableActions />
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
