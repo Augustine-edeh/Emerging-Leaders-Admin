@@ -74,6 +74,74 @@ function ContentManagementTable() {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   };
 
+  const tableHeaders = [
+    "title",
+    "category",
+    "author",
+    "current status",
+    "file updates",
+    "action",
+  ];
+
+  const documents = [
+    {
+      title: "Leading with Vision",
+      category: "Leadership",
+      author: "Clare Brown",
+      status: "Archived",
+      fileUpdate: { type: "Created", date: "Jun 3, 2025", time: "02:15" },
+    },
+    {
+      title: "Empowering Teams",
+      category: "Leadership",
+      author: "Jane Adebayo",
+      status: "Published",
+      fileUpdate: { type: "Modified", date: "Jun 10, 2025", time: "23:26" },
+    },
+    {
+      title: "Own Your Voice",
+      category: "Empowerment",
+      author: "Clare Brown",
+      status: "Published",
+      fileUpdate: { type: "Created", date: "Jun 3, 2025", time: "13:15" },
+    },
+    {
+      title: "Power Through Purpose",
+      category: "Empowerment",
+      author: "Clare Brown",
+      status: "Published",
+      fileUpdate: { type: "Created", date: "Jun 3, 2025", time: "09:42" },
+    },
+    {
+      title: "Q2 Budgeting",
+      category: "Finance",
+      author: "Clare Brown",
+      status: "Draft",
+      fileUpdate: { type: "Created", date: "Jun 3, 2025", time: "10:37" },
+    },
+    {
+      title: "Rise Beyond Limits",
+      category: "Empowerment",
+      author: "Clare Brown",
+      status: "Draft",
+      fileUpdate: { type: "Created", date: "Jun 3, 2025", time: "13:15" },
+    },
+    {
+      title: "Expense Policy",
+      category: "Finance",
+      author: "Jane Adebayo",
+      status: "Archived",
+      fileUpdate: { type: "Modified", date: "Jun 10, 2025", time: "23:26" },
+    },
+    {
+      title: "Revenue Forecast 2025",
+      category: "Finance",
+      author: "Jane Adebayo",
+      status: "Archived",
+      fileUpdate: { type: "Modified", date: "Jun 10, 2025", time: "23:26" },
+    },
+  ];
+
   return (
     <>
       {invoices.length > 0 ? (
@@ -85,26 +153,27 @@ function ContentManagementTable() {
 
             <TableHeader className="bg-secondary-50 text-black">
               <TableRow>
-                <TableHead>Invoice</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Method</TableHead>
-                <TableHead className="text-right">Amount</TableHead>
+                {tableHeaders.map((title) => (
+                  <TableHead key={title} className="Capitalize">
+                    {title}
+                  </TableHead>
+                ))}
               </TableRow>
             </TableHeader>
 
             <TableBody>
-              {paginatedInvoices.map((invoice, index) => (
+              {documents.map((content, index) => (
                 <TableRow
-                  key={`${invoice.invoice}-${index}`}
+                  key={`${content.title}-${index}`}
                   // TODO: align row bg-colors to match design
                   // className={getRowBgColor(invoice.paymentStatus)}
                 >
-                  <TableCell>{invoice.invoice}</TableCell>
-                  <TableCell>{invoice.paymentStatus}</TableCell>
-                  <TableCell>{invoice.paymentMethod}</TableCell>
-                  <TableCell className="text-right">
-                    {invoice.totalAmount}
-                  </TableCell>
+                  <TableCell>{content.title}</TableCell>
+                  <TableCell>{content.category}</TableCell>
+                  <TableCell>{content.author}</TableCell>
+                  <TableCell>{content.status}</TableCell>
+                  <TableCell>{content.fileUpdate.date}</TableCell>
+                  <TableCell></TableCell>
                 </TableRow>
               ))}
             </TableBody>
