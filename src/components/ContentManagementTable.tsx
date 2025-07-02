@@ -169,26 +169,31 @@ function ContentManagementTable() {
                   // TODO: align row bg-colors to match design
                   // className={getRowBgColor(invoice.paymentStatus)}
                 >
+                  {/* {
+      title: "Leading with Vision",
+      category: "Leadership",
+      author: "Clare Brown",
+      status: "Archived",
+      fileUpdate: { type: "Created", date: "Jun 3, 2025", time: "02:15" },
+    }, */}
                   <TableCell>{content.title}</TableCell>
                   <TableCell>{content.category}</TableCell>
                   <TableCell>{content.author}</TableCell>
                   <TableCell>{content.status}</TableCell>
-                  <TableCell>{content.fileUpdate.date}</TableCell>
+                  <TableCell className=" space-y-[4px]">
+                    <p className="text-text-secondary">
+                      {content.fileUpdate.type}:
+                    </p>
+                    <p>
+                      {content.fileUpdate.date} - {content.fileUpdate.time}
+                    </p>
+                  </TableCell>
                   <TableCell>
                     <TableActions />
                   </TableCell>
                 </TableRow>
               ))}
             </TableBody>
-
-            <TableFooter>
-              <TableRow>
-                <TableCell colSpan={3}>Total</TableCell>
-                <TableCell className="text-right">
-                  ${totalAmount.toFixed(2)}
-                </TableCell>
-              </TableRow>
-            </TableFooter>
           </Table>
         </ScrollArea>
       ) : (
