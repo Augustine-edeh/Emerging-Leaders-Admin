@@ -155,7 +155,7 @@ function ContentManagementTable() {
             <TableHeader className="bg-secondary-50 text-black">
               <TableRow>
                 {tableHeaders.map((title) => (
-                  <TableHead key={title} className="Capitalize">
+                  <TableHead key={title} className="capitalize">
                     {title}
                   </TableHead>
                 ))}
