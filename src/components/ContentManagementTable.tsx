@@ -167,15 +167,12 @@ function ContentManagementTable() {
 
             <TableBody>
               {documents.map((content, index) => (
-                <TableRow
-                  key={`${content.title}-${index}`}
-                  // TODO: align row bg-colors to match design
-                  // className={getRowBgColor(invoice.paymentStatus)}
-                >
+                <TableRow key={`${content.title}-${index}`}>
                   <TableCell>{content.title}</TableCell>
                   <TableCell>{content.category}</TableCell>
                   <TableCell>{content.author}</TableCell>
                   <TableCell>
+                    {/* NOTE: align badge internal padding to match design specs  */}
                     <Badge
                       style={{
                         backgroundColor: getStatusStyle(content.status).bg,
