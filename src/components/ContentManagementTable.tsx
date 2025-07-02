@@ -75,6 +75,19 @@ function ContentManagementTable() {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   };
 
+  const getStatusStyle = (status: string) => {
+    switch (status.toLowerCase()) {
+      case "archived":
+        return colors.blue;
+      case "published":
+        return colors.green;
+      case "draft":
+        return colors.yellow;
+      default:
+        return { bg: "transparent", txt: "black" };
+    }
+  };
+
   const tableHeaders = [
     "title",
     "category",
@@ -143,6 +156,12 @@ function ContentManagementTable() {
     },
   ];
 
+  const colors = {
+    blue: { bg: "#E5F5FF", txt: "#407BFF" },
+    green: { bg: "#E5FBEC", txt: "#3DA755" },
+    yellow: { bg: "#FFF7E5", txt: "#B36F09" },
+  };
+
   return (
     <>
       {invoices.length > 0 ? (
@@ -169,17 +188,22 @@ function ContentManagementTable() {
                   // TODO: align row bg-colors to match design
                   // className={getRowBgColor(invoice.paymentStatus)}
                 >
-                  {/* {
-      title: "Leading with Vision",
-      category: "Leadership",
-      author: "Clare Brown",
-      status: "Archived",
-      fileUpdate: { type: "Created", date: "Jun 3, 2025", time: "02:15" },
-    }, */}
                   <TableCell>{content.title}</TableCell>
                   <TableCell>{content.category}</TableCell>
                   <TableCell>{content.author}</TableCell>
-                  <TableCell>{content.status}</TableCell>
+                  {/* <TableCell>{content.status}</TableCell> */}
+                  <TableCell>
+                    <span
+                      className="text-sm font-medium px-2 py-1 rounded-md"
+                      style={{
+                        backgroundColor: getStatusStyle(content.status).bg,
+                        color: getStatusStyle(content.status).txt,
+                      }}
+                    >
+                      {content.status}
+                    </span>
+                  </TableCell>
+
                   <TableCell className=" space-y-[4px]">
                     <p className="text-text-secondary">
                       {content.fileUpdate.type}:
