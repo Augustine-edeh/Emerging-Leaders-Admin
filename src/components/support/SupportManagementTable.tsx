@@ -16,16 +16,8 @@ import { Badge } from "@/components/ui/badge";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import NoContentData from "../admin/NoContentData";
-import TableActions from "../admin/TableActions";
-
-interface SupportTicket {
-  ticketId: string;
-  date: string;
-  subject: string;
-  name: string;
-  status: string;
-  lastUpdate: string;
-}
+import SupportTableActions from "./SupportTableActions";
+import { SupportTicket, SupportTicketStatus } from "@/lib/types";
 
 const pageSize = 10;
 
@@ -34,8 +26,8 @@ const documents = [
     ticketId: "1234567890",
     date: "2025-01-01",
     subject: "System Login Issues",
-    name: "Jane Adebayo", 
-    status: "In Progress",
+    name: "Jane Adebayo",
+    status: SupportTicketStatus.IN_PROGRESS,
     lastUpdate: "Jun 10, 2025",
   },
   {
@@ -43,7 +35,7 @@ const documents = [
     date: "2025-01-02",
     subject: "Password Reset Request",
     name: "John Smith",
-    status: "Pending",
+    status: SupportTicketStatus.PENDING,
     lastUpdate: "Jun 11, 2025",
   },
   {
@@ -51,7 +43,7 @@ const documents = [
     date: "2025-01-03",
     subject: "Email Configuration Problem",
     name: "Sarah Johnson",
-    status: "Resolved",
+    status: SupportTicketStatus.RESOLVED,
     lastUpdate: "Jun 12, 2025",
   },
   {
@@ -59,7 +51,7 @@ const documents = [
     date: "2025-01-04",
     subject: "Database Connection Error",
     name: "Mike Wilson",
-    status: "In Progress",
+    status: SupportTicketStatus.IN_PROGRESS,
     lastUpdate: "Jun 13, 2025",
   },
   {
@@ -67,7 +59,7 @@ const documents = [
     date: "2025-01-05",
     subject: "File Upload Issues",
     name: "Emily Davis",
-    status: "Pending",
+    status: SupportTicketStatus.PENDING,
     lastUpdate: "Jun 14, 2025",
   },
   {
@@ -75,7 +67,7 @@ const documents = [
     date: "2025-01-06",
     subject: "API Integration Problem",
     name: "David Brown",
-    status: "Resolved",
+    status: SupportTicketStatus.RESOLVED,
     lastUpdate: "Jun 15, 2025",
   },
   {
@@ -83,7 +75,7 @@ const documents = [
     date: "2025-01-07",
     subject: "Mobile App Crash",
     name: "Lisa Anderson",
-    status: "In Progress",
+    status: SupportTicketStatus.IN_PROGRESS,
     lastUpdate: "Jun 16, 2025",
   },
   {
@@ -91,29 +83,38 @@ const documents = [
     date: "2025-01-08",
     subject: "Payment Gateway Error",
     name: "Robert Taylor",
-    status: "Pending",
+    status: SupportTicketStatus.PENDING,
     lastUpdate: "Jun 17, 2025",
   },
 ];
-function SupportManagementTable() {
+function SupportManagementTable({
+  category,
+  setOpenCloseTicket,
+  setSelectedTicket,
+  setOpenDeleteTicket,
+  setOpenViewTicket,
+}: {
+  category: SupportTicketStatus;
+  setOpenCloseTicket: (open: boolean) => void;
+  setSelectedTicket: (ticket: SupportTicket) => void;
+  setOpenDeleteTicket: (open: boolean) => void;
+  setOpenViewTicket: (open: boolean) => void;
+}) {
   const [supportTickets, setSupportTickets] = useState<SupportTicket[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   // Use demo data instead of fetching from API for now
   useEffect(() => {
-    const fetchInvoices = async () => {
-      try {
-        const res = await axios.get("/api/support-tickets");
-        setSupportTickets(res.data);
-      } catch (error) {
-        console.error("Failed to fetch support tickets data:", error);
-      }
-    };
+    console.log("Setting support tickets:", documents);
+    if (category && category !== SupportTicketStatus.ALL)
+      setSupportTickets(documents.filter((item) => item.status === category));
+    else setSupportTickets(documents);
+  }, [category]);
 
-    console.log(documents);
-    setSupportTickets(documents);
-  }, []);
-  console.log(supportTickets);
+  // Add this to see when the state changes
+  useEffect(() => {
+    console.log("supportTickets state changed:", supportTickets);
+  }, [supportTickets]);
 
   const totalPages = Math.ceil(supportTickets.length / pageSize);
   const paginatedSupportTickets = supportTickets.slice(
@@ -129,17 +130,29 @@ function SupportManagementTable() {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   };
 
-  const getStatusStyle = (status: string) => {
-    switch (status.toLowerCase()) {
-      case "pending":
+  const getStatusStyle = (status: SupportTicketStatus) => {
+    switch (status) {
+      case SupportTicketStatus.PENDING:
         return colors.gray;
-      case "in progress":
+      case SupportTicketStatus.IN_PROGRESS:
         return colors.blue;
-      case "resolved":
+      case SupportTicketStatus.RESOLVED:
         return colors.green;
       default:
         return { bg: "transparent", txt: "black" };
     }
+  };
+
+  const handleStatuseChange = (
+    ticketId: string,
+    status: SupportTicketStatus
+  ) => {
+    // Send update request to backend in the future
+    setSupportTickets((prev) =>
+      prev.map((ticket) =>
+        ticket.ticketId === ticketId ? { ...ticket, status } : ticket
+      )
+    );
   };
 
   const tableHeaders = [
@@ -151,7 +164,6 @@ function SupportManagementTable() {
     "last update",
     "action",
   ];
-
 
   const colors = {
     blue: { bg: "#E5F5FF", txt: "#407BFF" },
@@ -181,7 +193,7 @@ function SupportManagementTable() {
             <TableBody>
               {supportTickets.map((content, index) => (
                 <TableRow key={`${content.ticketId}-${index}`}>
-                  <TableCell>{content.ticketId}</TableCell>
+                  <TableCell>{`#${content.ticketId}`}</TableCell>
                   <TableCell>{content.date}</TableCell>
                   <TableCell>{content.subject}</TableCell>
                   <TableCell>{content.name}</TableCell>
@@ -198,7 +210,14 @@ function SupportManagementTable() {
                   </TableCell>
                   <TableCell>{content.lastUpdate}</TableCell>
                   <TableCell>
-                    <TableActions />
+                    <SupportTableActions
+                      supportTicket={content}
+                      onStatusChange={handleStatuseChange}
+                      setOpenCloseTicket={setOpenCloseTicket}
+                      setSelectedTicket={setSelectedTicket}
+                      setOpenDeleteTicket={setOpenDeleteTicket}
+                      setOpenViewTicket={setOpenViewTicket}
+                    />
                   </TableCell>
                 </TableRow>
               ))}

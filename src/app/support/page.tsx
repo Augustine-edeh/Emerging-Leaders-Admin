@@ -1,34 +1,50 @@
+"use client";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import ContentManagementTable from "@/components/ContentManagementTable";
 import { ListFilter, Search } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import SupportCountCard from "@/components/support/SupportCountCard";
 import SupportManagementTable from "@/components/support/SupportManagementTable";
+import { SupportTicket, SupportTicketStatus } from "@/lib/types";
+import SupportTableActions from "@/components/support/SupportTableActions";
+import SupportTableFilter from "@/components/support/SupportTableFilters";
+import { useState } from "react";
+import CloseTicketModal from "@/components/support/CloseTicketModal";
+import DeleteTicketModal from "@/components/support/DeleteTicketModal";
+import ViewTicketModal from "@/components/support/ViewTicketModal";
 
 const SupportManagementPage = () => {
-    const supportCount = [
-        {
-            id: 1,
-            title: "Total complaints",
-            count: 100,
-        },
-        {
-            id: 2,
-            title: "Resolved complaints",
-            count: 50,
-        },
-        {
-            id: 3,
-            title: "Pending complaints",
-            count: 20,
-        },
-        {
-            id: 4,
-            title: "In progress complaints",
-            count: 30,
-        },
-    ]
+  const [category, setCategory] = useState<SupportTicketStatus>(
+    SupportTicketStatus.ALL
+  );
+  const [openCloseTicket, setOpenCloseTicket] = useState(false);
+  const [selectedTicket, setSelectedTicket] = useState<SupportTicket | null>(
+    null
+  );
+  const [openDeleteTicket, setOpenDeleteTicket] = useState(false);
+  const [openViewTicket, setOpenViewTicket] = useState(false);
+
+  const supportCount = [
+    {
+      id: 1,
+      title: "Total complaints",
+      count: 100,
+    },
+    {
+      id: 2,
+      title: "Resolved complaints",
+      count: 50,
+    },
+    {
+      id: 3,
+      title: "Pending complaints",
+      count: 20,
+    },
+    {
+      id: 4,
+      title: "In progress complaints",
+      count: 30,
+    },
+  ];
   return (
     <div className="flex-1 flex flex-col gap-8 min-h-0">
       <section className="flex justify-between items-center">
@@ -42,18 +58,13 @@ const SupportManagementPage = () => {
 
       <section className="flex flex-row gap-4">
         {supportCount.map((item, index) => (
-            <SupportCountCard  
-            key={index}
-            title={item.title}
-            count={item.count}
-            />
+          <SupportCountCard key={index} title={item.title} count={item.count} />
         ))}
-
       </section>
 
       <section className="flex-1 min-h-0 flex flex-col rounded-xl border border-border-gray-300 bg-white shadow-2xs">
         <div className="flex justify-between items-center px-0 lg:px-6 py-3">
-          <h4 className="">Ticket List</h4>
+          <h4 className="font-semibold">Ticket List</h4>
 
           <div className="flex items-stretch gap-4 px-0 lg:px-6 py-3">
             <div className="relative flex bg-secondary-50 group rounded-md border border-transparent focus-within:border-black hover:border-black transition-colors">
@@ -73,16 +84,36 @@ const SupportManagementPage = () => {
             </div>
 
             <div className="flex gap-3 px-4 bg-secondary-50 cursor-pointer rounded-md text-text-secondary hover:text-black">
-              <ListFilter className="h-full" />
-              <p className="h-full flex items-center">Filter</p>
+              <SupportTableFilter onStatusChange={setCategory} />
             </div>
           </div>
         </div>
 
-        <div className="flex-1 flex min-h-0 rounded-xl bg-white border border-border-gray-300 p-5">
-          <SupportManagementTable />
+        <div className="flex-1 flex h-[560px] rounded-xl bg-white border border-border-gray-300 p-5">
+          <SupportManagementTable
+            category={category}
+            setOpenCloseTicket={setOpenCloseTicket}
+            setSelectedTicket={setSelectedTicket}
+            setOpenDeleteTicket={setOpenDeleteTicket}
+            setOpenViewTicket={setOpenViewTicket}
+          />
         </div>
       </section>
+      <CloseTicketModal
+        open={openCloseTicket}
+        openOnchange={setOpenCloseTicket}
+        selectedTicket={selectedTicket as SupportTicket}
+      />
+      <DeleteTicketModal
+        open={openDeleteTicket}
+        openOnchange={setOpenDeleteTicket}
+        selectedTicket={selectedTicket as SupportTicket}
+      />
+      <ViewTicketModal
+        open={openViewTicket}
+        openOnchange={setOpenViewTicket}
+        selectedTicket={selectedTicket as SupportTicket}
+      />
     </div>
   );
 };
