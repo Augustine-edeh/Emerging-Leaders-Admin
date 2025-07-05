@@ -7,7 +7,9 @@ const ViewTicketModal = ({open, openOnchange, selectedTicket}:
     {open: boolean, openOnchange: (open: boolean) => void, selectedTicket: SupportTicket}) => {
         const handleOpenTicket = () => {
             console.log("Opening ticket");
-            showErrorToast("Ticket opened failed");
+            // Simulate success toast
+            showSuccessToast("Ticket opened successfully", `Your support ticket #${selectedTicket?.ticketId} has been opened and is now being reviewed by our support team.`);
+            openOnchange(false);
         }
     return ( 
         <>

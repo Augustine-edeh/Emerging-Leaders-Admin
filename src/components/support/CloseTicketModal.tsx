@@ -8,7 +8,11 @@ const CloseTicketModal = ({open, openOnchange, selectedTicket}:
     {open: boolean, openOnchange: (open: boolean) => void, selectedTicket: SupportTicket}) => {
         const handleCloseTicket = () => {
             console.log("Closing ticket");
-            showErrorToast("Ticket closed failed");
+            // Simulate success toast
+            showSuccessToast("Ticket Closed Successfully", `Your support ticket #${selectedTicket?.ticketId} has been resolved and officially closed.`);
+            openOnchange(false);
+            // Maybe a function that updates the ticket status to closed
+            // and then updates the ticket in the database
         }
     return ( 
         <>
