@@ -13,6 +13,13 @@ import {
   UserX,
   Trash,
   CircleArrowLeft,
+  LucideStopCircle,
+  StopCircleIcon,
+  StopCircle,
+  Ban,
+  RefreshCcw,
+  Loader2,
+  Loader2Icon
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AdminUser, AdminStatus } from "@/lib/types";
@@ -24,14 +31,18 @@ const AdminUserTableActions = ({
   setEditUser,
   setSelectedUser,
   setOpenDeleteUser,
-  setOpenViewTicket,
+  setOpenDeactivateUser,
+  setOpenActivateUser,
+  setOpenResendInvite,
 }: {
   adminUser: AdminUser;
   onStatusChange: (email: string, status: AdminStatus) => void;
   setEditUser: (open: boolean) => void;
   setSelectedUser: (user: AdminUser) => void;
   setOpenDeleteUser: (open: boolean) => void;
-  setOpenViewTicket: (open: boolean) => void;
+  setOpenDeactivateUser: (open: boolean) => void;
+  setOpenActivateUser: (open: boolean) => void;
+  setOpenResendInvite: (open: boolean) => void;
 }) => {
   const [selected, setSelected] = useState<AdminStatus>(adminUser.status);
   const [isOpen, setIsOpen] = useState(false);
@@ -44,21 +55,25 @@ const AdminUserTableActions = ({
   };
 
   const handleActivate = (adminUser: AdminUser) => {
-    onStatusChange(adminUser.email, AdminStatus.ACTIVE);
+    setSelectedUser(adminUser);
+    setOpenActivateUser(true);
+    // onStatusChange(adminUser.email, AdminStatus.ACTIVE);
     console.log("Activating admin user");
     setIsOpen(false);
   };
 
   const handleDeactivate = (adminUser: AdminUser) => {
-    onStatusChange(adminUser.email, AdminStatus.DEACTIVATED);
+    setSelectedUser(adminUser);
+    setOpenDeactivateUser(true);
+    // onStatusChange(adminUser.email, AdminStatus.DEACTIVATED);
     console.log("Deactivating admin user");
     setIsOpen(false);
   };
 
-  const handleDelete = (email: string) => {
-    setOpenDeleteUser(true);
+  const handleResendInvite = (adminUser: AdminUser) => {
     setSelectedUser(adminUser);
-    console.log("Deleting admin user");
+    setOpenResendInvite(true);
+    console.log("Resending invite");
     setIsOpen(false);
   };
 
@@ -81,22 +96,31 @@ const AdminUserTableActions = ({
         <DropdownMenuSeparator />
 
         <DropdownMenuItem
-          onClick={() => handleDeactivate(adminUser)}
+          onClick={() => handleResendInvite(adminUser)}
           className="flex flex-row items-center gap-2.5"
         >
-          <UserX />
+          <Loader2Icon />
           <p>Resend Invite</p>
         </DropdownMenuItem>
 
         <DropdownMenuSeparator />
 
+        {adminUser.status !== AdminStatus.DEACTIVATED ?
         <DropdownMenuItem
-          onClick={() => handleDelete(adminUser.email)}
+          onClick={() => handleDeactivate(adminUser)}
           className="text-error flex flex-row items-center gap-2.5"
         >
-          <Trash className="text-error" />
+          <Ban className="text-error" />
           <p>Deactivate Account</p>
+        </DropdownMenuItem> :
+        <DropdownMenuItem
+          onClick={() => handleActivate(adminUser)}
+          className="text-green-500 flex flex-row items-center gap-2.5"
+        >
+          <RefreshCcw className="text-green-500" />
+          <p>Reactivate Account</p>
         </DropdownMenuItem>
+        }
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -31,9 +31,9 @@ const EditUSerModal = ({
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    setFirstName(selectedUser.firstName)
-    setLastName(selectedUser.lastName)
-    setEmail(selectedUser.email)
+    setFirstName(selectedUser?.firstName)
+    setLastName(selectedUser?.lastName)
+    setEmail(selectedUser?.email)
   }, [selectedUser])
 
   const handleCreateAdmin = () => {
@@ -66,7 +66,7 @@ const EditUSerModal = ({
     setLastName("");
   };
   const activateButton = () => {
-    return firstName.length > 0 && lastName.length > 0 && email.length > 0;
+    return firstName?.length > 0 && lastName?.length > 0 && email?.length > 0;
   };
   return (
     <>

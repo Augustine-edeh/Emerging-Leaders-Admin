@@ -113,13 +113,17 @@ function AdminManagementTable({
   setEditUser,
   setSelectedUser,
   setOpenDeleteUser,
-  setOpenViewTicket,
+  setOpenDeactivateUser,
+  setOpenActivateUser,
+  setOpenResendInvite,
 }: {
   category: AdminStatus | null;
   setEditUser: (open: boolean) => void;
   setSelectedUser: (ticket: AdminUser) => void;
   setOpenDeleteUser: (open: boolean) => void;
-  setOpenViewTicket: (open: boolean) => void;
+  setOpenDeactivateUser: (open: boolean) => void;
+  setOpenActivateUser: (open: boolean) => void;
+  setOpenResendInvite: (open: boolean) => void;
 }) {
   const [adminUsers, setAdminUsers] = useState<AdminUser[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -215,11 +219,11 @@ function AdminManagementTable({
 
             <TableBody>
               {adminUsers.map((user, index) => (
-                <TableRow key={`${user.email}-${index}`}>
-                  <TableCell>{`${user.firstName} ${user.lastName}`}</TableCell>
-                  <TableCell>{user.email}</TableCell>
-                  <TableCell>{user.role}</TableCell>
-                  <TableCell>{new Date(user.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</TableCell>
+                <TableRow key={`${user?.email}-${index}`}>
+                  <TableCell>{`${user?.firstName} ${user?.lastName}`}</TableCell>
+                  <TableCell>{user?.email}</TableCell>
+                  <TableCell>{user?.role}</TableCell>
+                  <TableCell>{new Date(user?.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</TableCell>
                   <TableCell>
                     <Badge
                       style={{
@@ -228,7 +232,7 @@ function AdminManagementTable({
                       }}
                       className="text-sm font-medium px-2 py-1"
                     >
-                      {user.status}
+                      {user?.status}
                     </Badge>
                   </TableCell>
                   <TableCell>
@@ -238,7 +242,9 @@ function AdminManagementTable({
                       setEditUser={setEditUser}
                       setSelectedUser={setSelectedUser}
                       setOpenDeleteUser={setOpenDeleteUser}
-                      setOpenViewTicket={setOpenViewTicket}
+                      setOpenDeactivateUser={setOpenDeactivateUser}
+                      setOpenActivateUser={setOpenActivateUser}
+                      setOpenResendInvite={setOpenResendInvite}
                     />
                   </TableCell>
                 </TableRow>

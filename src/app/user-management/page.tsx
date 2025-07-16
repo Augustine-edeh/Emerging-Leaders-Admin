@@ -15,16 +15,20 @@ import AdminManagementTable from "@/components/admin/AdminManagementTable";
 import AddUserModal from "@/components/admin/AddUserModal";
 import EditUserModal from "@/components/admin/EditUserModal";
 import { Button } from "@/components/ui/button";
+import DeactivateUserModal from "@/components/admin/DeactivateUserModal";
+import ActivateUserModal from "@/components/admin/ActivateUserModal";
+import ResendInviteModal from "@/components/admin/ResendInviteModal";
 
 const UserManagementPage = () => {
   const [category, setCategory] = useState<AdminStatus | null>(null);
   const [openCloseTicket, setOpenCloseTicket] = useState(false);
   const [selectedUser, setSelectedUser] = useState<AdminUser | null>(null);
   const [openDeleteUser, setOpenDeleteUser] = useState(false);
-  const [openViewTicket, setOpenViewTicket] = useState(false);
+  const [openDeactivateUser, setOpenDeactivateUser] = useState(false);
+  const [openActivateUser, setOpenActivateUser] = useState(false);
   const [openAddUser, setOpenAddUser] = useState(false);
   const [openEditUser, setOpenEditUser] = useState(false);
-
+  const [openResendInvite, setOpenResendInvite] = useState(false);
   return (
     <div className="flex-1 flex flex-col gap-8 min-h-0">
       <section className="flex justify-between items-center">
@@ -74,7 +78,9 @@ const UserManagementPage = () => {
             setEditUser={setOpenEditUser}
             setSelectedUser={setSelectedUser}
             setOpenDeleteUser={setOpenDeleteUser}
-            setOpenViewTicket={setOpenViewTicket}
+            setOpenDeactivateUser={setOpenDeactivateUser}
+            setOpenActivateUser={setOpenActivateUser}
+            setOpenResendInvite={setOpenResendInvite}
           />
         </div>
       </section>
@@ -91,12 +97,27 @@ const UserManagementPage = () => {
         openOnchange={setOpenDeleteUser}
         selectedUser={selectedUser as AdminUser}
       />
-        {/*
-      <ViewTicketModal
-        open={openViewTicket}
-        openOnchange={setOpenViewTicket}
+
+      <ActivateUserModal
+        open={openActivateUser}
+        openOnchange={setOpenActivateUser}
         selectedUser={selectedUser as AdminUser}
-      /> */}
+      />
+
+      <DeactivateUserModal
+        open={openDeactivateUser}
+        openOnchange={setOpenDeactivateUser}
+        selectedUser={selectedUser as AdminUser}
+      />
+
+      <ResendInviteModal
+        open={openResendInvite}
+        openOnchange={setOpenResendInvite}
+        selectedUser={selectedUser as AdminUser}
+      />
+
+
+      
       <AddUserModal 
       open={openAddUser}
       openOnchange={setOpenAddUser}
