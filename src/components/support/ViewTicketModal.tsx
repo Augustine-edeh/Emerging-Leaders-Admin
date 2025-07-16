@@ -49,8 +49,8 @@ const ViewTicketModal = ({open, openOnchange, selectedTicket}:
                                 <p className="w-full p-3 bg-gray-200 rounded-lg text-sm m-0">{selectedTicket?.description ? selectedTicket?.description : "No description available"}</p>
                             </div>
                             <div className="flex flex-row w-full gap-4 justify-center">
-                                <Button onClick={() => openOnchange(false)} variant="ghost" className="text-primary-500 cursor-pointer border border-border-secondary w-[48%] h-[62px]">Cancel</Button>
-                                <Button onClick={handleOpenTicket} variant="default" className="cursor-pointer w-[48%] h-[62px]">Open Ticket</Button>
+                                <Button onClick={() => openOnchange(false)} variant="ghost" className="text-primary-500 cursor-pointer border border-border-secondary w-[48%] h-[52px]">Cancel</Button>
+                                <Button onClick={handleOpenTicket} variant="default" className="cursor-pointer w-[48%] h-[52px]">Open Ticket</Button>
                             </div>
                         </div>
                     </DialogDescription>

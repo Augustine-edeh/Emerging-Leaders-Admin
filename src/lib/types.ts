@@ -15,4 +15,22 @@ enum SupportTicketStatus {
     ALL = "All"
 }
 
-export { type SupportTicket, SupportTicketStatus };
+enum AdminStatus {
+  ACTIVE = "Active",
+  INACTIVE = "Inactive",
+  PENDING = "Pending",
+  DEACTIVATED = "Deactivated",
+}
+
+interface AdminUser {
+  userId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: string;
+  status: AdminStatus;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export { type SupportTicket, SupportTicketStatus, type AdminUser, AdminStatus };
