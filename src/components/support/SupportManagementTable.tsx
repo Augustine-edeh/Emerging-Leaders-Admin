@@ -17,7 +17,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import NoContentData from "../admin/NoContentData";
 import SupportTableActions from "./SupportTableActions";
-import { SupportTicket, SupportTicketStatus } from "@/lib/types";
+import { SupportTicket, SupportTicketStatus } from "@/types/types";
 
 const pageSize = 10;
 

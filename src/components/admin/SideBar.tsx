@@ -2,41 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { sidebarLinks } from "@/constants/sidebarLinks";
 
 import { usePathname } from "next/navigation";
 
 const SideBar = () => {
   const pathname = usePathname();
 
-  const dashNav = [
-    {
-      icon: "/icons/analytics.png",
-      iconActive: "/icons/analytics-active.png",
-      label: "Analytics",
-      link: "/analytics",
-    },
-    {
-      icon: "/icons/user-management.png",
-      iconActive: "/icons/analytics-active.png",
-      label: "User Management",
-      link: "/user-management",
-    },
-    {
-      icon: "/icons/content-management.png",
-      iconActive: "/icons/analytics-active.png",
-      label: "Content Management",
-      link: "/content-management",
-    },
-    {
-      icon: "/icons/support.png",
-      iconActive: "/icons/analytics-active.png",
-      label: "Support",
-      link: "/support",
-    },
-  ];
-
   return (
-    <div className="hidden lg:flex flex-col items-center gap-6 w-1/5 bg-white py-1.5">
+    <aside className="hidden lg:flex flex-col items-center gap-6 w-1/5 bg-white py-1.5">
       <Image
         src="/logo.png"
         width={129}
@@ -45,28 +19,57 @@ const SideBar = () => {
         className="object-cover mx-11"
       />
 
-      <ul className="mx-4 space-y-1">
-        {dashNav.map((item, index) => {
-          const isActive = pathname === item.link;
+      <nav className="mx-4 space-y-1">
+        {sidebarLinks.map(({ label, href, icon, activeIcon }) => {
+          const isActive = pathname === href;
 
           return (
+            // <Link
+            //   key={label}
+            //   href={href}
+            //   className={`flex items-center gap-2 px-6 py-4 rounded-xl transition-colors duration-200 outline-none ${
+            //     isActive ? "bg-primary text-white" : "bg-white text-black"
+            //   }
+            // hover:bg-primary hover:text-white focus:bg-primary focus:text-white`}
+            // >
             <Link
-              key={index}
-              href={item.link}
-              // NOTE: remember to change text-black for isActive condition
-              // to the intended design text color of text-secondary
-              className={`flex items-center gap-2 px-6 py-4 rounded-xl transition-colors duration-200 outline-none
-                  
-            ${isActive ? "bg-primary text-white" : "bg-white text-black"} 
-            hover:bg-primary hover:text-white focus:bg-primary focus:text-white`}
+              key={label}
+              href={href}
+              className={`group flex items-center gap-2 px-6 py-4 rounded-xl transition-colors duration-200 outline-none ${
+                isActive ? "bg-primary text-white" : "bg-white text-black"
+              } hover:bg-primary hover:text-white focus:bg-primary focus:text-white`}
             >
-              <Image src={item.icon} width={24} height={24} alt={item.label} />
-              <span className="font-semibold">{item.label}</span>
+              <div className="relative size-5">
+                {/* Inactive icon */}
+                <Image
+                  src={icon}
+                  // alt={`${label} icon`}
+                  alt={label}
+                  fill
+                  className={`transition-opacity duration-200 ${
+                    isActive
+                      ? "opacity-0"
+                      : "group-hover:opacity-0 group-focus:opacity-0 group-active:opacity-0"
+                  }`}
+                />
+                {/* Active icon */}
+                <Image
+                  src={activeIcon}
+                  alt={`${label} active icon`}
+                  fill
+                  className={`transition-opacity duration-200 ${
+                    isActive
+                      ? "opacity-100"
+                      : "opacity-0 group-hover:opacity-100 group-focus:opacity-100 group-active:opacity-100"
+                  }`}
+                />
+              </div>
+              <span>{label}</span>
             </Link>
           );
         })}
-      </ul>
-    </div>
+      </nav>
+    </aside>
   );
 };
 

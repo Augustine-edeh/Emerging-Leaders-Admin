@@ -19,10 +19,10 @@ import {
   Ban,
   RefreshCcw,
   Loader2,
-  Loader2Icon
+  Loader2Icon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AdminUser, AdminStatus } from "@/lib/types";
+import { AdminUser, AdminStatus } from "@/types/types";
 import { useState } from "react";
 
 const AdminUserTableActions = ({
@@ -105,22 +105,23 @@ const AdminUserTableActions = ({
 
         <DropdownMenuSeparator />
 
-        {adminUser.status !== AdminStatus.DEACTIVATED ?
-        <DropdownMenuItem
-          onClick={() => handleDeactivate(adminUser)}
-          className="text-error flex flex-row items-center gap-2.5"
-        >
-          <Ban className="text-error" />
-          <p>Deactivate Account</p>
-        </DropdownMenuItem> :
-        <DropdownMenuItem
-          onClick={() => handleActivate(adminUser)}
-          className="text-green-500 flex flex-row items-center gap-2.5"
-        >
-          <RefreshCcw className="text-green-500" />
-          <p>Reactivate Account</p>
-        </DropdownMenuItem>
-        }
+        {adminUser.status !== AdminStatus.DEACTIVATED ? (
+          <DropdownMenuItem
+            onClick={() => handleDeactivate(adminUser)}
+            className="text-error flex flex-row items-center gap-2.5"
+          >
+            <Ban className="text-error" />
+            <p>Deactivate Account</p>
+          </DropdownMenuItem>
+        ) : (
+          <DropdownMenuItem
+            onClick={() => handleActivate(adminUser)}
+            className="text-green-500 flex flex-row items-center gap-2.5"
+          >
+            <RefreshCcw className="text-green-500" />
+            <p>Reactivate Account</p>
+          </DropdownMenuItem>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );
