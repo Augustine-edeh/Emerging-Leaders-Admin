@@ -11,7 +11,7 @@ import {
 } from "@radix-ui/react-dialog";
 import { Button } from "../ui/button";
 import Image from "next/image";
-import { AdminUser } from "@/lib/types";
+import { AdminUser } from "@/types/types";
 import { showErrorToast, showSuccessToast } from "../ui/toasts";
 import { v4 as uuidv4 } from "uuid";
 
@@ -28,16 +28,19 @@ const AddUserModal = ({
   const handleCreateAdmin = () => {
     console.log("Creating admin");
     // Simulate success toast
-    showSuccessToast("New Admin Created", "An activation email has been sent to the user.");
+    showSuccessToast(
+      "New Admin Created",
+      "An activation email has been sent to the user."
+    );
     openOnchange(false);
-    
+
     // Maybe a function that updates the ticket status to closed
     // and then updates the ticket in the database
 
     // clear out values
-    setFirstName("")
-    setEmail("")
-    setLastName("")
+    setFirstName("");
+    setEmail("");
+    setLastName("");
   };
   const activateButton = () => {
     return firstName.length > 0 && lastName.length > 0 && email.length > 0;
@@ -53,62 +56,68 @@ const AddUserModal = ({
               Create Admin User
             </DialogDescription>
 
-              <div className="flex gap-8 flex-col p-12">
-                <div className="flex flex-col gap-1">
-                  <h1 className="text-xl font-medium">Create Admin User</h1>
-                  <p className="text-sm text-gray-500">Enter the details below to set up a new admin</p>
-                </div>
-                <div className="flex flex-col gap-4">
-                  <div className="flex flex-row gap-[5%]">
-                    <div className="flex flex-col gap-2 w-[47.5%]">
-                      <label htmlFor="firstName" className="text-sm font-medium">User's First Name</label>
-                      <input
-                      className="border border-gray-300 rounded-md p-2 px-4 placeholder:text-sm"
-                        type="text"
-                        value={firstName}   
-                        onChange={(e) => setFirstName(e.target.value)}
-                        id="firstName"
-                        placeholder="Enter admin's first name"
-                        required
-                      />
-                    </div>
-                    <div className="flex flex-col gap-2 w-[47.5%]">
-                      <label htmlFor="lastName" className="text-sm font-medium">User's Last Name</label>
-                      <input
-                      className="border border-gray-300 rounded-md p-2 px-4 placeholder:text-sm"
-                        type="text"
-                        id="lastName"
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
-                        placeholder="Enter admin's last name"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="email" className="text-sm font-medium">
-                      Email Address <span className="text-red-500">*</span>
+            <div className="flex gap-8 flex-col p-12">
+              <div className="flex flex-col gap-1">
+                <h1 className="text-xl font-medium">Create Admin User</h1>
+                <p className="text-sm text-gray-500">
+                  Enter the details below to set up a new admin
+                </p>
+              </div>
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-row gap-[5%]">
+                  <div className="flex flex-col gap-2 w-[47.5%]">
+                    <label htmlFor="firstName" className="text-sm font-medium">
+                      User's First Name
                     </label>
                     <input
-                      className="border border-gray-300 rounded-md p-2 placeholder:text-sm"
-                      type="email"
-                      id="email"
-                      placeholder="Enter admin's email address"
+                      className="border border-gray-300 rounded-md p-2 px-4 placeholder:text-sm"
+                      type="text"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      id="firstName"
+                      placeholder="Enter admin's first name"
                       required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2 w-[47.5%]">
+                    <label htmlFor="lastName" className="text-sm font-medium">
+                      User's Last Name
+                    </label>
+                    <input
+                      className="border border-gray-300 rounded-md p-2 px-4 placeholder:text-sm"
+                      type="text"
+                      id="lastName"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                      placeholder="Enter admin's last name"
+                      required
                     />
                   </div>
                 </div>
-
-                <Button
-                  disabled={!activateButton()}
-                  className="bg-primary-500 w-full mt-4 text-white"
-                  onClick={handleCreateAdmin}
-                >
-                  Create Admin
-                </Button>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="email" className="text-sm font-medium">
+                    Email Address <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    className="border border-gray-300 rounded-md p-2 placeholder:text-sm"
+                    type="email"
+                    id="email"
+                    placeholder="Enter admin's email address"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
               </div>
+
+              <Button
+                disabled={!activateButton()}
+                className="bg-primary-500 w-full mt-4 text-white"
+                onClick={handleCreateAdmin}
+              >
+                Create Admin
+              </Button>
+            </div>
           </DialogContent>
         </DialogPortal>
       </Dialog>

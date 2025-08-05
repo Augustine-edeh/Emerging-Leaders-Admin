@@ -3,11 +3,7 @@ import { Input } from "@/components/ui/input";
 import { ListFilter, Search } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import SupportCountCard from "@/components/support/SupportCountCard";
-import {
-  SupportTicket,
-  AdminUser,
-  AdminStatus,
-} from "@/lib/types";
+import { SupportTicket, AdminUser, AdminStatus } from "@/types/types";
 import { useState } from "react";
 import DeleteUserModal from "@/components/admin/DeleteUserModal";
 import AdminTableFilter from "@/components/admin/AdminTableFilters";
@@ -39,9 +35,12 @@ const UserManagementPage = () => {
           </p>
         </div>
         <div className="mr-0 ml-auto">
-          <Button className="bg-primary-500 text-white" 
-          onClick={() => setOpenAddUser(true)}
-          >Add User</Button>
+          <Button
+            className="bg-primary-500 text-white"
+            onClick={() => setOpenAddUser(true)}
+          >
+            Add User
+          </Button>
         </div>
       </section>
 
@@ -91,7 +90,6 @@ const UserManagementPage = () => {
         selectedUser={selectedUser as AdminUser}
       />
 
-    
       <DeleteUserModal
         open={openDeleteUser}
         openOnchange={setOpenDeleteUser}
@@ -116,12 +114,7 @@ const UserManagementPage = () => {
         selectedUser={selectedUser as AdminUser}
       />
 
-
-      
-      <AddUserModal 
-      open={openAddUser}
-      openOnchange={setOpenAddUser}
-      />
+      <AddUserModal open={openAddUser} openOnchange={setOpenAddUser} />
     </div>
   );
 };

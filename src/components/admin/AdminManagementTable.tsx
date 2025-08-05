@@ -17,10 +17,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import NoContentData from "./NoContentData";
 import AdminUserTableActions from "./AdminUserTableActions";
-import {
-  AdminUser,
-  AdminStatus,
-} from "@/lib/types";
+import { AdminUser, AdminStatus } from "@/types/types";
 
 const pageSize = 10;
 
@@ -170,15 +167,10 @@ function AdminManagementTable({
     }
   };
 
-  const handleStatusChange = (
-    email: string,
-    status: AdminStatus
-  ) => {
+  const handleStatusChange = (email: string, status: AdminStatus) => {
     // Send update request to backend in the future
     setAdminUsers((prev) =>
-      prev.map((user) =>
-        user.email === email ? { ...user, status } : user
-      )
+      prev.map((user) => (user.email === email ? { ...user, status } : user))
     );
   };
 
@@ -223,7 +215,13 @@ function AdminManagementTable({
                   <TableCell>{`${user?.firstName} ${user?.lastName}`}</TableCell>
                   <TableCell>{user?.email}</TableCell>
                   <TableCell>{user?.role}</TableCell>
-                  <TableCell>{new Date(user?.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</TableCell>
+                  <TableCell>
+                    {new Date(user?.createdAt).toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
+                  </TableCell>
                   <TableCell>
                     <Badge
                       style={{

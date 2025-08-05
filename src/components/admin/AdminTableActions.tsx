@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { MoreVertical, CheckCircle, Eye, CrossIcon, Trash } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SupportTicket, SupportTicketStatus } from "@/lib/types";
+import { SupportTicket, SupportTicketStatus } from "@/types/types";
 import { useState } from "react";
 
 const AdminTableActions = ({

@@ -11,7 +11,7 @@ import {
 } from "@radix-ui/react-dialog";
 import { Button } from "../ui/button";
 import Image from "next/image";
-import { AdminUser } from "@/lib/types";
+import { AdminUser } from "@/types/types";
 import { showErrorToast, showSuccessToast } from "../ui/toasts";
 import { v4 as uuidv4 } from "uuid";
 
@@ -31,10 +31,10 @@ const EditUSerModal = ({
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    setFirstName(selectedUser?.firstName)
-    setLastName(selectedUser?.lastName)
-    setEmail(selectedUser?.email)
-  }, [selectedUser])
+    setFirstName(selectedUser?.firstName);
+    setLastName(selectedUser?.lastName);
+    setEmail(selectedUser?.email);
+  }, [selectedUser]);
 
   const handleCreateAdmin = () => {
     console.log("Creating admin");
@@ -81,9 +81,7 @@ const EditUSerModal = ({
 
             <div className="flex gap-8 flex-col p-12">
               <div className="flex flex-col gap-1">
-                <h1 className="text-xl font-medium">
-                  Edit Admin User
-                </h1>
+                <h1 className="text-xl font-medium">Edit Admin User</h1>
                 <p className="text-sm text-gray-500">
                   Enter the details below to update the admin user
                 </p>
