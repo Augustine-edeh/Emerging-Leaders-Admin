@@ -1,4 +1,4 @@
-"use client"; // if you're using the app directory (Next.js 13+)
+"use client";
 
 import { motion } from "framer-motion";
 
