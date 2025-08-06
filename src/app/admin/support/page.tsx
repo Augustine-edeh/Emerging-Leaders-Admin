@@ -45,6 +45,7 @@ const SupportManagementPage = () => {
       count: 30,
     },
   ];
+
   return (
     <div className="flex-1 flex flex-col gap-8 min-h-0">
       <section className="flex justify-between items-center">
@@ -89,7 +90,7 @@ const SupportManagementPage = () => {
           </div>
         </div>
 
-        <div className="flex-1 flex h-[560px] rounded-xl bg-white border border-border-gray-300 p-5">
+        <div className="flex-1 flex h-[220px] rounded-xl bg-white border border-border-gray-300 p-5">
           <SupportManagementTable
             category={category}
             setOpenCloseTicket={setOpenCloseTicket}

@@ -71,7 +71,7 @@ const UserManagementPage = () => {
           </div>
         </div>
 
-        <div className="flex-1 flex h-[560px] rounded-xl bg-white border border-border-gray-300 p-5">
+        <div className="flex-1 flex h-[300px] rounded-xl bg-white border border-border-gray-300 p-5">
           <AdminManagementTable
             category={category}
             setEditUser={setOpenEditUser}
