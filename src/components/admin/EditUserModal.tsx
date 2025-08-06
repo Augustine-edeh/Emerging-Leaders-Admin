@@ -7,13 +7,14 @@ import {
   DialogDescription,
   DialogPortal,
   DialogOverlay,
-  Close,
+  // Close,
 } from "@radix-ui/react-dialog";
 import { Button } from "../ui/button";
-import Image from "next/image";
+// import Image from "next/image";
 import { AdminUser } from "@/types/types";
-import { showErrorToast, showSuccessToast } from "../ui/toasts";
-import { v4 as uuidv4 } from "uuid";
+// import { showErrorToast, showSuccessToast } from "../ui/toasts";
+import { showSuccessToast } from "../ui/toasts";
+// import { v4 as uuidv4 } from "uuid";
 
 const EditUSerModal = ({
   open,
@@ -90,7 +91,7 @@ const EditUSerModal = ({
                 <div className="flex flex-row gap-[5%]">
                   <div className="flex flex-col gap-2 w-[47.5%]">
                     <label htmlFor="firstName" className="text-sm font-medium">
-                      User's First Name
+                      {`User's First Name`}
                     </label>
                     <input
                       className="border border-gray-300 rounded-md p-2 px-4 placeholder:text-sm"
@@ -104,7 +105,7 @@ const EditUSerModal = ({
                   </div>
                   <div className="flex flex-col gap-2 w-[47.5%]">
                     <label htmlFor="lastName" className="text-sm font-medium">
-                      User's Last Name
+                      {`User's Last Name`}
                     </label>
                     <input
                       className="border border-gray-300 rounded-md p-2 px-4 placeholder:text-sm"

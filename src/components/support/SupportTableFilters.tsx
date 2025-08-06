@@ -6,9 +6,9 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import { MoreVertical, CheckCircle, ListFilter } from "lucide-react";
+import { CheckCircle, ListFilter } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SupportTicket, SupportTicketStatus } from "@/types/types";
+import { SupportTicketStatus } from "@/types/types";
 import { useState } from "react";
 
 const SupportTableFilter = ({

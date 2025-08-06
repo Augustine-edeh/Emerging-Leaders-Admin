@@ -1,11 +1,11 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import { ListFilter, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import SupportCountCard from "@/components/support/SupportCountCard";
 import SupportManagementTable from "@/components/support/SupportManagementTable";
 import { SupportTicket, SupportTicketStatus } from "@/types/types";
-import SupportTableActions from "@/components/support/SupportTableActions";
+// import SupportTableActions from "@/components/support/SupportTableActions";
 import SupportTableFilter from "@/components/support/SupportTableFilters";
 import { useState } from "react";
 import CloseTicketModal from "@/components/support/CloseTicketModal";

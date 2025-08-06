@@ -19,13 +19,13 @@ import { useRouter } from "next/navigation";
 import clsx from "clsx";
 
 // Strength checker
-function getPasswordStrength(password: string): 1 | 2 | 3 {
-  let score = 0;
-  if (password.length >= 8) score++;
-  if (/[A-Z]/.test(password) && /[0-9]/.test(password)) score++;
-  if (/[^A-Za-z0-9]/.test(password)) score++;
-  return (score || 1) as 1 | 2 | 3;
-}
+// function getPasswordStrength(password: string): 1 | 2 | 3 {
+//   let score = 0;
+//   if (password.length >= 8) score++;
+//   if (/[A-Z]/.test(password) && /[0-9]/.test(password)) score++;
+//   if (/[^A-Za-z0-9]/.test(password)) score++;
+//   return (score || 1) as 1 | 2 | 3;
+// }
 
 // Schema
 const formSchema = z.object({
@@ -63,17 +63,17 @@ const ResetPasswordPage = () => {
     router.push("/reset-password/new-password"); //3.
   }
 
-  const passwordValue = form.watch("password");
-  const strengthLevel = getPasswordStrength(passwordValue);
+  // const passwordValue = form.watch("password");
+  // const strengthLevel = getPasswordStrength(passwordValue);
 
-  const getBarColor = (level: number) => {
-    if (strengthLevel >= level) {
-      if (strengthLevel === 1) return "bg-red-500";
-      if (strengthLevel === 2) return "bg-amber-500";
-      return "bg-green-500";
-    }
-    return "bg-muted";
-  };
+  // const getBarColor = (level: number) => {
+  //   if (strengthLevel >= level) {
+  //     if (strengthLevel === 1) return "bg-red-500";
+  //     if (strengthLevel === 2) return "bg-amber-500";
+  //     return "bg-green-500";
+  //   }
+  //   return "bg-muted";
+  // };
 
   return (
     <div className="w-full">

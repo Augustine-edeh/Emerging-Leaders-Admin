@@ -14,12 +14,12 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 
 import { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import NoContentData from "./NoContentData";
 import AdminUserTableActions from "./AdminUserTableActions";
 import { AdminUser, AdminStatus } from "@/types/types";
 
-const pageSize = 10;
+// const pageSize = 10;
 
 // TODO: Replace with actual data from the database
 
@@ -123,7 +123,7 @@ function AdminManagementTable({
   setOpenResendInvite: (open: boolean) => void;
 }) {
   const [adminUsers, setAdminUsers] = useState<AdminUser[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
 
   // Use demo data instead of fetching from API for now
   useEffect(() => {
@@ -138,19 +138,19 @@ function AdminManagementTable({
     console.log("adminUsers state changed:", adminUsers);
   }, [adminUsers]);
 
-  const totalPages = Math.ceil(adminUsers.length / pageSize);
-  const paginatedAdminUsers = adminUsers.slice(
-    (currentPage - 1) * pageSize,
-    currentPage * pageSize
-  );
+  // const totalPages = Math.ceil(adminUsers.length / pageSize);
+  // const paginatedAdminUsers = adminUsers.slice(
+  //   (currentPage - 1) * pageSize,
+  //   currentPage * pageSize
+  // );
 
-  const handlePrev = () => {
-    setCurrentPage((prev) => Math.max(prev - 1, 1));
-  };
+  // const handlePrev = () => {
+  //   setCurrentPage((prev) => Math.max(prev - 1, 1));
+  // };
 
-  const handleNext = () => {
-    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-  };
+  // const handleNext = () => {
+  //   setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  // };
 
   const getStatusStyle = (status: AdminStatus) => {
     switch (status) {

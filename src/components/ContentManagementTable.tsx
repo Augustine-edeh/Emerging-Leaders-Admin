@@ -26,11 +26,11 @@ interface Invoice {
   paymentMethod: string;
 }
 
-const pageSize = 10;
+// const pageSize = 10;
 
 function ContentManagementTable() {
   const [invoices, setInvoices] = useState<Invoice[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchInvoices = async () => {
@@ -45,19 +45,19 @@ function ContentManagementTable() {
     fetchInvoices();
   }, []);
 
-  const totalPages = Math.ceil(invoices.length / pageSize);
-  const paginatedInvoices = invoices.slice(
-    (currentPage - 1) * pageSize,
-    currentPage * pageSize
-  );
+  // const totalPages = Math.ceil(invoices.length / pageSize);
+  // const paginatedInvoices = invoices.slice(
+  //   (currentPage - 1) * pageSize,
+  //   currentPage * pageSize
+  // );
 
-  const handlePrev = () => {
-    setCurrentPage((prev) => Math.max(prev - 1, 1));
-  };
+  // const handlePrev = () => {
+  //   setCurrentPage((prev) => Math.max(prev - 1, 1));
+  // };
 
-  const handleNext = () => {
-    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-  };
+  // const handleNext = () => {
+  //   setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  // };
 
   const getStatusStyle = (status: string) => {
     switch (status.toLowerCase()) {

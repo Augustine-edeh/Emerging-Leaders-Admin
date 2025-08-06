@@ -6,15 +6,15 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import { MoreVertical, CheckCircle, Eye, CrossIcon, Trash } from "lucide-react";
+import { MoreVertical, Eye, CrossIcon, Trash } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SupportTicket, SupportTicketStatus } from "@/types/types";
-import { useState } from "react";
-import CloseTicketModal from "./CloseTicketModal";
+// import { useState } from "react";
+// import CloseTicketModal from "./CloseTicketModal";
 
 const SupportTableActions = ({
   supportTicket,
-  onStatusChange,
+  // onStatusChange,
   setOpenCloseTicket,
   setSelectedTicket,
   setOpenDeleteTicket,
@@ -27,30 +27,30 @@ const SupportTableActions = ({
   setOpenDeleteTicket: (open: boolean) => void;
   setOpenViewTicket: (open: boolean) => void;
 }) => {
-  const [selected, setSelected] = useState<SupportTicketStatus>(
-    supportTicket.status
-  );
-  const [isOpen, setIsOpen] = useState(false);
+  // const [selected, setSelected] = useState<SupportTicketStatus>(
+  //   supportTicket.status
+  // );
+  // const [isOpen, setIsOpen] = useState(false);
 
   const handleView = (supportTicket: SupportTicket) => {
     setOpenViewTicket(true);
     setSelectedTicket(supportTicket);
     console.log("Viewing support ticket");
-    setIsOpen(false);
+    // setIsOpen(false);
   };
 
   const handleCloseTicket = (supportTicket: SupportTicket) => {
     setOpenCloseTicket(true);
     setSelectedTicket(supportTicket);
     console.log("Closing support ticket");
-    setIsOpen(false);
+    // setIsOpen(false);
   };
 
   const handleDelete = (ticketId: string) => {
     setOpenDeleteTicket(true);
     setSelectedTicket(supportTicket);
-    console.log("Deleting support ticket");
-    setIsOpen(false);
+    console.log("Deleting support ticket", ticketId);
+    // setIsOpen(false);
   };
 
   return (
