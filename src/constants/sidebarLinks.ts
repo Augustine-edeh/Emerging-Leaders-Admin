@@ -2,7 +2,7 @@ export const sidebarLinks = [
   {
     label: "Analytics",
     href: "/admin/analytics",
-    icon: "/icons/analytics.png",
+    icon: "/icons/user-report.png",
     activeIcon: "/icons/analytics-active.png",
   },
   {
@@ -28,7 +28,7 @@ export const sidebarLinks = [
     label: "User Report",
     href: "/admin/user-report",
     icon: "/icons/user-report.png",
-    activeIcon: "/icons/user-report.png",
+    activeIcon: "/icons/analytics-active.png",
   },
 
   {
