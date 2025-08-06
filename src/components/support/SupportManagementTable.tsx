@@ -14,12 +14,12 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 
 import { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import NoContentData from "../admin/NoContentData";
 import SupportTableActions from "./SupportTableActions";
 import { SupportTicket, SupportTicketStatus } from "@/types/types";
 
-const pageSize = 10;
+// const pageSize = 10;
 
 const documents = [
   {
@@ -101,7 +101,7 @@ function SupportManagementTable({
   setOpenViewTicket: (open: boolean) => void;
 }) {
   const [supportTickets, setSupportTickets] = useState<SupportTicket[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
 
   // Use demo data instead of fetching from API for now
   useEffect(() => {
@@ -116,19 +116,19 @@ function SupportManagementTable({
     console.log("supportTickets state changed:", supportTickets);
   }, [supportTickets]);
 
-  const totalPages = Math.ceil(supportTickets.length / pageSize);
-  const paginatedSupportTickets = supportTickets.slice(
-    (currentPage - 1) * pageSize,
-    currentPage * pageSize
-  );
+  // const totalPages = Math.ceil(supportTickets.length / pageSize);
+  // const paginatedSupportTickets = supportTickets.slice(
+  //   (currentPage - 1) * pageSize,
+  //   currentPage * pageSize
+  // );
 
-  const handlePrev = () => {
-    setCurrentPage((prev) => Math.max(prev - 1, 1));
-  };
+  // const handlePrev = () => {
+  //   setCurrentPage((prev) => Math.max(prev - 1, 1));
+  // };
 
-  const handleNext = () => {
-    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-  };
+  // const handleNext = () => {
+  //   setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  // };
 
   const getStatusStyle = (status: SupportTicketStatus) => {
     switch (status) {

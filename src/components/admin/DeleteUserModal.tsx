@@ -5,12 +5,13 @@ import {
   DialogDescription,
   DialogPortal,
   DialogOverlay,
-  Close,
+  // Close,
 } from "@radix-ui/react-dialog";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { AdminUser } from "@/types/types";
-import { showErrorToast, showSuccessToast } from "../ui/toasts";
+// import { showErrorToast, showSuccessToast } from "../ui/toasts";
+import { showErrorToast } from "../ui/toasts";
 
 const DeleteUserModal = ({
   open,
@@ -47,8 +48,8 @@ const DeleteUserModal = ({
                 </div>
                 <p className="m-0 text-2xl font-bold">Delete Admin User</p>
                 <p className="text-sm m-0 mb-6">
-                  Deleting an admin will permanently remove their access. To
-                  restore access, you'll need to send them a new invitation.
+                  {`Deleting an admin will permanently remove their access. To
+                  restore access, you'll need to send them a new invitation.`}
                 </p>
                 <p className="text-lg font-semibold mb-6">
                   Are you sure you want to permanently delete{" "}

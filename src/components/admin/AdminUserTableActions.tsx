@@ -9,28 +9,28 @@ import {
 import {
   MoreVertical,
   Eye,
-  UserCheck,
-  UserX,
-  Trash,
-  CircleArrowLeft,
-  LucideStopCircle,
-  StopCircleIcon,
-  StopCircle,
+  // UserCheck,
+  // UserX,
+  // Trash,
+  // CircleArrowLeft,
+  // LucideStopCircle,
+  // StopCircleIcon,
+  // StopCircle,
   Ban,
   RefreshCcw,
-  Loader2,
+  // Loader2,
   Loader2Icon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AdminUser, AdminStatus } from "@/types/types";
-import { useState } from "react";
+// import { useState } from "react";
 
 const AdminUserTableActions = ({
   adminUser,
-  onStatusChange,
+  // onStatusChange,
   setEditUser,
   setSelectedUser,
-  setOpenDeleteUser,
+  // setOpenDeleteUser,
   setOpenDeactivateUser,
   setOpenActivateUser,
   setOpenResendInvite,
@@ -44,14 +44,14 @@ const AdminUserTableActions = ({
   setOpenActivateUser: (open: boolean) => void;
   setOpenResendInvite: (open: boolean) => void;
 }) => {
-  const [selected, setSelected] = useState<AdminStatus>(adminUser.status);
-  const [isOpen, setIsOpen] = useState(false);
+  // const [selected, setSelected] = useState<AdminStatus>(adminUser.status);
+  // const [isOpen, setIsOpen] = useState(false);
 
   const handleEditUser = (adminUser: AdminUser) => {
     setSelectedUser(adminUser);
     setEditUser(true);
     console.log("Viewing admin user");
-    setIsOpen(false);
+    // setIsOpen(false);
   };
 
   const handleActivate = (adminUser: AdminUser) => {
@@ -59,7 +59,7 @@ const AdminUserTableActions = ({
     setOpenActivateUser(true);
     // onStatusChange(adminUser.email, AdminStatus.ACTIVE);
     console.log("Activating admin user");
-    setIsOpen(false);
+    // setIsOpen(false);
   };
 
   const handleDeactivate = (adminUser: AdminUser) => {
@@ -67,14 +67,14 @@ const AdminUserTableActions = ({
     setOpenDeactivateUser(true);
     // onStatusChange(adminUser.email, AdminStatus.DEACTIVATED);
     console.log("Deactivating admin user");
-    setIsOpen(false);
+    // setIsOpen(false);
   };
 
   const handleResendInvite = (adminUser: AdminUser) => {
     setSelectedUser(adminUser);
     setOpenResendInvite(true);
     console.log("Resending invite");
-    setIsOpen(false);
+    // setIsOpen(false);
   };
 
   return (

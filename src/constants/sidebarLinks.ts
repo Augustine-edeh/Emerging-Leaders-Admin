@@ -2,7 +2,7 @@ export const sidebarLinks = [
   {
     label: "Analytics",
     href: "/admin/analytics",
-    icon: "/icons/analytics.png",
+    icon: "/icons/user-report.png",
     activeIcon: "/icons/analytics-active.png",
   },
   {
@@ -23,14 +23,6 @@ export const sidebarLinks = [
     icon: "/icons/content-management.png",
     activeIcon: "/icons/content-management-active.png",
   },
-
-  {
-    label: "User Report",
-    href: "/admin/user-report",
-    icon: "/icons/user-report.png",
-    activeIcon: "/icons/user-report.png",
-  },
-
   {
     label: "Support",
     href: "/admin/support",

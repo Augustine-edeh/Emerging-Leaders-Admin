@@ -15,7 +15,7 @@ const SideBar = () => {
         src="/logo.png"
         width={129}
         height={152}
-        alt="Illustration"
+        alt="logo"
         className="object-cover mx-11"
       />
 
@@ -24,14 +24,6 @@ const SideBar = () => {
           const isActive = pathname === href;
 
           return (
-            // <Link
-            //   key={label}
-            //   href={href}
-            //   className={`flex items-center gap-2 px-6 py-4 rounded-xl transition-colors duration-200 outline-none ${
-            //     isActive ? "bg-primary text-white" : "bg-white text-black"
-            //   }
-            // hover:bg-primary hover:text-white focus:bg-primary focus:text-white`}
-            // >
             <Link
               key={label}
               href={href}

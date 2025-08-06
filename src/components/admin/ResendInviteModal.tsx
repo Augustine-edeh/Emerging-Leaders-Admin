@@ -5,12 +5,12 @@ import {
   DialogDescription,
   DialogPortal,
   DialogOverlay,
-  Close,
+  // Close,
 } from "@radix-ui/react-dialog";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { AdminUser } from "@/types/types";
-import { showErrorToast, showSuccessToast } from "../ui/toasts";
+import { showErrorToast } from "../ui/toasts";
 
 const ResendInviteModal = ({
   open,

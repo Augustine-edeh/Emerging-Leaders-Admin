@@ -1,9 +1,9 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import { ListFilter, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { Label } from "@/components/ui/label";
-import SupportCountCard from "@/components/support/SupportCountCard";
-import { SupportTicket, AdminUser, AdminStatus } from "@/types/types";
+// import SupportCountCard from "@/components/support/SupportCountCard";
+import { AdminUser, AdminStatus } from "@/types/types";
 import { useState } from "react";
 import DeleteUserModal from "@/components/admin/DeleteUserModal";
 import AdminTableFilter from "@/components/admin/AdminTableFilters";
@@ -17,7 +17,7 @@ import ResendInviteModal from "@/components/admin/ResendInviteModal";
 
 const UserManagementPage = () => {
   const [category, setCategory] = useState<AdminStatus | null>(null);
-  const [openCloseTicket, setOpenCloseTicket] = useState(false);
+  // const [openCloseTicket, setOpenCloseTicket] = useState(false);
   const [selectedUser, setSelectedUser] = useState<AdminUser | null>(null);
   const [openDeleteUser, setOpenDeleteUser] = useState(false);
   const [openDeactivateUser, setOpenDeactivateUser] = useState(false);
@@ -71,7 +71,7 @@ const UserManagementPage = () => {
           </div>
         </div>
 
-        <div className="flex-1 flex h-[560px] rounded-xl bg-white border border-border-gray-300 p-5">
+        <div className="flex-1 flex h-[300px] rounded-xl bg-white border border-border-gray-300 p-5">
           <AdminManagementTable
             category={category}
             setEditUser={setOpenEditUser}

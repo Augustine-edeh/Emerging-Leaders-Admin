@@ -5,12 +5,12 @@ import {
   DialogDescription,
   DialogPortal,
   DialogOverlay,
-  Close,
+  // Close,
 } from "@radix-ui/react-dialog";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { SupportTicket } from "@/types/types";
-import { showErrorToast, showSuccessToast } from "../ui/toasts";
+import { showSuccessToast } from "../ui/toasts";
 
 const CloseTicketModal = ({
   open,
