@@ -1,5 +1,3 @@
-// service-worker.js
-
 const CACHE_NAME = "emerging-leaders-cache-v1";
 const PRECACHE_URLS = [
   "/",
