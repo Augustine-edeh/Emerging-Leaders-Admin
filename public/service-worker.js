@@ -2,26 +2,23 @@
 
 const CACHE_NAME = "emerging-leaders-cache-v1";
 const PRECACHE_URLS = [
-  "/", // Root path
+  "/",
   "/favicon.ico",
-  "/manifest.json",
-  "/icons/icon-192x192.png",
-  "/icons/icon-512x512.png",
+  "favicon-16x16.png",
+  "favicon-32x32.png",
+  "android-chrome-192x192.png",
+  "android-chrome-512x512.png",
+  "apple-touch-icon.png",
+  "/site.webmanifest",
+  "logo.png",
   "/offline.html",
 
-  // Static Next.js core files
-  "/_next/static/chunks/main-app.js",
-  "/_next/static/chunks/framework.js",
-  "/_next/static/chunks/react-refresh.js",
-  "/_next/static/chunks/webpack.js",
-
-  // Example dashboard routes (adjust based on your app)
-  "/dashboard",
-  "/profile",
-  "/settings",
-
-  // Example static CSS/JS files (Next.js often fingerprints these)
-  // You can also dynamically add them at build time if needed
+  // Dashboard routes (added basd on the available routes in the project)
+  "/admin/analytics",
+  "/admin/assessment-management",
+  "/admin/content-management",
+  "/admin/support",
+  "/admin/user-management",
 ];
 
 // Install Service Worker & Pre-cache
