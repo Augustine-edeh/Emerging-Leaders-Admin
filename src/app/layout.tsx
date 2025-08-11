@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
+import RegisterSWClient from "./register-sw-client";
+
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
@@ -11,6 +13,16 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Emerging Leaders - Admin",
   description: "Admin dashboard for Emerging Leaders",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png" }],
+  },
+  manifest: "/site.webmanifest",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -21,6 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable} ${poppins.className}`}>
+        <RegisterSWClient /> {/* Client code runs here */}
         {children}
       </body>
     </html>
