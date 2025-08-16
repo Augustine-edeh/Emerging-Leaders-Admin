@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import UserAvatar from "@/components/Avatar";
 import { ChevronDown } from "lucide-react";
 
@@ -21,14 +21,16 @@ const DropdownMenuDemo = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        {/* <Button variant="outline">Open</Button> */}
-        <>
+        <button className="flex items-center gap-1 rounded-md outline-none">
           <UserAvatar />
-          {/* <ChevronDown color="#B1B1AE" /> */}
-        </>
+          <ChevronDown className="w-4 h-4 text-muted-foreground" />
+        </button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="w-56 h-screen" align="start">
+      <DropdownMenuContent
+        className="w-56 max-h-80 overflow-y-auto"
+        align="start"
+      >
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuGroup>
           <DropdownMenuItem>
