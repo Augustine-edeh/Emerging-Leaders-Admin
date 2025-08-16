@@ -1,5 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import UserAvatar from "@/components/Avatar";
+import UserAvatarProfile from "@/components/admin/header/UserAvatarProfile";
 
 import Image from "next/image";
 import React from "react";
@@ -21,8 +22,10 @@ const adminHeader = () => {
       <Separator orientation="vertical" />
 
       <div className="flex items-center gap-2">
-        <UserAvatar />
-        <ChevronDown color="#B1B1AE" />
+        {/* <UserAvatar />
+        <ChevronDown color="#B1B1AE" /> */}
+
+        <UserAvatarProfile />
       </div>
     </header>
   );
