@@ -28,7 +28,7 @@ const DropdownMenuDemo = () => {
         <button className="flex items-center gap-1 rounded-md outline-none">
           <UserAvatar />
           <ChevronDown
-            className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${
+            className={`size-4 text-muted-foreground transition-transform duration-200 ${
               open ? "rotate-180" : "rotate-0"
             }`}
           />
@@ -58,7 +58,9 @@ const DropdownMenuDemo = () => {
             <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
+
         <DropdownMenuSeparator />
+
         <DropdownMenuGroup>
           <DropdownMenuItem>Team</DropdownMenuItem>
           <DropdownMenuSub>
@@ -77,11 +79,15 @@ const DropdownMenuDemo = () => {
             <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
+
         <DropdownMenuSeparator />
+
         <DropdownMenuItem>GitHub</DropdownMenuItem>
         <DropdownMenuItem>Support</DropdownMenuItem>
         <DropdownMenuItem disabled>API</DropdownMenuItem>
+
         <DropdownMenuSeparator />
+
         <DropdownMenuItem>
           Log out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
