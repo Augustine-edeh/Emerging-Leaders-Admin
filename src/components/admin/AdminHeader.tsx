@@ -1,12 +1,12 @@
 import { Separator } from "@/components/ui/separator";
 import UserAvatar from "@/components/Avatar";
-import UserAvatarProfile from "@/components/admin/header/UserAvatarProfile";
+import UserMenu from "@/components/admin/header/UserMenu";
 
 import Image from "next/image";
 import React from "react";
 import { ChevronDown } from "lucide-react";
 
-const adminHeader = () => {
+const AdminHeader = () => {
   return (
     <header className="flex justify-end items-center gap-2 px-8 py-6 w-full bg-white left-auto">
       <div className="size-7 relative bg-secondary-50 yellow-200 rounded-full">
@@ -25,10 +25,10 @@ const adminHeader = () => {
         {/* <UserAvatar />
         <ChevronDown color="#B1B1AE" /> */}
 
-        <UserAvatarProfile />
+        <UserMenu />
       </div>
     </header>
   );
 };
 
-export default adminHeader;
+export default AdminHeader;

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import UserAvatar from "@/components/Avatar";
 import { ChevronDown } from "lucide-react";
+// import { userMenuItems } from "@/constants/userMenuItems"; NOTE: ensure to extract all menu-items into config file
 
 import {
   DropdownMenu,
@@ -19,13 +20,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const DropdownMenuDemo = () => {
+const UserMenu = () => {
   const [open, setOpen] = useState(false);
 
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
-        <button className="flex items-center gap-1 rounded-md outline-none">
+        <button
+          aria-label="User menu"
+          className="flex items-center gap-1 rounded-md outline-none"
+        >
           <UserAvatar />
           <ChevronDown
             className={`size-4 text-muted-foreground transition-transform duration-200 ${
@@ -97,4 +101,4 @@ const DropdownMenuDemo = () => {
   );
 };
 
-export default DropdownMenuDemo;
+export default UserMenu;
