@@ -96,12 +96,11 @@
   --primary-900: #3a0922;
 
   --secondary-50: #f9f9f7;
-
   --text-secondary: #928f8b;
 
   --error: #e81313;
   --error-300: #ff9594;
-  --border-secondary: #ff9594;
+  --border-secondary: #e5e7eb;
   --border-gray-300: #e5e7eb;
 
   --primary-foreground: oklch(0.985 0 0);
