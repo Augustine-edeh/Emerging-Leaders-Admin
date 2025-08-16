@@ -1,4 +1,6 @@
-// import { Button } from "@/components/ui/button";
+"use client";
+
+import { useState } from "react";
 import UserAvatar from "@/components/Avatar";
 import { ChevronDown } from "lucide-react";
 
@@ -18,12 +20,18 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const DropdownMenuDemo = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <DropdownMenu>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
         <button className="flex items-center gap-1 rounded-md outline-none">
           <UserAvatar />
-          <ChevronDown className="w-4 h-4 text-muted-foreground" />
+          <ChevronDown
+            className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${
+              open ? "rotate-180" : "rotate-0"
+            }`}
+          />
         </button>
       </DropdownMenuTrigger>
 
