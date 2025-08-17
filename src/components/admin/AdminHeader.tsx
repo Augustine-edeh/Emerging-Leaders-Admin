@@ -1,10 +1,8 @@
 import { Separator } from "@/components/ui/separator";
-import UserAvatar from "@/components/Avatar";
 import UserMenu from "@/components/admin/header/UserMenu";
 
 import Image from "next/image";
 import React from "react";
-import { ChevronDown } from "lucide-react";
 
 const AdminHeader = () => {
   return (
@@ -22,9 +20,6 @@ const AdminHeader = () => {
       <Separator orientation="vertical" />
 
       <div className="flex items-center gap-2">
-        {/* <UserAvatar />
-        <ChevronDown color="#B1B1AE" /> */}
-
         <UserMenu />
       </div>
     </header>
