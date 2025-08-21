@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import UserAvatar from "@/components/Avatar";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const NotificationMenu = () => {
   const [open, setOpen] = useState(false);
@@ -29,7 +30,7 @@ const NotificationMenu = () => {
         className="w-[500px] flex flex-col h-screen p-0 mt-5 border-none rounded-none shadow-[0px_8px_30px_0px_#5F5E5E40]"
         align="start"
       >
-        <div className="flex justify-between items-center px-8 py-4">
+        <div className="flex justify-between items-center p-8 pt-4">
           <div>
             <DropdownMenuLabel className="px-0">
               Notifications
@@ -38,6 +39,7 @@ const NotificationMenu = () => {
               Stay up to date with your latest notifications
             </p>
           </div>
+
           <Button
             variant="ghost"
             size="icon"
@@ -48,7 +50,7 @@ const NotificationMenu = () => {
           </Button>
         </div>
 
-        <DropdownMenuGroup className="mt-10">
+        <DropdownMenuGroup className="">
           <div className="flex justify-between px-4 py-2 bg-secondary-50 text-primary">
             <div className="flex gap-2.5">
               All <span className="text-black">Unread(0)</span>
@@ -60,27 +62,107 @@ const NotificationMenu = () => {
           </div>
         </DropdownMenuGroup>
 
-        <DropdownMenuGroup className="flex-1 px-6">
-          <h5 className="text-muted-foreground">Today</h5>
+        <ScrollArea className="flex-1 px-6 min-h-0 bg-red-500 space-y-4 pt-5 pb-10">
+          <DropdownMenuGroup>
+            <h5 className="text-muted-foreground">Today</h5>
 
-          <div className="flex items-center gap-4">
-            <UserAvatar className="size-10" />
-            <div>
-              <p>Demi Wikinson accepted admin invite</p>
-              <p className="text-muted-foreground">Jun 16, 2025 | 09:23 am</p>
-            </div>
-          </div>
+            <DropdownMenuItem className="flex items-center gap-4">
+              <UserAvatar className="size-10" />
+              <div>
+                <p>Demi Wikinson accepted admin invite</p>
+                <p className="text-muted-foreground">Jun 16, 2025 | 09:23 am</p>
+              </div>
+            </DropdownMenuItem>
 
-          <div className="flex items-center gap-4">
-            <UserAvatar className="size-10" />
-            <div>
-              <p>You sent an admin invite to Demi wikinson</p>
-              <p className="text-muted-foreground">Jun 16, 2025 | 09:23 am</p>
-            </div>
-          </div>
+            <DropdownMenuItem className="flex items-center gap-4">
+              <UserAvatar />
+              <div>
+                <p>You sent an admin invite to Demi wikinson</p>
+                <p className="text-muted-foreground">Jun 16, 2025 | 09:23 am</p>
+              </div>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
 
-          <h5 className="text-muted-foreground">Yesterday</h5>
-        </DropdownMenuGroup>
+          <DropdownMenuGroup>
+            <h5 className="text-muted-foreground">Yesterday</h5>
+
+            <DropdownMenuItem className="flex items-center gap-4">
+              <UserAvatar className="size-10" />
+              <div>
+                <p>Demi Wikinson accepted admin invite</p>
+                <p className="text-muted-foreground">Jun 16, 2025 | 09:23 am</p>
+              </div>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem className="flex items-center gap-4">
+              <UserAvatar />
+              <div>
+                <p>You sent an admin invite to Demi wikinson</p>
+                <p className="text-muted-foreground">Jun 16, 2025 | 09:23 am</p>
+              </div>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+
+          <DropdownMenuGroup>
+            <h5 className="text-muted-foreground">Fri Jun 13, 2025</h5>
+
+            <DropdownMenuItem className="flex items-center gap-4">
+              <UserAvatar className="size-10" />
+              <div>
+                <p>Demi Wikinson accepted admin invite</p>
+                <p className="text-muted-foreground">Jun 16, 2025 | 09:23 am</p>
+              </div>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem className="flex items-center gap-4">
+              <UserAvatar />
+              <div>
+                <p>You sent an admin invite to Demi wikinson</p>
+                <p className="text-muted-foreground">Jun 16, 2025 | 09:23 am</p>
+              </div>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem className="flex items-center gap-4">
+              <UserAvatar />
+              <div>
+                <p>You sent an admin invite to Demi wikinson</p>
+                <p className="text-muted-foreground">Jun 16, 2025 | 09:23 am</p>
+              </div>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem className="flex items-center gap-4">
+              <UserAvatar />
+              <div>
+                <p>You sent an admin invite to Demi wikinson</p>
+                <p className="text-muted-foreground">Jun 16, 2025 | 09:23 am</p>
+              </div>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem className="flex items-center gap-4">
+              <UserAvatar />
+              <div>
+                <p>You sent an admin invite to Demi wikinson</p>
+                <p className="text-muted-foreground">Jun 16, 2025 | 09:23 am</p>
+              </div>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem className="flex items-center gap-4">
+              <UserAvatar />
+              <div>
+                <p>You sent an admin invite to Demi wikinson</p>
+                <p className="text-muted-foreground">Jun 16, 2025 | 09:23 am</p>
+              </div>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem className="flex items-center gap-4">
+              <UserAvatar />
+              <div>
+                <p>You sent an admin invite to Demi wikinson</p>
+                <p className="text-muted-foreground">Jun 16, 2025 | 09:23 am</p>
+              </div>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+        </ScrollArea>
       </DropdownMenuContent>
     </DropdownMenu>
   );
