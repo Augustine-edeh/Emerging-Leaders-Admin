@@ -70,6 +70,16 @@ const NotificationMenu = () => {
               <p className="text-muted-foreground">Jun 16, 2025 | 09:23 am</p>
             </div>
           </div>
+
+          <div className="flex items-center gap-4">
+            <UserAvatar className="size-10" />
+            <div>
+              <p>You sent an admin invite to Demi wikinson</p>
+              <p className="text-muted-foreground">Jun 16, 2025 | 09:23 am</p>
+            </div>
+          </div>
+
+          <h5 className="text-muted-foreground">Yesterday</h5>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
