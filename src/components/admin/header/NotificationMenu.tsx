@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import UserAvatar from "@/components/Avatar";
+import UserAvatar from "@/components/UserAvatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 const NotificationMenu = () => {
@@ -62,7 +62,7 @@ const NotificationMenu = () => {
           </div>
         </DropdownMenuGroup>
 
-        <ScrollArea className="flex-1 px-6 min-h-0 bg-red-500 space-y-4 pt-5 pb-10">
+        <ScrollArea className="flex-1 px-6 min-h-0 space-y-4 pt-5 pb-10">
           <DropdownMenuGroup>
             <h5 className="text-muted-foreground">Today</h5>
 

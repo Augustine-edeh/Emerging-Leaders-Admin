@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import UserAvatar from "@/components/Avatar";
+import UserAvatar from "@/components/UserAvatar";
 import { ChevronDown } from "lucide-react";
 
 import {
