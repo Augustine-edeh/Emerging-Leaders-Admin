@@ -1,12 +1,14 @@
+import BackButton from "@/components/admin/profile/BackButton";
 import { Button } from "@/components/ui/button";
 import UserAvatar from "@/components/UserAvatar";
-import { CircleChevronLeft, PencilLine } from "lucide-react";
+import { PencilLine } from "lucide-react";
 
 const ProfilePage = () => {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex gap-4">
-        <CircleChevronLeft className="text-primary" />
+        <BackButton />
+
         <div>
           <h3>My Profile</h3>
           <p>Your personal and professional details at a glance</p>
