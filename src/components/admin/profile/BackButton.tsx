@@ -12,8 +12,14 @@ const BackButton = () => {
   };
 
   return (
-    <Button variant="ghost" size="icon" onClick={handleBack}>
-      <CircleChevronLeft className="size-6 text-primary" />
+    <Button
+      variant="ghost"
+      size="icon"
+      onClick={handleBack}
+      aria-label="Go back"
+      title="Go back"
+    >
+      <CircleChevronLeft className="size-6 text-primary" aria-hidden="true" />
     </Button>
   );
 };
