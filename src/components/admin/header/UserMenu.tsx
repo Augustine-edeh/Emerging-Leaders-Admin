@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
+import Link from "next/link";
 
 const UserMenu = () => {
   const [open, setOpen] = useState(false);
@@ -38,22 +39,35 @@ const UserMenu = () => {
         align="end"
       >
         <DropdownMenuLabel className="sr-only">Profile Menu</DropdownMenuLabel>
-        <DropdownMenuGroup className="">
-          <DropdownMenuItem className="flex py-4 px-6">
+
+        {/* User Info */}
+        <DropdownMenuGroup>
+          <DropdownMenuItem className="flex py-4 px-6 cursor-default focus:bg-transparent">
             <UserAvatar />
             <div>
-              <h6>Kayode White</h6>
-              <p className="text-muted-foreground">kayode123@gmail.com</p>
+              <h6 className="font-medium">Kayode White</h6>
+              <p className="text-muted-foreground text-sm">
+                kayode123@gmail.com
+              </p>
             </div>
           </DropdownMenuItem>
         </DropdownMenuGroup>
+
         <DropdownMenuSeparator className="m-0" />
+
+        {/* Actions */}
         <DropdownMenuGroup>
-          <DropdownMenuItem className="py-4 px-6">
-            <Image src="/icons/profile.svg" alt="" width="18" height="18" />
-            View profile
+          {/* View Profile */}
+          <DropdownMenuItem asChild className="py-4 px-6">
+            <Link href="/admin/profile" className="flex items-center gap-2">
+              <Image src="/icons/profile.svg" alt="" width="18" height="18" />
+              View profile
+            </Link>
           </DropdownMenuItem>
+
           <DropdownMenuSeparator className="m-0" />
+
+          {/* Logout */}
           <DropdownMenuItem className="py-4 px-6">
             <Image src="/icons/logout.svg" alt="" width="18" height="18" />
             Log out
