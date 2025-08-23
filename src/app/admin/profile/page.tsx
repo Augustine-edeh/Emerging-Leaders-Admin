@@ -10,28 +10,33 @@ const ProfilePage = () => {
         <BackButton />
 
         <div>
-          <h3>My Profile</h3>
-          <p>Your personal and professional details at a glance</p>
+          <SectionTitle>My Profile</SectionTitle>
+
+          <p className="text-muted-foreground">
+            Your personal and professional details at a glance
+          </p>
         </div>
       </div>
 
-      <section className="flex items-center gap-4 bg-white px-6 py-3 rounded-lg">
-        <UserAvatar className="size-18" />
+      <section className="flex items-center gap-4 bg-white px-12 py-6 rounded-[12px]">
+        <UserAvatar className="size-19" />
         <div>
-          <h4>Kayode White</h4>
-          <p>Admin</p>
+          <SectionTitle>Kayode White</SectionTitle>
+
+          <p className="text-muted-foreground">Admin</p>
         </div>
       </section>
 
-      <section className="bg-white p-6 rounded-lg">
+      <section className="bg-white p-6 rounded-[12px]">
         <div className="flex items-center justify-between">
-          <h4>Personal Information</h4>
+          <SectionTitle>Personal Information</SectionTitle>
+
           <Button
-            variant={"outline"}
+            variant="outline"
             size="sm"
-            className="text-muted-foreground rounded-2xl"
+            className="flex items-center gap-3 !px-3 !py-4 rounded-[16px] text-sm font-medium text-gray-700 hover:bg-gray-100"
           >
-            <PencilLine />
+            <PencilLine className="size-4" />
             Edit
           </Button>
         </div>
@@ -40,7 +45,18 @@ const ProfilePage = () => {
       </section>
 
       <section className="bg-white p-6 rounded-lg">
-        <h4>Address</h4>
+        <div className="flex items-center justify-between">
+          <SectionTitle>Address</SectionTitle>
+
+          <Button
+            variant="outline"
+            size="sm"
+            className="flex items-center gap-3 !px-3 !py-4 rounded-[16px] text-sm font-medium text-gray-700 hover:bg-gray-100"
+          >
+            <PencilLine className="size-4" />
+            Edit
+          </Button>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
       </section>
@@ -49,3 +65,7 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
+
+export const SectionTitle = ({ children }: { children: React.ReactNode }) => (
+  <h4 className="font-semibold">{children}</h4>
+);
