@@ -1,3 +1,4 @@
+import AddressInfoForm from "@/components/admin/profile/AddressInfoForm";
 import BackButton from "@/components/admin/profile/BackButton";
 import PersonalInformationForm from "@/components/admin/profile/PersonalInformationForm";
 import { Button } from "@/components/ui/button";
@@ -31,9 +32,10 @@ const ProfilePage = () => {
           <div className="space-y-8"> */}
       {/* <section className="flex-1 min-h- h-full bg-red-500"> */}
       {/* <div className="flex-1 space-y-8"> */}
-      <ScrollArea className="min-h-0 bg-orange-500">
-        <section className="bg-white p-6 rounded-[12px]">
-          {/* <div className="flex items-center justify-between">
+      <ScrollArea className="flex-1 min-h-0 bg-orange-500">
+        <div className="space-y-6">
+          <section className="bg-white p-6 rounded-[12px]">
+            {/* <div className="flex items-center justify-between">
             <SectionTitle>Personal Information</SectionTitle>
 
             <Button
@@ -46,12 +48,12 @@ const ProfilePage = () => {
             </Button>
           </div> */}
 
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6"></div> */}
-          <PersonalInformationForm />
-        </section>
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6"></div> */}
+            <PersonalInformationForm />
+          </section>
 
-        <section className="bg-white p-6 rounded-lg">
-          <div className="flex items-center justify-between">
+          <section className="bg-white p-6 rounded-lg">
+            {/* <div className="flex items-center justify-between">
             <SectionTitle>Address</SectionTitle>
 
             <Button
@@ -62,10 +64,10 @@ const ProfilePage = () => {
               <PencilLine className="size-4" />
               Edit
             </Button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-        </section>
+          </div> */}
+            <AddressInfoForm />
+          </section>
+        </div>
       </ScrollArea>
       {/* </div> */}
 
