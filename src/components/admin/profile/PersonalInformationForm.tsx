@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { SectionTitle } from "@/app/admin/profile/page";
-import { Check, PencilLine, Save } from "lucide-react";
+import { Check, PencilLine, Save, X } from "lucide-react";
 import { useState } from "react";
 import clsx from "clsx";
 import { toast } from "sonner";
@@ -34,15 +34,15 @@ const formSchema = z.object({
 });
 
 const PersonalInformationForm = () => {
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      firstName: "John",
-      lastName: "Doe",
-      email: "johndoe@email.com",
-      phone: "08012345678",
+      firstName: "Kayode",
+      lastName: "White",
+      email: "kayodewhite@gmail.com",
+      phone: "(212) 555-1253",
     },
   });
 
@@ -69,46 +69,48 @@ const PersonalInformationForm = () => {
         <div className="flex items-center justify-between">
           <SectionTitle>Personal Information</SectionTitle>
 
-          <div className="flex items-center gap-2">
-            {isEditing && (
-              <Button
-                variant="ghost"
-                size="sm"
-                type="button"
-                className="text-gray-500 hover:text-gray-700"
-                onClick={() => {
-                  form.reset(); // reset to original values
-                  setIsEditing(false);
-                }}
-              >
-                Cancel
-              </Button>
-            )}
+          <div>
+            {isEditing ? (
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  type="button"
+                  className="text-red-500 hover:text-gray-700"
+                  onClick={() => {
+                    form.reset(); // reset to original values
+                    setIsEditing(false);
+                  }}
+                >
+                  <X />
+                  Cancel
+                </Button>
 
-            <Button
-              variant="outline"
-              size="sm"
-              className={clsx(
-                "flex items-center gap-3 !px-3 !py-4 rounded-[16px] text-sm font-medium text-muted-foreground hover:bg-gray-100",
-                isEditing && "bg-green-600 text-white hover:bg-green-700"
-              )}
-              type={isEditing ? "submit" : "button"}
-              onClick={() => {
-                if (!isEditing) setIsEditing(true);
-              }}
-            >
-              {isEditing ? (
-                <>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className={clsx(
+                    "flex items-center gap-3 !px-3 !py-4 rounded-[16px] text-sm font-medium",
+                    "bg-green-600  hover:bg-green-700 text-white hover:text-white"
+                  )}
+                  type="submit"
+                >
                   <Save className="size-4" />
                   Save
-                </>
-              ) : (
-                <>
-                  <PencilLine className="size-4" />
-                  Edit
-                </>
-              )}
-            </Button>
+                </Button>
+              </div>
+            ) : (
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex items-center gap-3 !px-3 !py-4 rounded-[16px] text-sm font-medium text-muted-foreground hover:bg-gray-100"
+                type="button"
+                onClick={() => setIsEditing(true)}
+              >
+                <PencilLine className="size-4" />
+                Edit
+              </Button>
+            )}
           </div>
         </div>
 
