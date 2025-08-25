@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 import RegisterSWClient from "./register-sw-client";
 
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body className={`${poppins.variable} ${poppins.className}`}>
         <RegisterSWClient /> {/* Client code runs here */}
         {children}
+        <Toaster richColors position="top-right" />
       </body>
     </html>
   );
