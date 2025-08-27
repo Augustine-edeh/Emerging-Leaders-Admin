@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { SectionTitle } from "@/app/admin/profile/page";
-import { Check, PencilLine, Save, X } from "lucide-react";
+import { Check, PencilLine } from "lucide-react";
 import { useState } from "react";
 import clsx from "clsx";
 import { toast } from "sonner";
@@ -84,21 +84,17 @@ const AddressInfoForm = () => {
                     setIsEditing(false);
                   }}
                 >
-                  <X />
                   Cancel
                 </Button>
 
                 <Button
-                  variant="outline"
                   size="sm"
                   className={clsx(
-                    "flex items-center gap-3 !px-3 !py-4 rounded-[16px] text-sm font-medium",
-                    "bg-green-600  hover:bg-green-700 text-white hover:text-white"
+                    "flex items-center gap-3 !px-3 !py-5 rounded-[16px] text-sm font-medium"
                   )}
                   type="submit"
                 >
-                  <Save className="size-4" />
-                  Save
+                  Save Changes
                 </Button>
               </div>
             ) : (

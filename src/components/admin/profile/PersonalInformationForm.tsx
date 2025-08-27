@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { SectionTitle } from "@/app/admin/profile/page";
-import { PencilLine, Save, X } from "lucide-react";
+import { PencilLine } from "lucide-react";
 import { useState } from "react";
 import clsx from "clsx";
 import { successToast } from "@/lib/toast";
@@ -46,6 +46,7 @@ const PersonalInformationForm = () => {
     },
   });
 
+  // TODO: remember to consolidate and unify styles universal toasts
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log("Submitted:", values);
     successToast("Saved successfully!", "Your changes have been updated.");
@@ -75,21 +76,17 @@ const PersonalInformationForm = () => {
                     setIsEditing(false);
                   }}
                 >
-                  <X />
                   Cancel
                 </Button>
 
                 <Button
-                  variant="outline"
                   size="sm"
                   className={clsx(
-                    "flex items-center gap-3 !px-3 !py-4 rounded-[16px] text-sm font-medium",
-                    "bg-green-600 hover:bg-green-700 text-white hover:text-white"
+                    "flex items-center gap-3 !px-3 !py-5 rounded-[16px] text-sm font-medium"
                   )}
                   type="submit"
                 >
-                  <Save className="size-4" />
-                  Save
+                  Save Changes
                 </Button>
               </div>
             ) : (
