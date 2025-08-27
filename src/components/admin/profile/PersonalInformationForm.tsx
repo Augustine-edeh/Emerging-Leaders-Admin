@@ -53,7 +53,7 @@ const PersonalInformationForm = () => {
   };
 
   const fieldStyle =
-    "w-full px-3 py-2 text-sm rounded-md border border-transparent focus:outline-none";
+    "w-full py-2 text-sm rounded-md border border-transparent focus:outline-none font-semibold";
 
   return (
     <Form {...form}>

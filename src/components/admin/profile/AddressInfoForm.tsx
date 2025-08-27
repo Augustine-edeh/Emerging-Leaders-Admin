@@ -61,6 +61,9 @@ const AddressInfoForm = () => {
     setIsEditing(false);
   };
 
+  const fieldStyle =
+    "w-full py-2 text-sm rounded-md border border-transparent focus:outline-none font-semibold";
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -122,7 +125,9 @@ const AddressInfoForm = () => {
                 <FormLabel className="text-muted-foreground">Country</FormLabel>
                 <FormControl>
                   {!isEditing ? (
-                    <p>{field.value}</p>
+                    <p className={clsx("border-b text-gray-700", fieldStyle)}>
+                      {field.value}
+                    </p>
                   ) : (
                     <Input {...field} placeholder="Enter your country" />
                   )}
@@ -143,7 +148,9 @@ const AddressInfoForm = () => {
                 </FormLabel>
                 <FormControl>
                   {!isEditing ? (
-                    <p>{field.value}</p>
+                    <p className={clsx("border-b text-gray-700", fieldStyle)}>
+                      {field.value}
+                    </p>
                   ) : (
                     <Input {...field} placeholder="Enter your town/city" />
                   )}
@@ -164,7 +171,9 @@ const AddressInfoForm = () => {
                 </FormLabel>
                 <FormControl>
                   {!isEditing ? (
-                    <p>{field.value}</p>
+                    <p className={clsx("border-b text-gray-700", fieldStyle)}>
+                      {field.value}
+                    </p>
                   ) : (
                     <Input {...field} placeholder="Enter your postal code" />
                   )}
