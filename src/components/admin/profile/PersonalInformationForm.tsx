@@ -19,6 +19,7 @@ import { Check, PencilLine, Save, X } from "lucide-react";
 import { useState } from "react";
 import clsx from "clsx";
 import { toast } from "sonner";
+import { successToast } from "@/lib/toast";
 
 const formSchema = z.object({
   firstName: z
@@ -48,18 +49,20 @@ const PersonalInformationForm = () => {
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log("Submitted:", values);
-    toast.success("Changes Saved Successfully.", {
-      description: "All set! Your information has been updated.",
-      closeButton: true,
-      duration: 4000,
-      style: {
-        background: "#ffff",
-        border: "1px solid #dbd8d8",
-        color: "black",
-        borderRadius: "10px",
-      },
-      icon: <Check size={18} className="text-green-600" />,
-    });
+    // toast.success("Changes Saved Successfully.", {
+    //   description: "All set! Your information has been updated.",
+    //   closeButton: true,
+    //   duration: 4000,
+    //   style: {
+    //     background: "#ffff",
+    //     border: "1px solid #dbd8d8",
+    //     color: "black",
+    //     borderRadius: "10px",
+    //   },
+    //   icon: <Check size={18} className="text-green-600" />,
+    // });
+
+    successToast("Saved successfully!", "Your changes have been updated.");
     setIsEditing(false);
   };
 
