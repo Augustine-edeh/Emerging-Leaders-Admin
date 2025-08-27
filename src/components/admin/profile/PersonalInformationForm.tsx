@@ -15,10 +15,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { SectionTitle } from "@/app/admin/profile/page";
-import { Check, PencilLine, Save, X } from "lucide-react";
+import { PencilLine, Save, X } from "lucide-react";
 import { useState } from "react";
 import clsx from "clsx";
-import { toast } from "sonner";
 import { successToast } from "@/lib/toast";
 
 const formSchema = z.object({
@@ -49,26 +48,17 @@ const PersonalInformationForm = () => {
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log("Submitted:", values);
-    // toast.success("Changes Saved Successfully.", {
-    //   description: "All set! Your information has been updated.",
-    //   closeButton: true,
-    //   duration: 4000,
-    //   style: {
-    //     background: "#ffff",
-    //     border: "1px solid #dbd8d8",
-    //     color: "black",
-    //     borderRadius: "10px",
-    //   },
-    //   icon: <Check size={18} className="text-green-600" />,
-    // });
-
     successToast("Saved successfully!", "Your changes have been updated.");
     setIsEditing(false);
   };
 
+  const fieldStyle =
+    "w-full px-3 py-2 text-sm rounded-md border border-transparent focus:outline-none";
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        {/* Header + Edit/Save/Cancel buttons */}
         <div className="flex items-center justify-between">
           <SectionTitle>Personal Information</SectionTitle>
 
@@ -94,7 +84,7 @@ const PersonalInformationForm = () => {
                   size="sm"
                   className={clsx(
                     "flex items-center gap-3 !px-3 !py-4 rounded-[16px] text-sm font-medium",
-                    "bg-green-600  hover:bg-green-700 text-white hover:text-white"
+                    "bg-green-600 hover:bg-green-700 text-white hover:text-white"
                   )}
                   type="submit"
                 >
@@ -117,7 +107,8 @@ const PersonalInformationForm = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Form Fields */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6 max-w-lg">
           {/* First Name */}
           <FormField
             control={form.control}
@@ -128,14 +119,13 @@ const PersonalInformationForm = () => {
                   First Name
                 </FormLabel>
                 <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="Enter your first name"
-                    disabled={!isEditing}
-                    className={clsx(
-                      !isEditing && "cursor-not-allowed opacity-50"
-                    )}
-                  />
+                  {!isEditing ? (
+                    <p className={clsx("border-b text-gray-700", fieldStyle)}>
+                      {field.value}
+                    </p>
+                  ) : (
+                    <Input {...field} placeholder="Enter your first name" />
+                  )}
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -152,14 +142,13 @@ const PersonalInformationForm = () => {
                   Last Name
                 </FormLabel>
                 <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="Enter your last name"
-                    disabled={!isEditing}
-                    className={clsx(
-                      !isEditing && "cursor-not-allowed opacity-50"
-                    )}
-                  />
+                  {!isEditing ? (
+                    <p className={clsx("border-b text-gray-700", fieldStyle)}>
+                      {field.value}
+                    </p>
+                  ) : (
+                    <Input {...field} placeholder="Enter your last name" />
+                  )}
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -174,15 +163,17 @@ const PersonalInformationForm = () => {
               <FormItem>
                 <FormLabel className="text-muted-foreground">Email</FormLabel>
                 <FormControl>
-                  <Input
-                    {...field}
-                    type="email"
-                    placeholder="Enter your email"
-                    disabled={!isEditing}
-                    className={clsx(
-                      !isEditing && "cursor-not-allowed opacity-50"
-                    )}
-                  />
+                  {!isEditing ? (
+                    <p className={clsx("border-b text-gray-700", fieldStyle)}>
+                      {field.value}
+                    </p>
+                  ) : (
+                    <Input
+                      {...field}
+                      type="email"
+                      placeholder="Enter your email"
+                    />
+                  )}
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -199,14 +190,13 @@ const PersonalInformationForm = () => {
                   Phone Number
                 </FormLabel>
                 <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="Enter your phone number"
-                    disabled={!isEditing}
-                    className={clsx(
-                      !isEditing && "cursor-not-allowed opacity-50"
-                    )}
-                  />
+                  {!isEditing ? (
+                    <p className={clsx("border-b text-gray-700", fieldStyle)}>
+                      {field.value}
+                    </p>
+                  ) : (
+                    <Input {...field} placeholder="Enter your phone number" />
+                  )}
                 </FormControl>
                 <FormMessage />
               </FormItem>
