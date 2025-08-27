@@ -29,7 +29,7 @@ const formSchema = z.object({
     .min(2, { message: "Town/City must be at least 2 characters." }),
   postalCode: z
     .string()
-    .email({ message: "Postal code must be at least 2 characters." }),
+    .min(2, { message: "Postal code must be at least 2 characters." }),
 });
 
 const AddressInfoForm = () => {
@@ -65,7 +65,7 @@ const AddressInfoForm = () => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <div className="flex items-center justify-between">
-          <SectionTitle>Personal Information</SectionTitle>
+          <SectionTitle>Address Information</SectionTitle>
 
           <div>
             {isEditing ? (
@@ -112,49 +112,41 @@ const AddressInfoForm = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6 max-w-lg">
           {/* Country */}
           <FormField
             control={form.control}
             name="country"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-muted-foreground">
-                  First Name
-                </FormLabel>
+                <FormLabel className="text-muted-foreground">Country</FormLabel>
                 <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="Enter your your country"
-                    disabled={!isEditing}
-                    className={clsx(
-                      !isEditing && "cursor-not-allowed opacity-50"
-                    )}
-                  />
+                  {!isEditing ? (
+                    <p>{field.value}</p>
+                  ) : (
+                    <Input {...field} placeholder="Enter your country" />
+                  )}
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
 
-          {/* Town/City */}
+          {/* Town / City */}
           <FormField
             control={form.control}
             name="town_city"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-muted-foreground">
-                  Last Name
+                  Town / City
                 </FormLabel>
                 <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="Enter your town/city"
-                    disabled={!isEditing}
-                    className={clsx(
-                      !isEditing && "cursor-not-allowed opacity-50"
-                    )}
-                  />
+                  {!isEditing ? (
+                    <p>{field.value}</p>
+                  ) : (
+                    <Input {...field} placeholder="Enter your town/city" />
+                  )}
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -167,17 +159,15 @@ const AddressInfoForm = () => {
             name="postalCode"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-muted-foreground">Email</FormLabel>
+                <FormLabel className="text-muted-foreground">
+                  Postal Code
+                </FormLabel>
                 <FormControl>
-                  <Input
-                    {...field}
-                    type="email"
-                    placeholder="Enter your postal code"
-                    disabled={!isEditing}
-                    className={clsx(
-                      !isEditing && "cursor-not-allowed opacity-50"
-                    )}
-                  />
+                  {!isEditing ? (
+                    <p>{field.value}</p>
+                  ) : (
+                    <Input {...field} placeholder="Enter your postal code" />
+                  )}
                 </FormControl>
                 <FormMessage />
               </FormItem>
