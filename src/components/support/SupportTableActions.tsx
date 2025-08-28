@@ -6,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import { MoreVertical, Eye, CrossIcon, Trash } from "lucide-react";
+import { MoreVertical, Eye, TicketMinus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SupportTicket, SupportTicketStatus } from "@/types/types";
 // import { useState } from "react";
@@ -63,7 +63,7 @@ const SupportTableActions = ({
       <DropdownMenuContent align="end">
         <DropdownMenuItem
           onClick={() => handleView(supportTicket)}
-          className="flex flex-row items-center gap-2.5"
+          className="flex items-center gap-2.5"
         >
           <Eye />
           <p>View Ticket</p>
@@ -73,9 +73,9 @@ const SupportTableActions = ({
 
         <DropdownMenuItem
           onClick={() => handleCloseTicket(supportTicket)}
-          className="flex flex-row items-center gap-2.5"
+          className="flex items-center gap-2.5"
         >
-          <CrossIcon />
+          <TicketMinus />
           <p>Close Ticket</p>
         </DropdownMenuItem>
 
@@ -83,9 +83,9 @@ const SupportTableActions = ({
 
         <DropdownMenuItem
           onClick={() => handleDelete(supportTicket.ticketId)}
-          className="text-error flex flex-row items-center gap-2.5"
+          className="text-error flex items-center gap-2.5"
         >
-          <Trash className="text-error" />
+          <Trash2 className="text-error" />
           <p>Delete Ticket</p>
         </DropdownMenuItem>
       </DropdownMenuContent>
