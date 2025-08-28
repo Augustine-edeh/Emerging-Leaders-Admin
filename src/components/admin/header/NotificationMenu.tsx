@@ -27,7 +27,7 @@ const NotificationMenu = () => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
-        className="w-[500px] flex flex-col h-screen p-0 mt-5 border-none rounded-none shadow-[0px_8px_30px_0px_#5F5E5E40]"
+        className="w-full lg:w-[500px] flex flex-col h-screen p-0 mt-5 border-none rounded-none shadow-[0px_8px_30px_0px_#5F5E5E40]"
         align="start"
       >
         <div className="flex justify-between items-center p-8 pt-4">
