@@ -18,6 +18,7 @@ const BackButton = () => {
       onClick={handleBack}
       aria-label="Go back"
       title="Go back"
+      className="cursor-pointer"
     >
       <CircleChevronLeft className="size-6 text-primary" aria-hidden="true" />
     </Button>

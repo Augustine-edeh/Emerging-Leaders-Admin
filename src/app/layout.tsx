@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 import RegisterSWClient from "./register-sw-client";
 
@@ -27,14 +28,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`${poppins.variable} ${poppins.className}`}>
         <RegisterSWClient /> {/* Client code runs here */}
         {children}
+        <Toaster
+          position="top-right"
+          closeButton
+          toastOptions={{
+            classNames: {}, // remove global styling
+          }}
+        />
       </body>
     </html>
   );

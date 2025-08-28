@@ -48,6 +48,17 @@
 
   --color-error: var(--error);
   --color-error-300: var(--error-300);
+  --color-error-50: var(--error-50);
+  --color-error-75: var(--error-75);
+
+  --color-success: var(--success);
+  --color-success-50: var(--success-50);
+  --color-success-75: var(--success-75);
+
+  /* --success: #3da755;
+  --success-50: #e7f6ec;
+  --success-75: #b5e3c4; */
+
   --color-border-secondary: var(--border-secondary);
   --color-border-gray-300: var(--border-gray-300);
   --color-primary-foreground: var(--primary-foreground);
@@ -99,7 +110,14 @@
   --text-secondary: #928f8b;
 
   --error: #e81313;
+  --error-50: #fbeae9;
+  --error-75: #f2bcba;
   --error-300: #ff9594;
+
+  --success: #3da755;
+  --success-50: #e7f6ec;
+  --success-75: #b5e3c4;
+
   --border-secondary: #e5e7eb;
   --border-gray-300: #e5e7eb;
 

@@ -1,22 +1,29 @@
+"use client";
+
+import AddressInfoForm from "@/components/admin/profile/AddressInfoForm";
 import BackButton from "@/components/admin/profile/BackButton";
+import PersonalInformationForm from "@/components/admin/profile/PersonalInformationForm";
+import {
+  // showCustomErrorToast, NOTE: To be used  later during intergration onError for API calls
+  showCustomSuccessToast,
+} from "@/components/toast/customToast";
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import UserAvatar from "@/components/UserAvatar";
-import { PencilLine } from "lucide-react";
+import clsx from "clsx";
 
 const ProfilePage = () => {
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex gap-4">
+    <div className="flex flex-col gap-6 h-full">
+      <section className="flex gap-4">
         <BackButton />
-
         <div>
-          <SectionTitle>My Profile</SectionTitle>
-
+          <SectionTitle className="text-2xl">My Profile</SectionTitle>
           <p className="text-muted-foreground">
             Your personal and professional details at a glance
           </p>
         </div>
-      </div>
+      </section>
 
       <section className="flex items-center gap-4 bg-white px-12 py-6 rounded-[12px]">
         <UserAvatar className="size-19" />
@@ -27,45 +34,28 @@ const ProfilePage = () => {
         </div>
       </section>
 
-      <section className="bg-white p-6 rounded-[12px]">
-        <div className="flex items-center justify-between">
-          <SectionTitle>Personal Information</SectionTitle>
+      <ScrollArea className="flex-1 min-h-0">
+        <div className="space-y-6">
+          <section className="bg-white p-6 rounded-[12px]">
+            <PersonalInformationForm />
+          </section>
 
-          <Button
-            variant="outline"
-            size="sm"
-            className="flex items-center gap-3 !px-3 !py-4 rounded-[16px] text-sm font-medium text-gray-700 hover:bg-gray-100"
-          >
-            <PencilLine className="size-4" />
-            Edit
-          </Button>
+          <section className="bg-white p-6 rounded-lg">
+            <AddressInfoForm />
+          </section>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-      </section>
-
-      <section className="bg-white p-6 rounded-lg">
-        <div className="flex items-center justify-between">
-          <SectionTitle>Address</SectionTitle>
-
-          <Button
-            variant="outline"
-            size="sm"
-            className="flex items-center gap-3 !px-3 !py-4 rounded-[16px] text-sm font-medium text-gray-700 hover:bg-gray-100"
-          >
-            <PencilLine className="size-4" />
-            Edit
-          </Button>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-      </section>
+      </ScrollArea>
     </div>
   );
 };
 
 export default ProfilePage;
 
-export const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h4 className="font-semibold">{children}</h4>
+interface SectionTitleProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export const SectionTitle = ({ children, className }: SectionTitleProps) => (
+  <h4 className={clsx("font-semibold", className)}>{children}</h4>
 );
