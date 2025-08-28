@@ -18,7 +18,7 @@ import { SectionTitle } from "@/app/admin/profile/page";
 import { PencilLine } from "lucide-react";
 import { useState } from "react";
 import clsx from "clsx";
-import { successToast } from "@/lib/toast";
+import { showCustomSuccessToast } from "@/components/toast/ShowCustomErrorToast";
 
 const formSchema = z.object({
   firstName: z
@@ -42,14 +42,17 @@ const PersonalInformationForm = () => {
       firstName: "Kayode",
       lastName: "White",
       email: "kayodewhite@gmail.com",
-      phone: "(212) 555-1253",
+      phone: "2125551253",
     },
   });
 
   // TODO: remember to consolidate and unify styles universal toasts
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log("Submitted:", values);
-    successToast("Saved successfully!", "Your changes have been updated.");
+    showCustomSuccessToast(
+      "Saved successfully!",
+      "Your changes have been updated."
+    );
     setIsEditing(false);
   };
 
