@@ -6,18 +6,19 @@ import PersonalInformationForm from "@/components/admin/profile/PersonalInformat
 import {
   // showCustomErrorToast, NOTE: To be used  later during intergration onError for API calls
   showCustomSuccessToast,
-} from "@/components/toast/ShowCustomErrorToast";
+} from "@/components/toast/customToast";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import UserAvatar from "@/components/UserAvatar";
+import clsx from "clsx";
 
 const ProfilePage = () => {
   return (
-    <div className="flex flex-col gap-6 h-full bg-blue-400 p-1">
+    <div className="flex flex-col gap-6 h-full">
       <section className="flex gap-4">
         <BackButton />
         <div>
-          <SectionTitle>My Profile</SectionTitle>
+          <SectionTitle className="text-2xl">My Profile</SectionTitle>
           <p className="text-muted-foreground">
             Your personal and professional details at a glance
           </p>
@@ -62,6 +63,11 @@ const ProfilePage = () => {
 
 export default ProfilePage;
 
-export const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h4 className="font-semibold">{children}</h4>
+interface SectionTitleProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export const SectionTitle = ({ children, className }: SectionTitleProps) => (
+  <h4 className={clsx("font-semibold", className)}>{children}</h4>
 );

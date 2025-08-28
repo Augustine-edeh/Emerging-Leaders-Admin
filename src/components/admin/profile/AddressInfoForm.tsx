@@ -15,10 +15,13 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { SectionTitle } from "@/app/admin/profile/page";
-import { Check, PencilLine } from "lucide-react";
+import { LoaderCircle, PencilLine } from "lucide-react";
 import { useState } from "react";
 import clsx from "clsx";
-import { toast } from "sonner";
+import {
+  showCustomErrorToast,
+  showCustomSuccessToast,
+} from "@/components/toast/customToast";
 
 const formSchema = z.object({
   country: z
@@ -44,22 +47,26 @@ const AddressInfoForm = () => {
     },
   });
 
-  // TODO: remember to consolidate and unify styles universal toasts
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log("Submitted:", values);
-    toast.success("Changes Saved Successfully.", {
-      description: "All set! Your information has been updated.",
-      closeButton: true,
-      duration: 4000,
-      style: {
-        background: "#ffff",
-        border: "1px solid #dbd8d8",
-        color: "black",
-        borderRadius: "10px",
-      },
-      icon: <Check size={18} className="text-green-600" />,
-    });
-    setIsEditing(false);
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      console.log("Submitted:", values); // TODO: remember to remove after integration
+
+      // NOTE: simulating the save action
+      await new Promise((res) => setTimeout(res, 1500));
+
+      showCustomSuccessToast(
+        "Changes Saved successfully.",
+        "All set! Your information has been updated."
+      );
+      setIsEditing(false);
+    } catch (err) {
+      console.error("Error while saving profile:", err); // log for debugging
+
+      showCustomErrorToast(
+        "Failed to Update Changes.",
+        "We couldn't update your information. Please try again later."
+      );
+    }
   };
 
   const fieldStyle =
@@ -88,13 +95,21 @@ const AddressInfoForm = () => {
                 </Button>
 
                 <Button
-                  size="sm"
-                  className={clsx(
-                    "flex items-center gap-3 !px-3 !py-5 rounded-[16px] text-sm font-medium"
-                  )}
                   type="submit"
+                  disabled={
+                    !form.formState.isDirty ||
+                    !form.formState.isValid ||
+                    form.formState.isSubmitting
+                  }
                 >
-                  Save Changes
+                  {form.formState.isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      <LoaderCircle className="h-4 w-4 animate-spin" />
+                      Saving...
+                    </span>
+                  ) : (
+                    "Save Changes"
+                  )}
                 </Button>
               </div>
             ) : (
