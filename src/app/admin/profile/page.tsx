@@ -1,6 +1,13 @@
+"use client";
+
 import AddressInfoForm from "@/components/admin/profile/AddressInfoForm";
 import BackButton from "@/components/admin/profile/BackButton";
 import PersonalInformationForm from "@/components/admin/profile/PersonalInformationForm";
+import {
+  // showCustomErrorToast, NOTE: To be used  later during intergration onError for API calls
+  showCustomSuccessToast,
+} from "@/components/toast/ShowCustomErrorToast";
+import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import UserAvatar from "@/components/UserAvatar";
 
@@ -15,6 +22,18 @@ const ProfilePage = () => {
             Your personal and professional details at a glance
           </p>
         </div>
+
+        <Button
+          onClick={() =>
+            showCustomSuccessToast(
+              "!Failed to Update Changes.",
+              "We couldn't update your information. Please try again later."
+            )
+          }
+          className="px-4 py-2 bg-red-600 text-white rounded-lg ml-auto self-center"
+        >
+          Show Error Toast
+        </Button>
       </section>
 
       <section className="flex items-center gap-4 bg-white px-12 py-6 rounded-[12px]">
