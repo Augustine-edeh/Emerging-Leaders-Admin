@@ -28,15 +28,37 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`${poppins.variable} ${poppins.className}`}>
         <RegisterSWClient /> {/* Client code runs here */}
         {children}
-        <Toaster richColors position="top-right" />
+        {/* <Toaster
+          position="top-right"
+          closeButton
+          toastOptions={{
+            classNames: {
+              toast:
+                "bg-white border border-l-2 border-l-error border-gray-200 shadow-lg rounded-2xl flex items-center justify-between gap-4 p-4 mt-14 mr-5",
+              title: "text-gray-900 font-semibold",
+              description: "text-red-600 text-sm",
+              actionButton:
+                "bg-blue-600 text-white px-3 py-1 rounded-lg hover:bg-blue-700 transition",
+              cancelButton:
+                "bg-gray-100 text-gray-600 px-3 py-1 rounded-lg hover:bg-gray-200",
+              closeButton:
+                "ml-auto self-center text-gray-400 hover:text-gray-600 transition",
+            },
+          }}
+        /> */}
+        <Toaster
+          position="top-right"
+          closeButton
+          toastOptions={{
+            classNames: {}, // remove global styling
+          }}
+        />
       </body>
     </html>
   );
