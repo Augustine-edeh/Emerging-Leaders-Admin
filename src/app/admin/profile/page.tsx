@@ -23,18 +23,6 @@ const ProfilePage = () => {
             Your personal and professional details at a glance
           </p>
         </div>
-
-        <Button
-          onClick={() =>
-            showCustomSuccessToast(
-              "!Failed to Update Changes.",
-              "We couldn't update your information. Please try again later."
-            )
-          }
-          className="px-4 py-2 bg-red-600 text-white rounded-lg ml-auto self-center"
-        >
-          Show Error Toast
-        </Button>
       </section>
 
       <section className="flex items-center gap-4 bg-white px-12 py-6 rounded-[12px]">
