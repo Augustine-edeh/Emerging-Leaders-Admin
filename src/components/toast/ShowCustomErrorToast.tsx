@@ -1,34 +1,50 @@
 "use client";
 
 import { toast } from "sonner";
-import { X, CircleCheck } from "lucide-react";
+import { X, Check } from "lucide-react";
+import { Button } from "../ui/button";
 
-export function showCustomErrorToast(message: string) {
+export function showCustomErrorToast(message: string, description?: string) {
   toast.custom(
     (t) => (
-      <div className="flex items-center border rounded-xl shadow-lg p-4 w-[380px] bg-white">
+      // bg-white border border-l-2 border-l-error border-gray-200 shadow-lg rounded-2xl flex items-center justify-between gap-4 p-4 mt-14 mr-5
+
+      <div className="relative flex items-center w-[400px] mt-10 mr-5 bg-white shadow-lg rounded-2xl border border-gray-200 p-4">
+        <div className="absolute -left-[0.3px] h-full rounded-l-full w-1.5 bg-error" />
+
+        {/* <div className="flex items-center gap-2 flex-1"> */}
         {/* Error Icon Container */}
-        <div className="grid place-items-center size-10 rounded-xl border border-error-75 bg-error-50">
-          <CircleCheck className="text-white bg-error rounded-full" size={22} />
+        <div className="grid place-items-center self-start size-6 rounded-[8px] bg-error-50 border border-error-75 mr-2">
+          <div className="grid place-items-center size-3 p-[1px]  rounded-full bg-error">
+            <Check className="text-white size-full" strokeWidth={2} />
+          </div>
         </div>
 
         {/* Error Message */}
-        <div className="flex-1 text-sm text-red-800 ml-3">{message}</div>
+        <div>
+          <div className="flex-1 text-sm  font-semibold">{message}</div>
+          {description && (
+            <p className="text-xs text-muted-foreground mt-1">{description}</p>
+          )}
+        </div>
+        {/* </div> */}
 
         {/* Vertical Separator */}
-        <div className="w-[1px] h-6 bg-red-300 mx-3" />
+        <div className="h-10 w-[1px] bg-gray-200 mx-2" />
 
         {/* Close Button */}
-        <button
+        <Button
           onClick={() => toast.dismiss(t)}
-          className="flex items-center justify-center h-7 w-7 rounded-full bg-red-100 hover:bg-red-200 transition-colors"
+          variant="ghost"
+          size="icon"
+          className="flex items-center justify-center self-start rounded-full  transition-colors"
         >
-          <X className="text-red-600" size={16} />
-        </button>
+          <X className="text-black text-2xl" size={16} />
+        </Button>
       </div>
     ),
     {
-      duration: 5000, // auto dismiss in 5s
+      duration: 4000, // auto dismiss in 4s
     }
   );
 }
