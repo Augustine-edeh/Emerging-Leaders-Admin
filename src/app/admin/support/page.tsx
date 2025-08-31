@@ -11,6 +11,7 @@ import { useState } from "react";
 import CloseTicketModal from "@/components/support/CloseTicketModal";
 import DeleteTicketModal from "@/components/support/DeleteTicketModal";
 import ViewTicketModal from "@/components/support/ViewTicketModal";
+import { supportCount } from "@/constants/supportCount";
 
 const SupportManagementPage = () => {
   const [category, setCategory] = useState<SupportTicketStatus>(
@@ -22,29 +23,6 @@ const SupportManagementPage = () => {
   );
   const [openDeleteTicket, setOpenDeleteTicket] = useState(false);
   const [openViewTicket, setOpenViewTicket] = useState(false);
-
-  const supportCount = [
-    {
-      id: 1,
-      title: "Total complaints",
-      count: 520,
-    },
-    {
-      id: 2,
-      title: "Resolved complaints",
-      count: 380,
-    },
-    {
-      id: 3,
-      title: "Pending complaints",
-      count: 92,
-    },
-    {
-      id: 4,
-      title: "In progress complaints",
-      count: 13,
-    },
-  ];
 
   return (
     <div className="flex-1 flex flex-col gap-8 min-h-0">
