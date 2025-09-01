@@ -4,27 +4,7 @@ import { ListFilter, Search } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import FooterBar from "@/components/admin/FooterBar";
 import MetricsCard from "@/components/admin/analytics/MetricsCard";
-
-const metricsTokekns = [
-  {
-    title: "Total Users",
-    count: 0,
-    percentage: 0,
-    description: "no record yet",
-  },
-  {
-    title: "New Users",
-    count: 0,
-    percentage: 0,
-    description: "no record yet",
-  },
-  {
-    title: "Active Users",
-    count: 0,
-    percentage: 0,
-    description: "no record yet",
-  },
-];
+import { metricsTokekns } from "@/data/metricsTokens";
 
 const AnalyticsPage = () => {
   return (
