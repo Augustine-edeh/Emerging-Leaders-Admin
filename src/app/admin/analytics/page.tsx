@@ -5,10 +5,11 @@ import { Label } from "@/components/ui/label";
 import FooterBar from "@/components/admin/FooterBar";
 import MetricsCard from "@/components/admin/analytics/MetricsCard";
 import { metricsTokekns } from "@/data/metricsTokens";
+import TabsDemo from "@/components/admin/analytics/TabsDemo";
 
 const AnalyticsPage = () => {
   return (
-    <div className="flex-1 flex flex-col gap-8 min-h-0">
+    <div className="flex-1 min-h-0 flex flex-col gap-8">
       <section className="flex justify-between items-center">
         <div>
           <h1 className="text-2xl font-bold">Welcome back, Martins</h1>
@@ -25,7 +26,7 @@ const AnalyticsPage = () => {
       </section>
 
       <section className="flex-1 min-h-0 flex flex-col rounded-xl border border-border-secondary bg-white shadow-2xs">
-        <div className="flex justify-between items-center px-0 lg:px-6 py-3">
+        {/* <div className="flex justify-between items-center px-0 lg:px-6 py-3">
           <h4 className="">Analytics List</h4>
 
           <div className="flex items-stretch gap-4 px-0 lg:px-6 py-3">
@@ -54,10 +55,12 @@ const AnalyticsPage = () => {
 
         <div className="flex-1 lex min-h-0 rounded-xl bg-white border border-border-secondary p-5">
           <ContentManagementTable />
-        </div>
+        </div> */}
+
+        <TabsDemo />
       </section>
 
-      <FooterBar />
+      {/* <FooterBar /> */}
     </div>
   );
 };
