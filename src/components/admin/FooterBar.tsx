@@ -3,7 +3,7 @@ import { ChevronDown } from "lucide-react";
 
 const FooterBar = () => {
   return (
-    <footer className=" flex justify-between ">
+    <footer className="flex justify-between bg-red-400">
       <div className="flex items-center gap-1">
         <span>show </span>
 

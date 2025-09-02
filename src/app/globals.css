@@ -55,9 +55,7 @@
   --color-success-50: var(--success-50);
   --color-success-75: var(--success-75);
 
-  /* --success: #3da755;
-  --success-50: #e7f6ec;
-  --success-75: #b5e3c4; */
+  --border-secondary-600: var(--border-secondary-600);
 
   --color-border-secondary: var(--border-secondary);
   --color-border-gray-300: var(--border-gray-300);
@@ -119,6 +117,8 @@
   --success-75: #b5e3c4;
 
   --border-secondary: #e5e7eb;
+  --border-secondary-600: #c8c8c4;
+
   --border-gray-300: #e5e7eb;
 
   --primary-foreground: oklch(0.985 0 0);

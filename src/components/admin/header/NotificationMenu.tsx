@@ -27,10 +27,10 @@ const NotificationMenu = () => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
-        className="w-[500px] flex flex-col h-screen p-0 mt-5 border-none rounded-none shadow-[0px_8px_30px_0px_#5F5E5E40]"
+        className="w-full lg:w-[500px] flex flex-col h-screen p-0 mt-5 border-none rounded-none shadow-[0px_8px_30px_0px_#5F5E5E40]"
         align="start"
       >
-        <div className="flex justify-between items-center p-8 pt-4">
+        <div className="flex justify-between items-center p-8 lg:pt-4">
           <div>
             <DropdownMenuLabel className="px-0">
               Notifications
@@ -43,7 +43,7 @@ const NotificationMenu = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="size-11 rounded-[12px] shadow-[0px_-3px_64px_0px_#0000001A]"
+            className="size-11 absolute top-5 right-2 rounded-[12px] shadow-[0px_-3px_64px_0px_#0000001A]"
             onClick={() => setOpen(false)}
           >
             <X className="size-4 text-primary" />

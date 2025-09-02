@@ -11,6 +11,7 @@ import { useState } from "react";
 import CloseTicketModal from "@/components/support/CloseTicketModal";
 import DeleteTicketModal from "@/components/support/DeleteTicketModal";
 import ViewTicketModal from "@/components/support/ViewTicketModal";
+import { supportCount } from "@/constants/supportCount";
 
 const SupportManagementPage = () => {
   const [category, setCategory] = useState<SupportTicketStatus>(
@@ -23,43 +24,24 @@ const SupportManagementPage = () => {
   const [openDeleteTicket, setOpenDeleteTicket] = useState(false);
   const [openViewTicket, setOpenViewTicket] = useState(false);
 
-  const supportCount = [
-    {
-      id: 1,
-      title: "Total complaints",
-      count: 100,
-    },
-    {
-      id: 2,
-      title: "Resolved complaints",
-      count: 50,
-    },
-    {
-      id: 3,
-      title: "Pending complaints",
-      count: 20,
-    },
-    {
-      id: 4,
-      title: "In progress complaints",
-      count: 30,
-    },
-  ];
-
   return (
     <div className="flex-1 flex flex-col gap-8 min-h-0">
       <section className="flex justify-between items-center">
         <div>
           <h1 className="text-2xl font-bold">Support Ticket</h1>
-          <p className="text-foreground">
-            All submitted issues and inquiries in one place
+          <p className="text-muted-foreground">
+            All submitted issues and inquiries in one place.
           </p>
         </div>
       </section>
 
-      <section className="flex flex-row gap-4">
-        {supportCount.map((item, index) => (
-          <SupportCountCard key={index} title={item.title} count={item.count} />
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {supportCount.map((item) => (
+          <SupportCountCard
+            key={item.id}
+            title={item.title}
+            count={item.count}
+          />
         ))}
       </section>
 
@@ -90,7 +72,8 @@ const SupportManagementPage = () => {
           </div>
         </div>
 
-        <div className="flex-1 flex h-[220px] rounded-xl bg-white border border-border-gray-300 p-5">
+        {/* <div className="flex-1 flex h-[220px] rounded-xl bg-white border border-border-gray-300 p-5"> */}
+        <div className="flex-1 overflow-auto rounded-xl bg-white border border-border-gray-300 p-5">
           <SupportManagementTable
             category={category}
             setOpenCloseTicket={setOpenCloseTicket}

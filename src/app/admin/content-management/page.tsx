@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import ContentManagementTable from "@/components/ContentManagementTable";
 import { ListFilter, Search } from "lucide-react";
 import { Label } from "@/components/ui/label";
+import FooterBar from "@/components/admin/FooterBar";
 
 const ContentManagementPage = () => {
   return (
@@ -45,10 +46,12 @@ const ContentManagementPage = () => {
           </div>
         </div>
 
-        <div className="flex-1 flex min-h-0 rounded-xl bg-white border border-border-secondary p-5">
+        <div className="flex-1 lex min-h-0 rounded-xl bg-white border border-border-secondary p-5">
           <ContentManagementTable />
         </div>
       </section>
+
+      <FooterBar />
     </div>
   );
 };

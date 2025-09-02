@@ -28,7 +28,7 @@ interface Invoice {
 
 // const pageSize = 10;
 
-function ContentManagementTable() {
+const ContentManagementTable = () => {
   const [invoices, setInvoices] = useState<Invoice[]>([]);
   // const [currentPage, setCurrentPage] = useState(1);
 
@@ -230,6 +230,6 @@ function ContentManagementTable() {
       */}
     </>
   );
-}
+};
 
 export default ContentManagementTable;
