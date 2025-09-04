@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import FooterBar from "@/components/admin/FooterBar";
 import MetricsCard from "@/components/admin/analytics/MetricsCard";
 import { metricsTokekns } from "@/data/metricsTokens";
-import TabsDemo from "@/components/admin/analytics/TabsDemo";
+import AnalyticsTabs from "@/components/admin/analytics/AnalyticsTabs";
 
 const AnalyticsPage = () => {
   return (
@@ -57,7 +57,7 @@ const AnalyticsPage = () => {
           <ContentManagementTable />
         </div> */}
 
-        <TabsDemo />
+        <AnalyticsTabs />
       </section>
 
       {/* <FooterBar /> */}

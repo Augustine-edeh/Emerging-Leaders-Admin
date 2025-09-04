@@ -4,7 +4,7 @@ import NotificationMenu from "./header/NotificationMenu";
 
 const AdminHeader = () => {
   return (
-    <header className="flex justify-end items-center gap-2 px-8 py-6 w-full bg-white left-auto">
+    <header className="flex justify-end items-center gap-2 px-8 py-3 w-full bg-white left-auto">
       <NotificationMenu />
 
       <Separator orientation="vertical" />
