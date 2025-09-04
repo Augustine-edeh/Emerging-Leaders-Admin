@@ -152,7 +152,7 @@ const UserRankingTable = () => {
       {true ? (
         <TableBody>
           <TableRow>
-            <TableCell colSpan={tableHeaders.length} className="p-0">
+            <TableCell colSpan={tableHeaders.length}>
               <NoUserRankingData />
             </TableCell>
           </TableRow>
