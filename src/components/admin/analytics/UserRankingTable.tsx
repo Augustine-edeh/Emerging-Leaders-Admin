@@ -10,12 +10,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import NoContentData from "@/components/admin/NoContentData";
 import TableActions from "@/components/admin/TableActions";
 import NoUserRankingData from "./NoUserRankingData";
 import clsx from "clsx";
@@ -28,11 +26,8 @@ interface Invoice {
   paymentMethod: string;
 }
 
-// const pageSize = 10;
-
 const UserRankingTable = () => {
   const [invoices, setInvoices] = useState<Invoice[]>([]);
-  // const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchInvoices = async () => {
@@ -46,20 +41,6 @@ const UserRankingTable = () => {
 
     fetchInvoices();
   }, []);
-
-  // const totalPages = Math.ceil(invoices.length / pageSize);
-  // const paginatedInvoices = invoices.slice(
-  //   (currentPage - 1) * pageSize,
-  //   currentPage * pageSize
-  // );
-
-  // const handlePrev = () => {
-  //   setCurrentPage((prev) => Math.max(prev - 1, 1));
-  // };
-
-  // const handleNext = () => {
-  //   setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-  // };
 
   const getStatusStyle = (status: string) => {
     switch (status.toLowerCase()) {
@@ -148,9 +129,6 @@ const UserRankingTable = () => {
   };
 
   return (
-    // <>
-    // {/* {invoices.length > 0 ? ( */}
-    // <ScrollArea className="h-full rounded-xl pr-2 w-full">
     <Table>
       <TableCaption className="sr-only">A list of all contents</TableCaption>
 
@@ -213,37 +191,6 @@ const UserRankingTable = () => {
         </TableBody>
       )}
     </Table>
-
-    // {/* //{" "} */}
-    // </ScrollArea>
-    // ) : (
-    //   <NoContentData />
-    // )}
-
-    // {/* Pagination Controls - Left commented intentionally */}
-    // {/*
-    // <div className="flex justify-between items-center pt-2">
-    //   <button
-    //     onClick={handlePrev}
-    //     disabled={currentPage === 1}
-    //     className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
-    //   >
-    //     Previous
-    //   </button>
-
-    //   <span className="text-sm text-gray-600">
-    //     Page {currentPage} of {totalPages}
-    //   </span>
-
-    //   <button
-    //     onClick={handleNext}
-    //     disabled={currentPage === totalPages}
-    //     className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
-    //   >
-    //     Next
-    //   </button>
-    // </div>
-    // </>
   );
 };
 
