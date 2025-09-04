@@ -17,6 +17,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import NoContentData from "@/components/admin/NoContentData";
 import TableActions from "@/components/admin/TableActions";
+import NoUserRankingData from "./NoUserRankingData";
+import clsx from "clsx";
 
 interface Invoice {
   id: number;
@@ -73,12 +75,11 @@ const UserRankingTable = () => {
   };
 
   const tableHeaders = [
-    "title",
-    "category",
-    "author",
-    "current status",
-    "file updates",
-    "action",
+    "ranking",
+    "name",
+    "projects completed",
+    "goals completed",
+    "consistensy streak",
   ];
 
   const documents = [
@@ -147,91 +148,102 @@ const UserRankingTable = () => {
   };
 
   return (
-    <>
-      {invoices.length > 0 ? (
-        <ScrollArea className="h-full rounded-md pr-2 w-full">
-          <Table>
-            <TableCaption className="sr-only">
-              A list of all contents
-            </TableCaption>
+    // <>
+    // {/* {invoices.length > 0 ? ( */}
+    // <ScrollArea className="h-full rounded-xl pr-2 w-full">
+    <Table>
+      <TableCaption className="sr-only">A list of all contents</TableCaption>
 
-            <TableHeader className="bg-secondary-50 text-black">
-              <TableRow>
-                {tableHeaders.map((title) => (
-                  <TableHead key={title} className="capitalize">
-                    {title}
-                  </TableHead>
-                ))}
-              </TableRow>
-            </TableHeader>
-            {true ? (
-              <div>No data Found</div>
-            ) : (
-              <TableBody>
-                {documents.map((content, index) => (
-                  <TableRow key={`${content.title}-${index}`}>
-                    <TableCell>{content.title}</TableCell>
-                    <TableCell>{content.category}</TableCell>
-                    <TableCell>{content.author}</TableCell>
-                    <TableCell>
-                      {/* NOTE: align badge internal padding to match design specs  */}
-                      <Badge
-                        style={{
-                          backgroundColor: getStatusStyle(content.status).bg,
-                          color: getStatusStyle(content.status).txt,
-                        }}
-                        className="text-sm font-medium px-2 py-1"
-                      >
-                        {content.status}
-                      </Badge>
-                    </TableCell>
+      <TableHeader className="text-black">
+        <TableRow>
+          {tableHeaders.map((title, index) => (
+            <TableHead
+              key={title}
+              className={clsx(
+                "capitalize bg-secondary-50",
+                index === 0 ? "rounded-tl-2xl" : "",
+                index === tableHeaders.length - 1 ? "rounded-tr-2xl" : ""
+              )}
+            >
+              {title}
+            </TableHead>
+          ))}
+        </TableRow>
+      </TableHeader>
 
-                    <TableCell className=" space-y-[4px]">
-                      <p className="text-text-secondary">
-                        {content.fileUpdate.type}:
-                      </p>
-                      <p>
-                        {content.fileUpdate.date} - {content.fileUpdate.time}
-                      </p>
-                    </TableCell>
-                    <TableCell>
-                      <TableActions />
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            )}
-          </Table>
-        </ScrollArea>
+      {true ? (
+        <TableBody>
+          <TableRow>
+            <TableCell colSpan={tableHeaders.length} className="p-0">
+              <NoUserRankingData />
+            </TableCell>
+          </TableRow>
+        </TableBody>
       ) : (
-        <NoContentData />
+        <TableBody>
+          {documents.map((content, index) => (
+            <TableRow key={`${content.title}-${index}`}>
+              <TableCell>{content.title}</TableCell>
+              <TableCell>{content.category}</TableCell>
+              <TableCell>{content.author}</TableCell>
+              <TableCell>
+                <Badge
+                  style={{
+                    backgroundColor: getStatusStyle(content.status).bg,
+                    color: getStatusStyle(content.status).txt,
+                  }}
+                  className="text-sm font-medium px-2 py-1"
+                >
+                  {content.status}
+                </Badge>
+              </TableCell>
+              <TableCell className="space-y-[4px]">
+                <p className="text-text-secondary">
+                  {content.fileUpdate.type}:
+                </p>
+                <p>
+                  {content.fileUpdate.date} - {content.fileUpdate.time}
+                </p>
+              </TableCell>
+              <TableCell>
+                <TableActions />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
       )}
+    </Table>
 
-      {/* Pagination Controls - Left commented intentionally */}
-      {/* 
-      <div className="flex justify-between items-center pt-2">
-        <button
-          onClick={handlePrev}
-          disabled={currentPage === 1}
-          className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
-        >
-          Previous
-        </button>
+    // {/* //{" "} */}
+    // </ScrollArea>
+    // ) : (
+    //   <NoContentData />
+    // )}
 
-        <span className="text-sm text-gray-600">
-          Page {currentPage} of {totalPages}
-        </span>
+    // {/* Pagination Controls - Left commented intentionally */}
+    // {/*
+    // <div className="flex justify-between items-center pt-2">
+    //   <button
+    //     onClick={handlePrev}
+    //     disabled={currentPage === 1}
+    //     className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+    //   >
+    //     Previous
+    //   </button>
 
-        <button
-          onClick={handleNext}
-          disabled={currentPage === totalPages}
-          className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
-        >
-          Next
-        </button>
-      </div> 
-      */}
-    </>
+    //   <span className="text-sm text-gray-600">
+    //     Page {currentPage} of {totalPages}
+    //   </span>
+
+    //   <button
+    //     onClick={handleNext}
+    //     disabled={currentPage === totalPages}
+    //     className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+    //   >
+    //     Next
+    //   </button>
+    // </div>
+    // </>
   );
 };
 
