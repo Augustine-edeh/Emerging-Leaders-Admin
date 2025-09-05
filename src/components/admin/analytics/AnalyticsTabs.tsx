@@ -55,10 +55,7 @@ const AnalyticsTabs = () => {
       </TabsContent>
 
       {/* User Ranking Tab */}
-      <TabsContent
-        value="user-ranking"
-        className="flex-1 min-h-0 h-full bg-blue-600 p-1"
-      >
+      <TabsContent value="user-ranking" className="flex-1 min-h-0 h-full">
         <Card className="h-full">
           <CardHeader className="flex justify-center items-center gap-[18px]">
             <Image
@@ -76,7 +73,7 @@ const AnalyticsTabs = () => {
             />
           </CardHeader>
 
-          <CardContent className="grid gap-6 bg-red-500  min-h-0 h-full">
+          <CardContent className="grid gap-6  min-h-0 h-full">
             {true ? <UserRankingTable /> : <ContentManagementTable />}
           </CardContent>
           {/* <CardFooter></CardFooter> */}
