@@ -1,4 +1,4 @@
-// import FooterBar from "@/components/admin/FooterBar";
+import FooterBar from "@/components/admin/FooterBar";
 import MetricsCard from "@/components/admin/analytics/MetricsCard";
 import { metricsTokekns } from "@/data/metricsTokens";
 import AnalyticsTabs from "@/components/admin/analytics/AnalyticsTabs";
@@ -21,11 +21,10 @@ const AnalyticsPage = () => {
         ))}
       </section>
 
-      <section className="flex-1 min-h-0 flex flex-col rounded-xl border border-border-secondary bg-white shadow-2xs">
+      <section className="min-h-0 flex-1 flex flex-col pb-10 rounded-xl border border-border-secondary bg-white shadow-2xs">
         <AnalyticsTabs />
+        <FooterBar className="my-8 bg-blue-500" />
       </section>
-
-      {/* <FooterBar /> */}
     </div>
   );
 };

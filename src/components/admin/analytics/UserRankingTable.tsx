@@ -151,7 +151,7 @@ const UserRankingTable = () => {
 
       {true ? (
         <TableBody>
-          <TableRow>
+          <TableRow className="hover:bg-transparent">
             <TableCell colSpan={tableHeaders.length}>
               <NoUserRankingData />
             </TableCell>

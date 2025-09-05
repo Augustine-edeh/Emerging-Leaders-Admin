@@ -1,9 +1,10 @@
 import Pagination from "@/components/Pagination";
+import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
 
-const FooterBar = () => {
+const FooterBar = ({ className }: { className?: string }) => {
   return (
-    <footer className="flex justify-between bg-red-400">
+    <footer className={clsx("flex justify-between", className)}>
       <div className="flex items-center gap-1">
         <span>show </span>
 
