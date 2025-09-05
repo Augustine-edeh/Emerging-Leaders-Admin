@@ -138,8 +138,8 @@ const UserRankingTable = () => {
             <TableHead
               key={title}
               className={clsx(
-                "capitalize bg-secondary-50",
-                index === 0 ? "rounded-tl-2xl" : "",
+                "capitalize bg-secondary-50 px-3 py-3",
+                index === 0 ? "rounded-tl-2xl w-24" : "",
                 index === tableHeaders.length - 1 ? "rounded-tr-2xl" : ""
               )}
             >

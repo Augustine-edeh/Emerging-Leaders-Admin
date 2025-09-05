@@ -16,8 +16,6 @@ import UserRankingTable from "./UserRankingTable";
 
 const AnalyticsTabs = () => {
   return (
-    // <>
-    // {/* <div className="flex w-full flex-col flex-1 gap-6"> */}
     <Tabs defaultValue="user-ranking" className="flex-1">
       <div className="flex justify-between items-center px-5 pt-4 pb-3.5">
         <TabsList className="">
@@ -76,25 +74,15 @@ const AnalyticsTabs = () => {
               width={32}
               height={32}
             />
-
-            {/* <CardDescription>
-                Change your password here. After saving, you&apos;ll be logged
-                out.
-              </CardDescription> */}
           </CardHeader>
 
           <CardContent className="grid gap-6 bg-red-500  min-h-0 h-full">
-            {/* <p>Hello World</p> */}
             {true ? <UserRankingTable /> : <ContentManagementTable />}
-
-            {/* <ContentManagementTable /> */}
           </CardContent>
           {/* <CardFooter></CardFooter> */}
         </Card>
       </TabsContent>
     </Tabs>
-    // {/* </div> */}
-    // {/* </> */}
   );
 };
 
