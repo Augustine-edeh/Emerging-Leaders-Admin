@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import clsx from "clsx";
 import NoUserRankingData from "./NoUserRankingData";
 import { userRankings } from "@/data/userRanking";
