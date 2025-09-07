@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import UserRankingTable from "./UserRankingTable";
+import { Filter } from "lucide-react";
 
 const AnalyticsTabs = () => {
   return (
@@ -25,6 +26,7 @@ const AnalyticsTabs = () => {
 
         <div className="flex">
           <Input type="text" placeholder="Search" className="max-w-sm pl-8" />
+          <Filter />
         </div>
       </div>
 
@@ -32,7 +34,7 @@ const AnalyticsTabs = () => {
       <TabsContent value="user-growth" className="">
         <Card>
           <CardHeader>
-            <CardTitle>Account</CardTitle>
+            <CardTitle>User Growth</CardTitle>
             <CardDescription>
               Make changes to your account here. Click save when you&apos;re
               done.
