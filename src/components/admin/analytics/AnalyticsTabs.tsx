@@ -13,7 +13,8 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import UserRankingTable from "./UserRankingTable";
-import { Filter } from "lucide-react";
+import SearchField from "../SearchField";
+import { ListFilter } from "lucide-react";
 
 const AnalyticsTabs = () => {
   return (
@@ -24,9 +25,16 @@ const AnalyticsTabs = () => {
           <TabsTrigger value="user-ranking">User ranking</TabsTrigger>
         </TabsList>
 
-        <div className="flex">
-          <Input type="text" placeholder="Search" className="max-w-sm pl-8" />
-          <Filter />
+        <div className="flex items-center gap-4 text-muted-foreground">
+          <SearchField className="rounded-[8px] pr-4 py-3" />
+          <div className="flex items-center gap-2 px-4 py-3 rounded-[8px] bg-secondary-50">
+            <ListFilter size={24} />
+            <span>Filter</span>
+          </div>
+          <div className="flex items-center gap-2 px-4 py-3 rounded-[8px] bg-secondary-50">
+            <Image src="/icons/download.svg" alt="img" width={24} height={24} />
+            <span>Download</span>
+          </div>
         </div>
       </div>
 
