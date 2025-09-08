@@ -27,14 +27,36 @@ const AnalyticsTabs = () => {
 
         <div className="flex items-center gap-4 text-muted-foreground">
           <SearchField className="rounded-[8px] pr-4 py-3" />
-          <div className="flex items-center gap-2 px-4 py-3 rounded-[8px] bg-secondary-50">
-            <ListFilter size={24} />
-            <span>Filter</span>
-          </div>
-          <div className="flex items-center gap-2 px-4 py-3 rounded-[8px] bg-secondary-50">
-            <Image src="/icons/download.svg" alt="img" width={24} height={24} />
-            <span>Download</span>
-          </div>
+
+          {/* Filter */}
+          <Button
+            variant="toolbar"
+            className="group flex items-center gap-2 px-4 py-3"
+          >
+            <ListFilter
+              size={24}
+              className="transition-colors group-hover:text-foreground"
+            />
+            <span className="transition-colors group-hover:text-foreground">
+              Filter
+            </span>
+          </Button>
+
+          {/* Download */}
+          <Button
+            variant="toolbar"
+            className="group flex items-center gap-2 px-4 py-3"
+          >
+            <Image
+              src="/icons/download.svg"
+              alt="Download"
+              width={24}
+              height={24}
+            />
+            <span className="transition-colors group-hover:text-foreground">
+              Download
+            </span>
+          </Button>
         </div>
       </div>
 
