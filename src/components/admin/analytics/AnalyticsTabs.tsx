@@ -18,9 +18,11 @@ import UserRankingTable from "./UserRankingTable";
 import SearchField from "../SearchField";
 import { ListFilter } from "lucide-react";
 import { useState } from "react";
+import EmptyUserGrowthTab from "./EmptyUserGrowthTab";
 
 const AnalyticsTabs = () => {
   const [activeTab, setActiveTab] = useState("user-ranking");
+  const [activeUserGrowthTab, setActiveUserGrowthTab] = useState("12-months");
 
   return (
     <Tabs
@@ -112,22 +114,24 @@ const AnalyticsTabs = () => {
           </CardHeader>
 
           <CardContent className="grid gap-6 min-h-0 h-full">
-            <Tabs defaultValue="12-months" className="">
+            <Tabs
+              defaultValue="12-months"
+              value={activeUserGrowthTab}
+              onValueChange={setActiveUserGrowthTab}
+              className=""
+            >
               <TabsList className="absolute top-6 right-6">
                 <TabsTrigger value="12-months">12 months</TabsTrigger>
                 <TabsTrigger value="30-days">30 days</TabsTrigger>
                 <TabsTrigger value="7-days">7 days</TabsTrigger>
               </TabsList>
-              <TabsContent
-                value="12-months"
-                className="flex-1 min-h-0 h-96 bg-red-500"
-              >
-                <p>12 months</p>
+              <TabsContent value="12-months" className="flex-1 min-h-0 h-96">
+                <EmptyUserGrowthTab label={activeUserGrowthTab} />
               </TabsContent>
               <TabsContent value="30-days" className="flex-1 min-h-0 h-full">
                 <p>30 days</p>
               </TabsContent>
-              <TabsContent value="7-days" className="flex-1 min-h-0 h-full">
+              <TabsContent value="190-days" className="flex-1 min-h-0 h-full">
                 <p>7 days</p>
               </TabsContent>
             </Tabs>
