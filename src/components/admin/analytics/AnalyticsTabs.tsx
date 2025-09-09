@@ -31,8 +31,8 @@ const AnalyticsTabs = () => {
     >
       <div className="flex justify-between items-center px-5 pt-4 pb-3.5">
         <TabsList>
-          <TabsTrigger value="user-growth">User growth</TabsTrigger>
           <TabsTrigger value="user-ranking">User ranking</TabsTrigger>
+          <TabsTrigger value="user-growth">User growth</TabsTrigger>
         </TabsList>
 
         {/* Conditionally show toolbar only when activeTab is user-ranking */}
@@ -73,34 +73,11 @@ const AnalyticsTabs = () => {
         )}
       </div>
 
-      {/* User Growth Tab */}
-      <TabsContent value="user-growth">
-        <Card>
-          <CardHeader>
-            <CardTitle>User Growth</CardTitle>
-            <CardDescription>
-              Make changes to your account here. Click save when you&apos;re
-              done.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="grid gap-6">
-            <div className="grid gap-3">
-              <Label htmlFor="tabs-demo-name">Name</Label>
-              <Input id="tabs-demo-name" defaultValue="Pedro Duarte" />
-            </div>
-            <div className="grid gap-3">
-              <Label htmlFor="tabs-demo-username">Username</Label>
-              <Input id="tabs-demo-username" defaultValue="@peduarte" />
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button>Save changes</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-
       {/* User Ranking Tab */}
-      <TabsContent value="user-ranking" className="flex-1 min-h-0 h-full">
+      <TabsContent
+        value="user-ranking"
+        className="flex-1 min-h-0 h-full bg-blue-500"
+      >
         <Card className="h-full">
           <CardHeader className="flex justify-center items-center gap-[18px]">
             <Image
@@ -120,6 +97,40 @@ const AnalyticsTabs = () => {
 
           <CardContent className="grid gap-6 min-h-0 h-full">
             {true ? <UserRankingTable /> : <ContentManagementTable />}
+          </CardContent>
+        </Card>
+      </TabsContent>
+
+      {/* User Growth Tab */}
+      <TabsContent value="user-growth" className="flex-1 min-h-0 h-full">
+        <Card className="h-full min-h-0 flex-1 relative">
+          <CardHeader className="flex">
+            <div>
+              <h2>0</h2>
+              <p>0% no records yet</p>
+            </div>
+          </CardHeader>
+
+          <CardContent className="grid gap-6 min-h-0 h-full">
+            <Tabs defaultValue="12-months" className="">
+              <TabsList className="absolute top-6 right-6">
+                <TabsTrigger value="12-months">12 months</TabsTrigger>
+                <TabsTrigger value="30-days">30 days</TabsTrigger>
+                <TabsTrigger value="7-days">7 days</TabsTrigger>
+              </TabsList>
+              <TabsContent
+                value="12-months"
+                className="flex-1 min-h-0 h-96 bg-red-500"
+              >
+                <p>12 months</p>
+              </TabsContent>
+              <TabsContent value="30-days" className="flex-1 min-h-0 h-full">
+                <p>30 days</p>
+              </TabsContent>
+              <TabsContent value="7-days" className="flex-1 min-h-0 h-full">
+                <p>7 days</p>
+              </TabsContent>
+            </Tabs>
           </CardContent>
         </Card>
       </TabsContent>
