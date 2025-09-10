@@ -21,8 +21,11 @@ import { useState } from "react";
 import EmptyUserGrowthTab from "./EmptyUserGrowthTab";
 
 const AnalyticsTabs = () => {
+  type LabelType = "12-months" | "30-days" | "7-days";
+
   const [activeTab, setActiveTab] = useState("user-ranking");
-  const [activeUserGrowthTab, setActiveUserGrowthTab] = useState("12-months");
+  const [activeUserGrowthTab, setActiveUserGrowthTab] =
+    useState<LabelType>("12-months");
 
   return (
     <Tabs
@@ -42,7 +45,6 @@ const AnalyticsTabs = () => {
           <div className="flex items-center gap-4 text-muted-foreground">
             <SearchField className="rounded-[8px] pr-4 py-3" />
 
-            {/* Filter */}
             <Button
               variant="toolbar"
               className="group flex items-center gap-2 px-4 py-3"
@@ -56,7 +58,6 @@ const AnalyticsTabs = () => {
               </span>
             </Button>
 
-            {/* Download */}
             <Button
               variant="toolbar"
               className="group flex items-center gap-2 px-4 py-3"
@@ -76,10 +77,7 @@ const AnalyticsTabs = () => {
       </div>
 
       {/* User Ranking Tab */}
-      <TabsContent
-        value="user-ranking"
-        className="flex-1 min-h-0 h-full bg-blue-500"
-      >
+      <TabsContent value="user-ranking" className="flex-1 min-h-0 h-full">
         <Card className="h-full">
           <CardHeader className="flex justify-center items-center gap-[18px]">
             <Image
@@ -117,7 +115,7 @@ const AnalyticsTabs = () => {
             <Tabs
               defaultValue="12-months"
               value={activeUserGrowthTab}
-              onValueChange={setActiveUserGrowthTab}
+              onValueChange={(val) => setActiveUserGrowthTab(val as LabelType)}
               className=""
             >
               <TabsList className="absolute top-6 right-6">
@@ -125,14 +123,15 @@ const AnalyticsTabs = () => {
                 <TabsTrigger value="30-days">30 days</TabsTrigger>
                 <TabsTrigger value="7-days">7 days</TabsTrigger>
               </TabsList>
+
               <TabsContent value="12-months" className="flex-1 min-h-0 h-96">
                 <EmptyUserGrowthTab label={activeUserGrowthTab} />
               </TabsContent>
               <TabsContent value="30-days" className="flex-1 min-h-0 h-full">
-                <p>30 days</p>
+                <EmptyUserGrowthTab label={activeUserGrowthTab} />
               </TabsContent>
-              <TabsContent value="190-days" className="flex-1 min-h-0 h-full">
-                <p>7 days</p>
+              <TabsContent value="7-days" className="flex-1 min-h-0 h-full">
+                <EmptyUserGrowthTab label={activeUserGrowthTab} />
               </TabsContent>
             </Tabs>
           </CardContent>
