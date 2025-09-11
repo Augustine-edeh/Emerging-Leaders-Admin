@@ -63,9 +63,9 @@ const EmptyUserGrowthTab = ({ label }: { label: LabelType }) => {
     <div className="flex flex-col gap-5 p-3 h-[250px]">
       <div className="flex-1 bg-border-gray-300/15 border-t border-t-secondary-600 mt-2" />
 
-      <div className="w-full flex justify-between items-center mt-auto">
+      <div className="w-full flex justify-between items-center mt-auto bg-red-500">
         {userGrowthLabels[label].map((label) => (
-          <span key={label} className="capitalize">
+          <span key={label} className="capitalize bg-orange-300">
             {label}
           </span>
         ))}
