@@ -97,7 +97,7 @@ const AnalyticsTabs = () => {
         <Card className="h-full min-h-0 flex-1 relative">
           <CardHeader className="flex">
             <div>
-              <h2>0</h2>
+              <h2 className="text-2xl font-semibold">0</h2>
               <p>0% no records yet</p>
             </div>
           </CardHeader>
