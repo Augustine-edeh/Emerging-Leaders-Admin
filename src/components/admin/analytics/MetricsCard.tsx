@@ -26,9 +26,9 @@ const MetricsCard = ({ title }: { title: string }) => {
             </CardDescription>
           </div>
 
-          <CardAction className="text-muted-foreground hover:text-foreground">
+          {/* <CardAction className="text-muted-foreground hover:text-foreground">
             <EllipsisVertical size={20} />
-          </CardAction>
+          </CardAction> */}
         </section>
 
         <CardFooter className="flex-col gap-2 h-[50px] bg-border-gray-300/15 border-t border-t-secondary-600 mt-2"></CardFooter>
