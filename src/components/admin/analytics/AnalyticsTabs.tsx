@@ -95,11 +95,9 @@ const AnalyticsTabs = () => {
       {/* User Growth Tab */}
       <TabsContent value="user-growth" className="flex-1 min-h-0 h-full">
         <Card className="h-full min-h-0 flex-1 relative">
-          <CardHeader className="flex">
-            <div>
-              <h2 className="text-2xl font-semibold">0</h2>
-              <p>0% no records yet</p>
-            </div>
+          <CardHeader>
+            <h2 className="text-2xl font-semibold mb-3">0</h2>
+            <p>0% no records yet</p>
           </CardHeader>
 
           <CardContent className="grid gap-6 min-h-0 h-full">
@@ -107,7 +105,6 @@ const AnalyticsTabs = () => {
               defaultValue="12-months"
               value={activeUserGrowthTab}
               onValueChange={(val) => setActiveUserGrowthTab(val as LabelType)}
-              className=""
             >
               <TabsList className="absolute top-6 right-6">
                 <TabsTrigger value="12-months">12 months</TabsTrigger>
