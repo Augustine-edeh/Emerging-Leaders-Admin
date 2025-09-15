@@ -8,6 +8,7 @@ import { ListFilter } from "lucide-react";
 import { useState } from "react";
 import UserGrowthTab from "./UserGrowthTab";
 import UserRankingTab from "./UserRankingTab";
+import FilterDropdown from "./FilterDropDown";
 
 const AnalyticsTabs = () => {
   const [activeTab, setActiveTab] = useState("user-ranking");
@@ -30,7 +31,7 @@ const AnalyticsTabs = () => {
           <div className="flex items-center gap-4 text-muted-foreground">
             <SearchField className="rounded-[8px] pr-4 py-3" />
 
-            <Button
+            {/* <Button
               variant="toolbar"
               className="group flex items-center gap-2 px-4 py-3"
             >
@@ -41,7 +42,8 @@ const AnalyticsTabs = () => {
               <span className="transition-colors group-hover:text-foreground">
                 Filter
               </span>
-            </Button>
+            </Button> */}
+            <FilterDropdown />
 
             <Button
               variant="toolbar"
