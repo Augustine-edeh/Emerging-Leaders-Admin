@@ -17,6 +17,7 @@ const UserRankingTab = () => {
         </CardHeader>
 
         <CardContent className="grid gap-6 min-h-0 h-full">
+          {/* TODO: add actual data sync-check condition */}
           {true ? <UserRankingTable /> : <ContentManagementTable />}
         </CardContent>
       </Card>
