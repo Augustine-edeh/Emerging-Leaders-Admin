@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import SearchField from "../SearchField";
-import { ListFilter } from "lucide-react";
 import { useState } from "react";
 import UserGrowthTab from "./UserGrowthTab";
 import UserRankingTab from "./UserRankingTab";
@@ -31,18 +30,6 @@ const AnalyticsTabs = () => {
           <div className="flex items-center gap-4 text-muted-foreground">
             <SearchField className="rounded-[8px] pr-4 py-3" />
 
-            {/* <Button
-              variant="toolbar"
-              className="group flex items-center gap-2 px-4 py-3"
-            >
-              <ListFilter
-                size={24}
-                className="transition-colors group-hover:text-foreground"
-              />
-              <span className="transition-colors group-hover:text-foreground">
-                Filter
-              </span>
-            </Button> */}
             <FilterDropdown />
 
             <Button
