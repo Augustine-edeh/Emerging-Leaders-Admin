@@ -46,7 +46,7 @@ const FilterDropdown = () => {
         <Accordion type="single" collapsible className="">
           {/* Ranking */}
           <AccordionItem value="ranking" className="px-4">
-            <AccordionTrigger className="font-normal hover:no-underline">
+            <AccordionTrigger className="font-normal hover:no-underline data-[state=open]:no-underline">
               Ranking
             </AccordionTrigger>
             <AccordionContent className="pl-[35px]">
@@ -81,7 +81,7 @@ const FilterDropdown = () => {
 
           {/* Projects Completed */}
           <AccordionItem value="projects" className="px-4">
-            <AccordionTrigger className="font-normal hover:no-underline">
+            <AccordionTrigger className="font-normal hover:no-underline data-[state=open]:no-underline">
               Projects Completed
             </AccordionTrigger>
             <AccordionContent className="pl-[35px]">
@@ -116,7 +116,7 @@ const FilterDropdown = () => {
 
           {/* Goals Completed */}
           <AccordionItem value="goals" className="px-4">
-            <AccordionTrigger className="font-normal hover:no-underline">
+            <AccordionTrigger className="font-normal hover:no-underline data-[state=open]:no-underline">
               Goals Completed
             </AccordionTrigger>
             <AccordionContent className="pl-[35px]">
@@ -151,7 +151,7 @@ const FilterDropdown = () => {
 
           {/* Consistency Streak */}
           <AccordionItem value="streak" className="px-4">
-            <AccordionTrigger className="font-normal hover:no-underline">
+            <AccordionTrigger className="font-normal hover:no-underline data-[state=open]:no-underline">
               Consistency Streak
             </AccordionTrigger>
             <AccordionContent className="pl-[35px]">
