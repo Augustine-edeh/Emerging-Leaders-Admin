@@ -43,7 +43,7 @@ const FilterDropdown = () => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="min-w-[350px] rounded-xl bg-popover text-popover-foreground shadow-[0px_8px_29px_0px_#5F5E5E30]">
-        <Accordion type="single" collapsible>
+        <Accordion type="single" collapsible className="">
           {/* Ranking */}
           <AccordionItem value="ranking" className="px-4">
             <AccordionTrigger className="font-normal hover:no-underline">
@@ -162,6 +162,17 @@ const FilterDropdown = () => {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+
+        {/* Footer */}
+        <div className="grid grid-cols-2 gap-3 border-t px-6 py-4">
+          <Button className="rounded-[12px]">Filter</Button>
+          <Button
+            variant="outline"
+            className="border-primary text-primary rounded-[12px]"
+          >
+            Cancel
+          </Button>
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   );
