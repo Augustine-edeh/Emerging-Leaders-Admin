@@ -25,8 +25,10 @@ const FilterDropdown = () => {
     streak: "",
   });
 
+  const [open, setOpen] = useState(false);
+
   return (
-    <DropdownMenu>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
         <Button
           variant="toolbar"
@@ -191,6 +193,7 @@ const FilterDropdown = () => {
           <Button
             variant="outline"
             className="border-primary text-primary rounded-[12px]"
+            onClick={() => setOpen(false)}
           >
             Cancel
           </Button>
