@@ -62,14 +62,18 @@ const FilterDropdown = () => {
                     value="highest-to-lowest"
                     id="highest-to-lowest"
                   />
-                  <Label htmlFor="highest-to-lowest">Highest to lowest</Label>
+                  <Label htmlFor="highest-to-lowest" className="font-normal">
+                    Highest to lowest
+                  </Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem
                     value="lowest-to-highest"
                     id="lowest-to-highest"
                   />
-                  <Label htmlFor="lowest-to-highest">Lowest to highest</Label>
+                  <Label htmlFor="lowest-to-highest" className="font-normal">
+                    Lowest to highest
+                  </Label>
                 </div>
               </RadioGroup>
             </AccordionContent>
@@ -90,15 +94,21 @@ const FilterDropdown = () => {
               >
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="0-20" id="0-20" />
-                  <Label htmlFor="0-20">0-20</Label>
+                  <Label htmlFor="0-20" className="font-normal">
+                    0-20
+                  </Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="21-50" id="21-50" />
-                  <Label htmlFor="21-50">21-50</Label>
+                  <Label htmlFor="21-50" className="font-normal">
+                    21-50
+                  </Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="51-above" id="51-above" />
-                  <Label htmlFor="51-above">51 above</Label>
+                  <Label htmlFor="51-above" className="font-normal">
+                    51 above
+                  </Label>
                 </div>
               </RadioGroup>
             </AccordionContent>
@@ -119,15 +129,21 @@ const FilterDropdown = () => {
               >
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="0-100" id="0-100" />
-                  <Label htmlFor="0-100">0-100</Label>
+                  <Label htmlFor="0-100" className="font-normal">
+                    0-100
+                  </Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="101-300" id="101-300" />
-                  <Label htmlFor="101-300">101-300</Label>
+                  <Label htmlFor="101-300" className="font-normal">
+                    101-300
+                  </Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="301-above" id="301-above" />
-                  <Label htmlFor="301-above">301 above</Label>
+                  <Label htmlFor="301-above" className="font-normal">
+                    301 above
+                  </Label>
                 </div>
               </RadioGroup>
             </AccordionContent>
@@ -148,15 +164,21 @@ const FilterDropdown = () => {
               >
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="0-20-days" id="0-20-days" />
-                  <Label htmlFor="0-20-days">0-20 days</Label>
+                  <Label htmlFor="0-20-days" className="font-normal">
+                    0-20 days
+                  </Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="21-50-days" id="21-50-days" />
-                  <Label htmlFor="21-50-days">21-50 days</Label>
+                  <Label htmlFor="21-50-days" className="font-normal">
+                    21-50 days
+                  </Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="51-above-days" id="51-above-days" />
-                  <Label htmlFor="51-above-days">51 days above</Label>
+                  <Label htmlFor="51-above-days" className="font-normal">
+                    51 days above
+                  </Label>
                 </div>
               </RadioGroup>
             </AccordionContent>
