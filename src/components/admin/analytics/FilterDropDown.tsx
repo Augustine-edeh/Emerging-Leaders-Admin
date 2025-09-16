@@ -63,6 +63,7 @@ const FilterDropdown = () => {
                   <RadioGroupItem
                     value="highest-to-lowest"
                     id="highest-to-lowest"
+                    className="data-[state=checked]:bg-[#FFECB2] data-[state=checked]:border-[#FFD780]"
                   />
                   <Label htmlFor="highest-to-lowest" className="font-normal">
                     Highest to lowest
@@ -72,6 +73,7 @@ const FilterDropdown = () => {
                   <RadioGroupItem
                     value="lowest-to-highest"
                     id="lowest-to-highest"
+                    className="data-[state=checked]:bg-[#FFECB2] data-[state=checked]:border-[#FFD780]"
                   />
                   <Label htmlFor="lowest-to-highest" className="font-normal">
                     Lowest to highest
@@ -95,19 +97,31 @@ const FilterDropdown = () => {
                 className="space-y-2"
               >
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="0-20" id="0-20" />
+                  <RadioGroupItem
+                    value="0-20"
+                    id="0-20"
+                    className="data-[state=checked]:bg-[#FFECB2] data-[state=checked]:border-[#FFD780]"
+                  />
                   <Label htmlFor="0-20" className="font-normal">
                     0-20
                   </Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="21-50" id="21-50" />
+                  <RadioGroupItem
+                    value="21-50"
+                    id="21-50"
+                    className="data-[state=checked]:bg-[#FFECB2] data-[state=checked]:border-[#FFD780]"
+                  />
                   <Label htmlFor="21-50" className="font-normal">
                     21-50
                   </Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="51-above" id="51-above" />
+                  <RadioGroupItem
+                    value="51-above"
+                    id="51-above"
+                    className="data-[state=checked]:bg-[#FFECB2] data-[state=checked]:border-[#FFD780]"
+                  />
                   <Label htmlFor="51-above" className="font-normal">
                     51 above
                   </Label>
@@ -130,19 +144,31 @@ const FilterDropdown = () => {
                 className="space-y-2"
               >
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="0-100" id="0-100" />
+                  <RadioGroupItem
+                    value="0-100"
+                    id="0-100"
+                    className="data-[state=checked]:bg-[#FFECB2] data-[state=checked]:border-[#FFD780]"
+                  />
                   <Label htmlFor="0-100" className="font-normal">
                     0-100
                   </Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="101-300" id="101-300" />
+                  <RadioGroupItem
+                    value="101-300"
+                    id="101-300"
+                    className="data-[state=checked]:bg-[#FFECB2] data-[state=checked]:border-[#FFD780]"
+                  />
                   <Label htmlFor="101-300" className="font-normal">
                     101-300
                   </Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="301-above" id="301-above" />
+                  <RadioGroupItem
+                    value="301-above"
+                    id="301-above"
+                    className="data-[state=checked]:bg-[#FFECB2] data-[state=checked]:border-[#FFD780]"
+                  />
                   <Label htmlFor="301-above" className="font-normal">
                     301 above
                   </Label>
@@ -165,19 +191,31 @@ const FilterDropdown = () => {
                 className="space-y-2"
               >
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="0-20-days" id="0-20-days" />
+                  <RadioGroupItem
+                    value="0-20-days"
+                    id="0-20-days"
+                    className="data-[state=checked]:bg-[#FFECB2] data-[state=checked]:border-[#FFD780]"
+                  />
                   <Label htmlFor="0-20-days" className="font-normal">
                     0-20 days
                   </Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="21-50-days" id="21-50-days" />
+                  <RadioGroupItem
+                    value="21-50-days"
+                    id="21-50-days"
+                    className="data-[state=checked]:bg-[#FFECB2] data-[state=checked]:border-[#FFD780]"
+                  />
                   <Label htmlFor="21-50-days" className="font-normal">
                     21-50 days
                   </Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="51-above-days" id="51-above-days" />
+                  <RadioGroupItem
+                    value="51-above-days"
+                    id="51-above-days"
+                    className="data-[state=checked]:bg-[#FFECB2] data-[state=checked]:border-[#FFD780]"
+                  />
                   <Label htmlFor="51-above-days" className="font-normal">
                     51 days above
                   </Label>
