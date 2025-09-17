@@ -29,7 +29,6 @@ const AssessmentMangement = () => {
           <h4 className="">Content List</h4>
 
           <div className="flex items-center gap-4 text-muted-foreground">
-            {/* <SearchField className="rounded-[8px] pr-4 py-3 lg:w-2xs border-none focus:outline-none bg-transparent" /> */}
             <SearchField className="rounded-[8px] pr-4 py-3 lg:w-2xs" />
 
             <FilterDropdown />
