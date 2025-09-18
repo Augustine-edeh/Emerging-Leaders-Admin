@@ -46,7 +46,7 @@ const AssessmentMangement = () => {
         </div>
       </section> */}
 
-      <section className="flex-1 min-h-0 flex flex-col rounded-xl border border-border-secondary bg-white shadow-2xs">
+      <section className="flex-1 min-h-0 flex flex-col rounded-xl border border-border-secondary bg-red-500 p-1 white shadow-2xs overflow-hidden">
         <AssessmentTabs />
       </section>
 
