@@ -8,6 +8,8 @@ import { useState } from "react";
 import FilterDropdown from "@/components/admin/analytics/FilterDropDown";
 import UserReportTab from "./UserReportTab";
 import AssessmentListTab from "./AssessmentListTab";
+import { cn } from "@/lib/utils";
+import { Separator } from "@/components/ui/separator";
 
 const AssessmentTabs = () => {
   const [activeTab, setActiveTab] = useState<"assessment-list" | "user-report">(
@@ -24,13 +26,29 @@ const AssessmentTabs = () => {
       className="flex-1"
     >
       <div className="flex justify-between items-center px-5 pt-4 pb-3.5">
-        <TabsList>
-          <TabsTrigger value="assessment-list">Assessment List </TabsTrigger>
-          <TabsTrigger value="user-report">User Report</TabsTrigger>
+        <TabsList className="bg-transparent gap-3">
+          <TabsTrigger
+            value="assessment-list"
+            className={cn(
+              "data-[state=active]:shadow-none",
+              activeTab === "assessment-list" ? "text-primary" : ""
+            )}
+          >
+            Assessment List
+          </TabsTrigger>
+
+          <Separator orientation="vertical" />
+          <TabsTrigger
+            value="user-report"
+            className={cn(
+              "data-[state=active]:shadow-none",
+              activeTab === "user-report" ? "text-primary" : ""
+            )}
+          >
+            User Report
+          </TabsTrigger>
         </TabsList>
 
-        {/* Conditionally show toolbar only when activeTab is user-ranking */}
-        {/* {activeTab === "user-ranking" && ( */}
         <div className="flex items-center gap-4 text-muted-foreground">
           <SearchField className="rounded-[8px] pr-4 py-3" />
 
@@ -51,7 +69,6 @@ const AssessmentTabs = () => {
             </span>
           </Button>
         </div>
-        {/* )} */}
       </div>
 
       {/* Assessment-list Tab */}
