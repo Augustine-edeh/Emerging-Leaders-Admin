@@ -36,7 +36,6 @@ const AssessmentTabs = () => {
           >
             Assessment List
           </TabsTrigger>
-
           <Separator orientation="vertical" />
           <TabsTrigger
             value="user-report"
