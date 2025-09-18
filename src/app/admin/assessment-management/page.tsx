@@ -1,16 +1,7 @@
-import { Input } from "@/components/ui/input";
-import ContentManagementTable from "@/components/ContentManagementTable";
-import { ListFilter, Search } from "lucide-react";
-import { Label } from "@/components/ui/label";
+// import ContentManagementTable from "@/components/ContentManagementTable";
 import FooterBar from "@/components/admin/FooterBar";
 
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Image from "next/image";
-import SearchField from "../../../components/admin/SearchField";
-import UserGrowthTab from "./UserGrowthTab";
-import UserRankingTab from "./UserRankingTab";
-import FilterDropdown from "@/components/admin/analytics/FilterDropDown";
+import AssessmentTabs from "@/components/admin/assessment/AssessmentTabs";
 
 const AssessmentMangement = () => {
   return (
@@ -24,7 +15,7 @@ const AssessmentMangement = () => {
         </div>
       </section>
 
-      <section className="flex-1 min-h-0 flex flex-col rounded-xl border border-border-secondary bg-white shadow-2xs">
+      {/* <section className="flex-1 min-h-0 flex flex-col rounded-xl border border-border-secondary bg-white shadow-2xs">
         <div className="flex justify-between items-center px-0 lg:px-6 py-3">
           <h4 className="">Content List</h4>
 
@@ -53,6 +44,10 @@ const AssessmentMangement = () => {
         <div className="flex-1 lex min-h-0 rounded-xl bg-white border border-border-secondary p-5">
           <ContentManagementTable />
         </div>
+      </section> */}
+
+      <section className="flex-1 min-h-0 flex flex-col rounded-xl border border-border-secondary bg-white shadow-2xs">
+        <AssessmentTabs />
       </section>
 
       <FooterBar />
