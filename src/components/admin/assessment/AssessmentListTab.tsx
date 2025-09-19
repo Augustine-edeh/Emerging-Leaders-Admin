@@ -8,16 +8,11 @@ import AssessmentListTable from "./AssessmentListTable";
 const AssessmentListTab = () => {
   return (
     <TabsContent value="assessment-list" className="flex-1 min-h-0 h-full">
-      <Card className="h-full">
-        {/* <CardHeader className="flex justify-center items-center gap-[18px]">
-          <Image src="/icons/star-badge.svg" alt="img" width={32} height={32} />
-          <CardTitle className="text-2xl">Leaderboard</CardTitle>
-          <Image src="/icons/star-badge.svg" alt="img" width={32} height={32} />
-        </CardHeader> */}
-
-        <CardContent className="grid gap-6 min-h-0 h-full">
+      <Card className="h-full p-0">
+        <CardContent className="grid gap-6 min-h-0 h-full p-5">
           {/* TODO: add actual data sync-check condition */}
-          {true ? <AssessmentListTable /> : <ContentManagementTable />}
+          {/* {true ? <AssessmentListTable /> : <ContentManagementTable />} */}
+          <AssessmentListTable />
         </CardContent>
       </Card>
     </TabsContent>
