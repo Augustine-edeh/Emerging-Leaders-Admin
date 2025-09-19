@@ -30,20 +30,22 @@ const AssessmentTable = () => {
   };
 
   return (
-    <Table>
+    <Table className="table-auto w-full">
       <TableHeader>
         <TableRow>
-          <TableHead className="bg-secondary-50 pl-[25px] py-[18px] rounded-tl-2xl">
+          <TableHead className="bg-secondary-50 px-[25px] py-[18px] rounded-tl-2xl w-full">
             Title
           </TableHead>
-          <TableHead className="bg-secondary-50 py-[18px]">
+          <TableHead className="bg-secondary-50 py-[18px] whitespace-nowrap px-[25px]">
             Total Users
           </TableHead>
-          <TableHead className="bg-secondary-50 py-[18px]">Filled</TableHead>
-          <TableHead className="bg-secondary-50 py-[18px]">
+          <TableHead className="bg-secondary-50 py-[18px] whitespace-nowrap px-[25px]">
+            Filled
+          </TableHead>
+          <TableHead className="bg-secondary-50 py-[18px] whitespace-nowrap px-[25px]">
             Not Filled
           </TableHead>
-          <TableHead className="bg-secondary-50 py-[18px] rounded-tr-2xl">
+          <TableHead className="bg-secondary-50 py-[18px] rounded-tr-2xl whitespace-nowrap px-[25px]">
             Actions
           </TableHead>
         </TableRow>
@@ -52,13 +54,19 @@ const AssessmentTable = () => {
       <TableBody>
         {assessmentListData.map((assessment) => (
           <TableRow key={assessment.id}>
-            <TableCell className="font-medium pl-[25px]">
+            <TableCell className="font-medium px-[25px] w-full">
               {assessment.title}
             </TableCell>
-            <TableCell>{assessment.totalUser}</TableCell>
-            <TableCell>{assessment.filled}</TableCell>
-            <TableCell>{assessment.notFilled}</TableCell>
-            <TableCell>
+            <TableCell className="whitespace-nowrap px-[25px]">
+              {assessment.totalUser}
+            </TableCell>
+            <TableCell className="whitespace-nowrap px-[25px]">
+              {assessment.filled}
+            </TableCell>
+            <TableCell className="whitespace-nowrap px-[25px]">
+              {assessment.notFilled}
+            </TableCell>
+            <TableCell className="whitespace-nowrap px-[25px]">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="sm">
