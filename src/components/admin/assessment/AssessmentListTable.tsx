@@ -58,7 +58,7 @@ const AssessmentTable = () => {
             <TableCell>{assessment.totalUser}</TableCell>
             <TableCell>{assessment.filled}</TableCell>
             <TableCell>{assessment.notFilled}</TableCell>
-            <TableCell className="text-right">
+            <TableCell>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="sm">

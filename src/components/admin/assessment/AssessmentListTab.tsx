@@ -1,7 +1,6 @@
 "use client";
 
-import ContentManagementTable from "@/components/ContentManagementTable";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { TabsContent } from "@/components/ui/tabs";
 import AssessmentListTable from "./AssessmentListTable";
 
