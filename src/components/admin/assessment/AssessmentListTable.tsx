@@ -77,8 +77,8 @@ const AssessmentTable = () => {
                     View Responses
                   </DropdownMenuItem>
                   <DropdownMenuItem
-                    className="text-error flex items-center gap-2.5 py-[18px] px-[25px]"
                     onClick={() => handleDelete(assessment.id)}
+                    className="flex items-center gap-2.5 py-[18px] px-[25px] text-error hover:text-error focus:text-error"
                   >
                     <Trash2 className="size-[18px] text-error" />
                     Delete Assessment
