@@ -1,6 +1,6 @@
 "use client";
 
-import { assessmentListData } from "@/data/assessmentListData"; // <- your mock data file
+import { assessmentListData } from "@/data/assessmentListData";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -16,12 +16,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { EllipsisVertical } from "lucide-react";
+import { EllipsisVertical, Eye, Trash2 } from "lucide-react";
 
 const AssessmentTable = () => {
   const handleView = (id: string) => {
     console.log("View assessment:", id);
-    // TODO: onview assessment, show modal withassessment details
+    // TODO: show modal with assessment details
   };
 
   const handleDelete = (id: string) => {
@@ -65,14 +65,22 @@ const AssessmentTable = () => {
                     <EllipsisVertical />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={() => handleView(assessment.id)}>
-                    View Assessment
+                <DropdownMenuContent
+                  align="end"
+                  className="rounded-[20px] shadow-[0px_8px_29px_0px_#5F5E5E30] p-0"
+                >
+                  <DropdownMenuItem
+                    onClick={() => handleView(assessment.id)}
+                    className="flex items-center gap-2.5 py-[18px] px-[25px]"
+                  >
+                    <Eye className="size-[18px]" />
+                    View Responses
                   </DropdownMenuItem>
                   <DropdownMenuItem
-                    className="text-red-600"
+                    className="text-error flex items-center gap-2.5 py-[18px] px-[25px]"
                     onClick={() => handleDelete(assessment.id)}
                   >
+                    <Trash2 className="size-[18px] text-error" />
                     Delete Assessment
                   </DropdownMenuItem>
                 </DropdownMenuContent>
